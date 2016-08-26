@@ -1,41 +1,149 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="win32">
+    <Filter Include="App">
       <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
     </Filter>
-    <Filter Include="resource">
-      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    <Filter Include="Manager">
+      <UniqueIdentifier>{8ca1783e-25de-41d9-9b7d-4eb44cd7552a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src">
-      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    <Filter Include="Data">
+      <UniqueIdentifier>{1d9d4a70-6d9d-4856-9f78-c3b7aa567983}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object">
+      <UniqueIdentifier>{275b2364-58ab-406a-ae0b-26bf7452e549}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{ce23fdff-b205-4588-8aa2-39c8f9f44484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{41d80fcd-cdfe-4ddd-882e-b096e95c1edb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
-      <Filter>win32</Filter>
+      <Filter>App</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\AppDelegate.cpp">
-      <Filter>src</Filter>
+      <Filter>App</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
-      <Filter>src</Filter>
+    <ClCompile Include="..\Classes\Scene\CreditScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\EndingScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\GameScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\MainScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\SelectScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\TransitionScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\GameLogic.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\GameManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\MapDataLoader.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Data\Constants.cpp">
+      <Filter>Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Data\Mapdata.cpp">
+      <Filter>Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\Flag.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\JoyStick.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\PlanetProgressJar.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\Dig.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Object\Character.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UI\EntireProgressBar.cpp">
+      <Filter>UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
-      <Filter>win32</Filter>
+      <Filter>App</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\AppDelegate.h">
-      <Filter>src</Filter>
+      <Filter>App</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\HelloWorldScene.h">
-      <Filter>src</Filter>
+    <ClInclude Include="..\Classes\Scene\CreditScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\EndingScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\GameScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\MainScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\SelectScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\TransitionScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\GameLogic.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\GameManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\MapDataLoader.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Data\Constants.h">
+      <Filter>Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Data\Mapdata.h">
+      <Filter>Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\Flag.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\JoyStick.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\PlanetProgressJar.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\Dig.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Object\Character.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\EntireProgressBar.h">
+      <Filter>UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
-      <Filter>resource</Filter>
+      <Filter>Resource</Filter>
     </ResourceCompile>
   </ItemGroup>
 </Project>
