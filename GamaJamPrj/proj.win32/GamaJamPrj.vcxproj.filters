@@ -48,12 +48,6 @@
     <ClCompile Include="..\Classes\Scene\TransitionScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Manager\GameLogic.cpp">
-      <Filter>Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\Manager\GameManager.cpp">
-      <Filter>Manager</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Manager\MapDataLoader.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
@@ -81,6 +75,21 @@
     <ClCompile Include="..\Classes\UI\EntireProgressBar.cpp">
       <Filter>UI</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\UI\TurnCounter.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\DataManager.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\GameManager1.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\GameManager2.cpp">
+      <Filter>Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Object\CameraMan.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -106,12 +115,6 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Scene\TransitionScene.h">
       <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Manager\GameLogic.h">
-      <Filter>Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Manager\GameManager.h">
-      <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Manager\MapDataLoader.h">
       <Filter>Manager</Filter>
@@ -139,6 +142,18 @@
     </ClInclude>
     <ClInclude Include="..\Classes\UI\EntireProgressBar.h">
       <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UI\TurnCounter.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\DataManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\GameManager.h">
+      <Filter>Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Object\CameraMan.h">
+      <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

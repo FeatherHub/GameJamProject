@@ -147,9 +147,11 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
     <ClCompile Include="..\Classes\Data\Constants.cpp" />
     <ClCompile Include="..\Classes\Data\Mapdata.cpp" />
-    <ClCompile Include="..\Classes\Manager\GameLogic.cpp" />
-    <ClCompile Include="..\Classes\Manager\GameManager.cpp" />
+    <ClCompile Include="..\Classes\Manager\GameManager1.cpp" />
+    <ClCompile Include="..\Classes\Manager\DataManager.cpp" />
+    <ClCompile Include="..\Classes\Manager\GameManager2.cpp" />
     <ClCompile Include="..\Classes\Manager\MapDataLoader.cpp" />
+    <ClCompile Include="..\Classes\Object\CameraMan.cpp" />
     <ClCompile Include="..\Classes\Object\Character.cpp" />
     <ClCompile Include="..\Classes\Scene\CreditScene.cpp" />
     <ClCompile Include="..\Classes\Scene\EndingScene.cpp" />
@@ -162,15 +164,17 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\UI\Flag.cpp" />
     <ClCompile Include="..\Classes\UI\JoyStick.cpp" />
     <ClCompile Include="..\Classes\UI\PlanetProgressJar.cpp" />
+    <ClCompile Include="..\Classes\UI\TurnCounter.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\Data\Constants.h" />
     <ClInclude Include="..\Classes\Data\Mapdata.h" />
-    <ClInclude Include="..\Classes\Manager\GameLogic.h" />
     <ClInclude Include="..\Classes\Manager\GameManager.h" />
+    <ClInclude Include="..\Classes\Manager\DataManager.h" />
     <ClInclude Include="..\Classes\Manager\MapDataLoader.h" />
+    <ClInclude Include="..\Classes\Object\CameraMan.h" />
     <ClInclude Include="..\Classes\Object\Character.h" />
     <ClInclude Include="..\Classes\Scene\CreditScene.h" />
     <ClInclude Include="..\Classes\Scene\EndingScene.h" />
@@ -183,6 +187,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\UI\Flag.h" />
     <ClInclude Include="..\Classes\UI\JoyStick.h" />
     <ClInclude Include="..\Classes\UI\PlanetProgressJar.h" />
+    <ClInclude Include="..\Classes\UI\TurnCounter.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
