@@ -60,6 +60,13 @@ namespace PATH
 	const std::string METADATA_PATH_3("StageInfo/stageInfo3.csv");
 	const std::string METADATA_PATH_4("StageInfo/stageInfo4.csv");
 	const std::string METADATA_PATH_5("StageInfo/stageInfo5.csv");
+
+	const std::string STAGE_KEY_BASE ("IsClearStage");
+	const std::string STAGE1_BOOL_KEY("IsClearStage1");
+	const std::string STAGE2_BOOL_KEY("IsClearStage2");
+	const std::string STAGE3_BOOL_KEY("IsClearStage3");
+	const std::string STAGE4_BOOL_KEY("IsClearStage4");
+	const std::string STAGE5_BOOL_KEY("IsClearStage5");
 }
 
 enum class GAME_CODE : int

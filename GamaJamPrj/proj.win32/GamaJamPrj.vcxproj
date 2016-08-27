@@ -145,6 +145,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Classes\AppDelegate.cpp" />
+    <ClCompile Include="..\Classes\Data\Constant2.cpp" />
     <ClCompile Include="..\Classes\Data\Constants.cpp" />
     <ClCompile Include="..\Classes\Data\Mapdata.cpp" />
     <ClCompile Include="..\Classes\Manager\GameManager1.cpp" />
@@ -171,6 +172,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
   <ItemGroup>
     <ClInclude Include="..\Classes\AppDelegate.h" />
     <ClInclude Include="..\Classes\Data\Constants.h" />
+    <ClInclude Include="..\Classes\Data\Constants2.h" />
     <ClInclude Include="..\Classes\Data\Mapdata.h" />
     <ClInclude Include="..\Classes\Manager\GameManager.h" />
     <ClInclude Include="..\Classes\Manager\DataManager.h" />

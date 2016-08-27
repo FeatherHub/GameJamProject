@@ -6,6 +6,7 @@
 USING_NS_CC;
 
 class Stars;
+class EntireProgressBar;
 class SelectScene : public Scene
 {
 public:
@@ -26,5 +27,5 @@ private:
 	Sprite* prince;
 	Sprite* star;
 	Stars*	stars;
-
+	EntireProgressBar* bar;
 };

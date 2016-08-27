@@ -1,12 +1,13 @@
 #include "MapDataLoader.h"
 
 #include "Data/Mapdata.h"
+#include "Data\Constants2.h"
 
 #include <fstream>
 
 MapMetaData* MapDataLoader::GetMapMetaData()
 {
-	int m_stageNum = UserDefault::getInstance()->getIntegerForKey("NowSelectStage");
+	int m_stageNum = UserDefault::getInstance()->getIntegerForKey(PATH2::NOW_STAGE_KEY.c_str());
 
 	MapMetaData* m_MetaData = new MapMetaData();
 

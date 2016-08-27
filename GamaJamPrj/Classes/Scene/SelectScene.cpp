@@ -1,9 +1,9 @@
-#include "Scene/SelectScene.h"
+#include "SelectScene.h"
 #include "Data\/Constants.h"
 #include "MovingScene.h"
 #include "CreditScene.h"
 #include "Object/Stars.h"
-
+#include "UI/EntireProgressBar.h"
 
 Scene* SelectScene::createScene()
 {
@@ -21,12 +21,16 @@ bool SelectScene::init()
 	{
 		return false;
 	}
+	UserDefault::getInstance()->setBoolForKey(PATH::STAGE1_BOOL_KEY.c_str(), true);
+	UserDefault::getInstance()->setBoolForKey(PATH::STAGE2_BOOL_KEY.c_str(), true);
+	UserDefault::getInstance()->setBoolForKey(PATH::STAGE3_BOOL_KEY.c_str(), true);
+	UserDefault::getInstance()->setBoolForKey(PATH::STAGE4_BOOL_KEY.c_str(), false);
+	UserDefault::getInstance()->setBoolForKey(PATH::STAGE5_BOOL_KEY.c_str(), false);
 	generateBg();
 	generateStars();
+	generateProBar();
 	
-	closeUp();
-	return true;
-
+	//closeUp();
 	return true;
 }
 
@@ -59,8 +63,13 @@ void SelectScene::generateBg()
 
 void SelectScene::generateStars()
 {
-	stars = Stars::create(CC_CALLBACK_1(SelectScene::callStars, this));
+	stars = Stars::create();
 	this->addChild(stars);
+}
+void SelectScene::generateProBar()
+{
+	bar = EntireProgressBar::create();
+	this->addChild(bar);
 }
 
 void SelectScene::callStars(Ref* sender)
@@ -82,9 +91,4 @@ void SelectScene::closeUp()
 		DelayTime::create(0.5f), nullptr));
 	bg->runAction(Sequence::create( DelayTime::create(2.5f), 
 		TintTo::create(0.1f, Color3B(0,0, 0)), nullptr));
-	Sprite* hide = Sprite::create("MainScene/hide.png");
-	hide->setOpacity(0);
-	hide->setPosition(winSize.width / 2, winSize.height / 2);
-	this->addChild(hide);
-	hide->runAction(Sequence::create(DelayTime::create(2.5f), FadeIn::create(0.1f), FadeOut::create(0.3f), nullptr));
 }
