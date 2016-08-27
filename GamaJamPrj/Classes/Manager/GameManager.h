@@ -9,6 +9,9 @@ struct CharacterMapPos;
 struct ObjectDataMap;
 class Character;
 class CameraMan;
+class Dig;
+class Flag;
+class JoyStick;
 
 class GameManager : public Node
 {
@@ -29,7 +32,11 @@ public:
 	void SetCharMap(CharacterMapPos* pCharMap) { m_pRefCharMap = pCharMap; }
 	void SetDirDeltaPos(Vec2* pDirDeltaPos) { m_pRefdirDeltaPos = pDirDeltaPos; }
 
+
 private:
+	void InitUI();
+	void CallUI(Ref* sender);
+
 	void CharMove();
 	void CharDig();
 	void OnRoad();
@@ -47,4 +54,9 @@ private:
 	
 	// GameManager º“¿Ø
 	CameraMan* m_pCameraMan = nullptr;
+
+	// JoyStick, Flag, Dig µÓ UI
+	JoyStick*	joyStick;
+	Dig*		dig;
+	Flag*		flag;
 };

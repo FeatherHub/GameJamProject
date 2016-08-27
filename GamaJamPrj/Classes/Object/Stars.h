@@ -1,8 +1,8 @@
 #pragma once
 
 /*
-	2016. 8. 27 
-	작성자 도인혁
+	2016. 8. 27.
+	도인혁 
 */
 
 #include "cocos2d.h"
@@ -10,15 +10,16 @@
 
 USING_NS_CC;
 
-class Dig : public Node
+// 일단 임의로 정해서 태그값을 넣겠습니다.
+
+class Stars : public Node
 {
 public:
 	bool init(ccMenuCallback func);
-	CREATE_FUNC_ARGS(Dig);
+	CREATE_FUNC_ARGS(Stars);
 private:
-	void generateDig();
-
+	void generateStars();
 private:
 	ccMenuCallback func;
-	Menu* dig;
+	Menu* stars;
 };
