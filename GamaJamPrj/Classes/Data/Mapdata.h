@@ -71,7 +71,7 @@ struct CharacterPosMap
 struct MapMetaData
 {
 	std::string tilePath;
-	int tileSize = -1;
+	int turn = -1;
 	int heartNum = -1;
 	int width = -1;
 	int height = -1;
