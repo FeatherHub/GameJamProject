@@ -48,9 +48,6 @@
     <ClCompile Include="..\Classes\Scene\SelectScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Scene\TransitionScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Manager\MapDataLoader.cpp">
       <Filter>Manager</Filter>
     </ClCompile>
@@ -96,6 +93,9 @@
     <ClCompile Include="..\Classes\Object\Stars.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Scene\MovingScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -117,9 +117,6 @@
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Scene\SelectScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Scene\TransitionScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Manager\MapDataLoader.h">
@@ -166,6 +163,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Object\Stars.h">
       <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\MovingScene.h">
+      <Filter>Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

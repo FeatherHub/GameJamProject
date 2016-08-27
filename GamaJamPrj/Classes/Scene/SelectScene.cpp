@@ -1,9 +1,9 @@
 #include "Scene/SelectScene.h"
 #include "Data\/Constants.h"
-
-#include "SelectScene.h"
+#include "MovingScene.h"
 #include "CreditScene.h"
 #include "Object/Stars.h"
+
 
 Scene* SelectScene::createScene()
 {
@@ -55,5 +55,14 @@ void SelectScene::generateBg()
 
 void SelectScene::generateStars()
 {
+	stars = Stars::create(CC_CALLBACK_1(SelectScene::callStars, this));
+	this->addChild(stars);
+}
 
+void SelectScene::callStars(Ref* sender)
+{
+	auto type = (Menu*)sender;
+
+	UserDefault::getInstance()->setIntegerForKey("NowSelectStage", type->getTag() - Constants::TAG_STAR1);
+	Director::getInstance()->replaceScene(MovingScene::createScene());
 }

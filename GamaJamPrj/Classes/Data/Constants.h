@@ -21,6 +21,12 @@ namespace Constants
 	const int TAG_GOTO_SELECT = 7;
 	const int TAG_GOTO_HELP = 8;
 	const int TAG_GOTO_CREDIT = 9;
+
+	const int TAG_STAR1 = 10;
+	const int TAG_STAR2 = 11;
+	const int TAG_STAR3 = 12;
+	const int TAG_STAR4 = 13;
+	const int TAG_STAR5 = 14;
 }
 
 namespace PATH

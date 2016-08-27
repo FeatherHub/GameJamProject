@@ -159,7 +159,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Scene\GameScene.cpp" />
     <ClCompile Include="..\Classes\Scene\MainScene.cpp" />
     <ClCompile Include="..\Classes\Scene\SelectScene.cpp" />
-    <ClCompile Include="..\Classes\Scene\TransitionScene.cpp" />
+    <ClCompile Include="..\Classes\Scene\MovingScene.cpp" />
     <ClCompile Include="..\Classes\UI\Dig.cpp" />
     <ClCompile Include="..\Classes\UI\EntireProgressBar.cpp" />
     <ClCompile Include="..\Classes\UI\Flag.cpp" />
@@ -183,7 +183,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Scene\GameScene.h" />
     <ClInclude Include="..\Classes\Scene\MainScene.h" />
     <ClInclude Include="..\Classes\Scene\SelectScene.h" />
-    <ClInclude Include="..\Classes\Scene\TransitionScene.h" />
+    <ClInclude Include="..\Classes\Scene\MovingScene.h" />
     <ClInclude Include="..\Classes\UI\Dig.h" />
     <ClInclude Include="..\Classes\UI\EntireProgressBar.h" />
     <ClInclude Include="..\Classes\UI\Flag.h" />
