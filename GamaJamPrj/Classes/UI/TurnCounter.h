@@ -11,12 +11,12 @@ public :
 	CREATE_FUNC_ARGS(TurnCounter);
 	bool init();
 	void renewLabel();
-	void LoseTurn() { turn--; }
-	void BonusTurn() { turn+=2; }
-	int GetTurn() { return turn; }
+	void LoseTurn() { curTurn--; }
+	void BonusTurn();
+	int GetTurn() { return curTurn; }
 private:
 	void generateLabel();
 private:
 	Label label;
-	int turn;
+	int curTurn;
 };

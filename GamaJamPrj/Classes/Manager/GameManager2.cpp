@@ -13,6 +13,8 @@
 #include "Data/Constants.h"
 #include "Data/Mapdata.h"
 
+#include "SimpleAudioEngine.h"
+
 GAME_CODE GameManager::CharMove()
 {
 	//Character is in World Space

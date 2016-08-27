@@ -1,4 +1,5 @@
 #include "PlanetProgressJar.h"
+#include "SimpleAudioEngine.h"
 
 bool PlanetProgressJar::init()
 {
