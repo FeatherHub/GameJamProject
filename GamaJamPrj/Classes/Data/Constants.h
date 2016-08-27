@@ -14,8 +14,8 @@ namespace Constants
 	const int TAG_JOYSTICK_LEFT = 2;
 	const int TAG_JOYSTICK_RIGHT = 3;
 	const int TAG_JOYSTICK_NUM = 4;
-	const int TAG_FLAG_NUM = 5;
-	const int TAG_DIG_NUM = 6;
+	const int TAG_FLAG = 5;
+	const int TAG_DIG = 6;
 
 	const int TAG_GOTO_SELECT = 7;
 	const int TAG_GOTO_HELP = 8;

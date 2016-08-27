@@ -25,6 +25,6 @@ void Dig::generateDig()
 		PATH::DIG_BASE + ".png",
 		PATH::DIG_BASE + "_.png", func);
 
-	digItem->setTag(Constants::TAG_DIG_NUM);
+	digItem->setTag(Constants::TAG_DIG);
 	dig->addChild(digItem);
 }
