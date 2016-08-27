@@ -11,6 +11,7 @@ public:
 	CREATE_FUNC_ARGS(PlanetProgressJar);
 	virtual bool init() override;
 
+	bool 
 private:
 
 private:
