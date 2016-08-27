@@ -134,7 +134,10 @@ GAME_CODE GameManager::update()
 
 void GameManager::Lose()
 {
-	UserDefault::getInstance()->setBoolForKey(PATH2::IS_CLEAR.c_str(), false);
+	UserDefault::getInstance()->setBoolForKey(PATH2::IS_START.c_str(), false);
+	Scene* pscene = MainScene::createScene();
+	TransitionScene* tr = TransitionProgressInOut::create(1.0f, pscene);
+	Director::getInstance()->replaceScene(tr);
 }
 
 void GameManager::Win()

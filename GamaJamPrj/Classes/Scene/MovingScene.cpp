@@ -31,11 +31,6 @@ void MovingScene::generateBg()
 
 void MovingScene::enterGameScene(float delta)
 {
-	
 	Scene* pscene = GameScene::createScene();
-	/*
-	TransitionScene* tr = Transis::create(1.0f, pscene);
-	
-	Director::getInstance()->replaceScene(tr);
-	*/
+
 }
