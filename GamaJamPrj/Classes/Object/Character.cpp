@@ -23,6 +23,7 @@ void Character::Move(const Vec2& deltaPos)
 	runAction(Sequence::create(
 		CallFunc::create([&]() {m_statusArr[(int)CHARACTER_ACTION::MOVE] = true; }),
 		//animation and move position,
+		MoveBy::create(Constants::ANI_MOVE_TIME, deltaPos),
 		CallFunc::create([&]() {m_statusArr[(int)CHARACTER_ACTION::MOVE] = false; }),
 		nullptr));
 }
