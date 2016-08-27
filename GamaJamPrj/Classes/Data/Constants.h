@@ -50,6 +50,7 @@ namespace PATH
 	const std::string DIG_BASE{ "UI/Dig/dig" };
 	const std::string FLAG_BASE{ "UI/Flag/flag" };
 	const std::string JOTSTICK_BASE{ "UI/JoyStick/joystick" };
+	const std::string JAR_BASE{"UI/Jar/jar"};
 
 	const std::string CHARACTER{ "Character/character.png" };
 

@@ -9,12 +9,19 @@ class PlanetProgressJar : public Node
 {
 public:
 	CREATE_FUNC_ARGS(PlanetProgressJar);
-	virtual bool init() override;
-	void FindHeart() { m_curHeart++; }
+	bool init(int pAimHeart);
+	void FindHeart();
 	int GetHeartNum() { return m_curHeart; }
-
 private:
+	void generateJar();
+	void generateLabel();
+private:
+	CREATEWINSIZE;
 	int m_curHeart;
-
+	int m_aimHeart;
+	float percent;
+	Sprite* jar;
+	Sprite* light;
+	Label* label;
 
 };
