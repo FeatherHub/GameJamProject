@@ -4,8 +4,6 @@
 
 #include <fstream>
 
-
-
 bool DataManager::init(int stageNum)
 {
 	m_stageNum = stageNum;
@@ -36,7 +34,7 @@ void DataManager::loadData()
 
 	for (int i = 0; i < (int)users.size(); i++)
 	{
-		MapMetaData* pMetaData;
+		MapMetaData* pMetaData= new MapMetaData();
 		ValueMap user = users.at(i).asValueMap();
 
 		pMetaData->tilePath = user.at("path").asString();
