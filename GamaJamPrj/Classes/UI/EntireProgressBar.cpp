@@ -56,7 +56,7 @@ void EntireProgressBar::generateRose()
 	// 발화?
 	rose[1] = Sprite::create("SelectScene/smile.png");
 	rose[1]->setAnchorPoint(Vec2(0, 0.5));
-	rose[1]->setPosition(150, 0);
+	rose[1]->setPosition(200, 0);
 	rose[1]->setScale(0.5f);
 	this->addChild(rose[1]);
 	// 장미

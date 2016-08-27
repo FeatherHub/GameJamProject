@@ -18,6 +18,10 @@ private:
 	void generateStars();
 	void generateProBar();
 
+	void Sprout();
+	void Flower();
+
+	void checkEvent();
 	void closeUp();
 	void callStars(Ref* sender);
 private:
