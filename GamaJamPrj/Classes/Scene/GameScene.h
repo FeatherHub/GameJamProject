@@ -13,4 +13,7 @@ public:
     void menuCloseCallback(Ref* pSender);
     
     CREATE_FUNC(GameScene);
+
+private:
+
 };

@@ -9,14 +9,12 @@ USING_NS_CC;
 class CameraMan : public Node
 {
 public:
-	/*
-	Note : Call SetMapMetaData and InitCameraMapData !!!
-	*/
 	CREATE_FUNC(CameraMan);
 	virtual bool init() override;
-	void SetMapMetaData(MapMetaData* mmd) { m_pRefMapMetaData = mmd; }
-	void InitCameraMapData();
+	void SetMapMetaData(MapMetaData* mmd);
 	void Move(const Vec2& moveDelta);
+private:
+	void InitCameraMapData();
 private:
 	MapMetaData* m_pRefMapMetaData;
 	CameraMapData m_cameraMapData;
