@@ -118,6 +118,16 @@ void GameManager::Lose()
 
 void GameManager::Win()
 {
-	int type = UserDefault::getInstance()->getIntegerForKey(PATH2::NOW_STAGE_KEY.c_str());
+	UserDefault::getInstance()->setBoolForKey(PATH2::IS_CLEAR.c_str(), true);
+	
+	int type = UserDefault::getInstance()->getBoolForKey(PATH2::NOW_STAGE_KEY.c_str());
+	switch (type)
+	{
+	case 0:UserDefault::getInstance()->setBoolForKey(PATH::STAGE1_BOOL_KEY.c_str(), true); break;
+	case 1:UserDefault::getInstance()->setBoolForKey(PATH::STAGE2_BOOL_KEY.c_str(), true); break;
+	case 2:UserDefault::getInstance()->setBoolForKey(PATH::STAGE3_BOOL_KEY.c_str(), true); break;
+	case 3:UserDefault::getInstance()->setBoolForKey(PATH::STAGE4_BOOL_KEY.c_str(), true); break;
+	case 4:UserDefault::getInstance()->setBoolForKey(PATH::STAGE5_BOOL_KEY.c_str(), true); break;
+	}
 	
 }
