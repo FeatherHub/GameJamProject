@@ -1,6 +1,6 @@
 #include "AppDelegate.h"
 #include "Scene/GameScene.h"
-#include "Scene/MainScene.h"
+#include "Scene\/SelectScene.h"
 
 USING_NS_CC;
 
@@ -58,7 +58,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
 
 	UserDefault::getInstance()->setIntegerForKey("NowSelectStage", 4);
-    auto scene = GameScene::createScene();
+    auto scene = SelectScene::createScene(); 
     
 	// run
     director->runWithScene(scene);

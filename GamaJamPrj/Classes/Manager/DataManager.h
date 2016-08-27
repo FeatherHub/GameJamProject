@@ -3,6 +3,8 @@
 #include "cocos2d.h"
 USING_NS_CC;
 
+#include "ui/UIButton.h"
+
 //UI
 class JoyStick;
 class Dig;
@@ -47,6 +49,7 @@ private:
 	Flag* pBtnFlag = nullptr;
 	TurnCounter* pTurnCounter = nullptr;
 	PlanetProgressJar* pPlanetProgressJar = nullptr;
+	ui::Button* pButton = nullptr;
 
 	//Data
 	MapMetaData* pMapMetaData = nullptr;
