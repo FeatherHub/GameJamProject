@@ -109,7 +109,8 @@ GAME_CODE GameManager::CharFlag()
 
 void GameManager::OnHeart()
 {
-	
+	m_pRefTurnCounter->BonusTurn();
+	m_pRefPlanetProgressJar->FindHeart();
 }
 
 void GameManager::OnRoad()
