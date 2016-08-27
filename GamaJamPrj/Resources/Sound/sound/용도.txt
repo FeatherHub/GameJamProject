@@ -1,0 +1,24 @@
+파일명 - 용도
+
+step.wav - 방향키를 활용할 경우 출력
+
+
+check.wav - 마크 버튼 눌렀을 때
+
+
+clear.wav - 스테이지 클리어
+
+
+dig.wav - dig 버튼 눌렀을 때
+
+
+find.wav - 별 찾았을 때
+
+
+ingame.mp3 - 인게임 돌입 시 출력
+
+
+opening.mp3 - 게임 오버, 인게임을 제외한 모든 씬에서 출력
+
+
+over.wav - 게임 오버 시출력

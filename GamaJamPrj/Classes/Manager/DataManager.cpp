@@ -22,15 +22,15 @@ bool DataManager::init()
 		return false;
 	}
 
+	//init meta data
+	pMapMetaData = MapDataLoader::GetMapMetaData();
+
 	//init ui
 	pBtnDig = Dig::create(CC_CALLBACK_1(DataManager::ControllerUICallback, this));
 	pBtnFlag = Flag::create(CC_CALLBACK_1(DataManager::ControllerUICallback, this));
 	pJoyStick = JoyStick::create(CC_CALLBACK_1(DataManager::ControllerUICallback, this));
-	pTurnCounter = TurnCounter::create();
-	pPlanetProgressJar = PlanetProgressJar::create();
-
-	//init meta data
-	pMapMetaData = MapDataLoader::GetMapMetaData();
+	pTurnCounter = TurnCounter::create(pMapMetaData->turn);
+	pPlanetProgressJar = PlanetProgressJar::create(pMapMetaData->heartNum);
 	
 	//init object
 	pCameraMan = CameraMan::create();
