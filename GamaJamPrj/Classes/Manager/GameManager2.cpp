@@ -11,6 +11,7 @@
 #include "Object/CameraMan.h"
 
 #include "Data/Constants.h"
+#include "Data/Constants2.h"
 #include "Data/Mapdata.h"
 
 GAME_CODE GameManager::CharMove()
@@ -91,16 +92,19 @@ GAME_CODE GameManager::CharDig()
 
 GAME_CODE GameManager::CharFlag()
 {
-	int charXPos = m_pRefCharPosMap->pos.x;
-	int charYPos = m_pRefCharPosMap->pos.y;
-	auto objectType = m_pRefObjectTypeMap->map[charXPos][charYPos];
+	int x = m_pRefCharPosMap->pos.x;
+	int y = m_pRefCharPosMap->pos.y;
+	auto objectType = m_pRefObjectTypeMap->map[x][y];
 
 	if (objectType == MAP_OBJECT_TYPE::FLAG_ON_HEART ||
 		objectType == MAP_OBJECT_TYPE::FLAG_ON_NUMBER ||
 		objectType == MAP_OBJECT_TYPE::FLAG_ON_ROAD)
 	{
-		//Character -> 깃발 뽑기 애니메이션 //일하고 있어
-		m_pRefObjectTypeMap->map[charXPos][charYPos] = (MAP_OBJECT_TYPE)
+		//Character -> 깃발 뽑기 애니메이션 + 일하고 있어
+
+		m_pRefSpriteMap->map[x][y]->removeAllChildren();
+
+		m_pRefObjectTypeMap->map[x][y] = (MAP_OBJECT_TYPE)
 			((int)objectType - (int)MAP_OBJECT_TYPE::FLAG_DELTA);
 	}
 	else if (objectType == MAP_OBJECT_TYPE::HEART ||
@@ -108,7 +112,12 @@ GAME_CODE GameManager::CharFlag()
 		objectType == MAP_OBJECT_TYPE::ROAD)
 	{
 		//Character -> 깃발 꼽기 애니메이션 //일하고 있어
-		m_pRefObjectTypeMap->map[charXPos][charYPos] = (MAP_OBJECT_TYPE)
+
+		Sprite* flag = Sprite::create(PATH2::FLAG_MARK);
+		flag->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
+		m_pRefSpriteMap->map[x][y]->addChild(flag, 3);
+
+		m_pRefObjectTypeMap->map[x][y] = (MAP_OBJECT_TYPE)
 			((int)objectType + (int)MAP_OBJECT_TYPE::FLAG_DELTA);
 	}
 
@@ -118,7 +127,6 @@ GAME_CODE GameManager::CharFlag()
 /* Dig */
 //음영 타일로 전환
 //Dig효과음 + 0.5초 대기
-
 
 /* 팠는데 하트였다 */
 //턴 수 + 2
@@ -130,12 +138,17 @@ void GameManager::OnHeart()
 
 	const int x = m_pRefCharPosMap->pos.x;
 	const int y = m_pRefCharPosMap->pos.y;
+	const auto targetPos = m_pRefSpriteMap->map[x][y]->getPosition();
 
 	Sprite* shade = Sprite::create(m_pRefMapMetaData->tilePath + "_.png");
-	const auto targetPos = m_pRefSpriteMap->map[x][y]->getPosition();
 	shade->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
 	shade->setPosition(targetPos);
-	m_pRefCameraMan->addChild(shade, 3);
+	m_pRefCameraMan->addChild(shade, 4);
+
+	Sprite* star = Sprite::create(PATH2::HEART);
+	star->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
+	star->setPosition(targetPos + Vec2(10, 0));
+	m_pRefCameraMan->addChild(star, 5);
 
 	m_pRefObjectTypeMap->map[x][y] = MAP_OBJECT_TYPE::SHADED;
 }
@@ -155,12 +168,16 @@ void GameManager::OnNumber()
 	const int y = m_pRefCharPosMap->pos.y;
 	const int n = m_pRefNumberDataMap->map[x][y];
 
-	Sprite* number = Sprite::create(m_pRefNumberDataMap->paths[n-1]);
-	
+	Sprite* shade = Sprite::create(m_pRefMapMetaData->tilePath + "_.png");
 	const auto targetPos = m_pRefSpriteMap->map[x][y]->getPosition();
+	shade->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
+	shade->setPosition(targetPos);
+	m_pRefCameraMan->addChild(shade, 4);
+
+	Sprite* number = Sprite::create(m_pRefNumberDataMap->paths[n - 1]);
 	number->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
 	number->setPosition(targetPos);
-	m_pRefCameraMan->addChild(number, 3);
+	m_pRefCameraMan->addChild(number, 5);
 
 	m_pRefTurnCounter->LoseTurn(MAP_OBJECT_TYPE::NUMBER);
 
