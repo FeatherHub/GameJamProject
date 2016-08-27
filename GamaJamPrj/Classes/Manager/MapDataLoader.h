@@ -6,7 +6,8 @@
 USING_NS_CC;
 
 struct MapMetaData;
-class DataManager
+
+class MapDataLoader
 {
 public:
 	bool init(int _stageNum);
