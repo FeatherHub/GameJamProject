@@ -46,18 +46,6 @@ void SelectScene::generateBg()
 	bg->setPosition(winSize.width / 2, winSize.height / 2);
 	this->addChild(bg);
 
-	// 별 초기화
-//	star = Sprite::create(PATH::SELECTSCENE_STAR);
-//	star->setScale(2.5f);
-//	star->setPosition(winSize.width/2, -50);
-//	this->addChild(star);
-	
-
-	rose = Sprite::create(PATH::SELECTSCENE_ROSE);
-	rose->setPosition(150, 100);
-	rose->setScale(0.2f);
-	this->addChild(rose);
-
 }
 
 void SelectScene::generateStars()

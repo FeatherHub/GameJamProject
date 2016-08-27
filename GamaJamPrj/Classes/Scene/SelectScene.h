@@ -33,7 +33,6 @@ private:
 	CREATEWINSIZE;
 	Sprite* bg;
 	Sprite* hailo;
-	Sprite* rose;
 	Sprite* prince;
 	Stars*	stars;
 	EntireProgressBar* bar;
