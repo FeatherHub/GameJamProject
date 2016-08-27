@@ -11,6 +11,9 @@ public :
 	CREATE_FUNC_ARGS(TurnCounter);
 	bool init();
 	void renewLabel();
+	void LoseTurn() { turn--; }
+	void BonusTurn() { turn+=2; }
+	int GetTurn() { return turn; }
 private:
 	void generateLabel();
 private:

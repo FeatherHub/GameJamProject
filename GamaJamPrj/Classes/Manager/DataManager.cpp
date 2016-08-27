@@ -54,7 +54,6 @@ bool DataManager::init()
 	Note : setposition after InitCharPosMap()
 	*/
 	pCharacter = Character::create();
-	pCharacter->SetTurn(10);
 
 	//retain
 	/*

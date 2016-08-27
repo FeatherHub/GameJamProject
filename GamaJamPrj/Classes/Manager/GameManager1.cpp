@@ -118,6 +118,5 @@ void GameManager::Lose()
 
 void GameManager::Win()
 {
-	int type = UserDefault::getInstance()->getIntegerForKey(PATH2::NOW_STAGE_KEY.c_str());
-	
+
 }

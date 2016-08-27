@@ -106,17 +106,18 @@ GAME_CODE GameManager::CharFlag()
 }
 
 /* Dig */
+
+void GameManager::OnHeart()
+{
+	
+}
+
 void GameManager::OnRoad()
 {
 
 }
 
 void GameManager::OnNumber()
-{
-
-}
-
-void GameManager::OnHeart()
 {
 
 }
