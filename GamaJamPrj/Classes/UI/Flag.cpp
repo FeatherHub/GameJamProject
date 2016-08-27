@@ -14,6 +14,7 @@ bool Flag::init(ccMenuCallback func)
 	}
 	this->func = func;
 	generateFlag();
+	return true;
 }
 
 void Flag::generateFlag()

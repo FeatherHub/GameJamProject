@@ -8,7 +8,7 @@ bool TurnCounter::init()
 		return false;
 	}
 	generateLabel();
-
+	return true;
 }
 
 void TurnCounter::generateLabel()

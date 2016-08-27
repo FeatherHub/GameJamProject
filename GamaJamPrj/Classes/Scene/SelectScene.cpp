@@ -23,6 +23,9 @@ bool SelectScene::init()
 	}
 	generateBg();
 	generateStars();
+	
+	closeUp();
+	return true;
 
 }
 
@@ -65,4 +68,22 @@ void SelectScene::callStars(Ref* sender)
 
 	UserDefault::getInstance()->setIntegerForKey("NowSelectStage", type->getTag() - Constants::TAG_STAR1);
 	Director::getInstance()->replaceScene(MovingScene::createScene());
+}
+
+void SelectScene::closeUp()
+{
+	stars->action();
+	prince->runAction(Sequence::create (Spawn::create( ScaleTo::create(2.5f, 0.8f), MoveBy::create(2.5f, Vec2(0,-50)), nullptr),
+		DelayTime::create(0.5f),nullptr));
+	star->runAction(Sequence::create(Spawn::create(ScaleTo::create(2.5f, 4.0f), MoveBy::create(2.5f, Vec2(0, -50)), nullptr),
+		DelayTime::create(0.5f),  nullptr));
+	rose->runAction(Sequence::create(Spawn::create(ScaleTo::create(2.5f, 0.8f), MoveBy::create(2.5f, Vec2(0, -50)), nullptr),
+		DelayTime::create(0.5f), nullptr));
+	bg->runAction(Sequence::create( DelayTime::create(2.5f), 
+		TintTo::create(0.1f, Color3B(0,0, 0)), nullptr));
+	Sprite* hide = Sprite::create("MainScene/hide.png");
+	hide->setOpacity(0);
+	hide->setPosition(winSize.width / 2, winSize.height / 2);
+	this->addChild(hide);
+	hide->runAction(Sequence::create(DelayTime::create(2.5f), FadeIn::create(0.1f), FadeOut::create(0.3f), nullptr));
 }

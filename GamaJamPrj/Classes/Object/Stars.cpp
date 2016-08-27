@@ -53,3 +53,8 @@ void Stars::generateStars()
 	stars->runAction(RepeatForever::create(Sequence::create(MoveBy::create(0.3f, Vec2(0, 10)), DelayTime::create(0.1f), MoveBy::create(0.3f, Vec2(0, -10)),
 		nullptr)));
 }
+
+void Stars::action()
+{
+	stars->runAction(FadeOut::create(1.0f));
+}
