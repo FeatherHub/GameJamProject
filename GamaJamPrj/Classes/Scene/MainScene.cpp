@@ -21,8 +21,7 @@ bool MainScene::init()
 	{
 		return false;
 	}
-	DataManager loader;
-	loader.loadData();
+	MapMetaData* temp=  MapDataLoader::GetMapMetaData();
 	generateBg();
 	generateMenu();
 

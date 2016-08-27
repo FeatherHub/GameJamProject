@@ -68,6 +68,7 @@ struct MapMetaData
 	int heartNum = -1;
 	int width = -1;
 	int height = -1;
+	int turn = -1;
 };
 
 struct CameraMapData

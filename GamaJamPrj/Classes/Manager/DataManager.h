@@ -12,6 +12,7 @@ class PlanetProgressJar;
 
 //Data
 struct SpriteMap;
+struct NumberDataMap;
 struct CharacterPosMap;
 struct ObjectTypeMap;
 struct MapMetaData;
