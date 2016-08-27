@@ -18,6 +18,9 @@ namespace PATH2
 
 	const std::string AROUND_NUMBER_BASE{ "Tile/" };
 
+	const std::string FLAG_MARK{ "Tile/x.png" };
+
+	const std::string HEART{ "Tile/star.png" };
 }
 
 namespace Constants2
