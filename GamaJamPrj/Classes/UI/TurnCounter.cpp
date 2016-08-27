@@ -47,7 +47,7 @@ void TurnCounter::renewLabel()
 void TurnCounter::LoseTurn(MAP_OBJECT_TYPE mot)
 {
 	curTurn--;
-
+	renewLabel();
 	switch (mot)
 	{
 	case MAP_OBJECT_TYPE::ROAD:

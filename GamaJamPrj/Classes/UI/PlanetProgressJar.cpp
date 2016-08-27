@@ -43,8 +43,12 @@ void PlanetProgressJar::generateLabel()
 void PlanetProgressJar::FindHeart()
 {
 	m_curHeart++;
-	percent = m_curHeart / m_aimHeart * 255;
+	percent = m_curHeart / (float)m_aimHeart * 255;
 	light->setOpacity(percent);
+
+	std::string str = StringUtils::toString(m_curHeart).c_str();
+	str += "/" + StringUtils::toString(m_aimHeart);
+	label->setString(str);
 
 	CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(PATH2::GOT_HEART.c_str());
 
