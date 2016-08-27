@@ -15,6 +15,7 @@ public:
 private:
 	void generateBg();
 	void generateStars();
+	void generateProBar();
 
 	void closeUp();
 	void callStars(Ref* sender);
@@ -25,4 +26,5 @@ private:
 	Sprite* prince;
 	Sprite* star;
 	Stars*	stars;
+
 };
