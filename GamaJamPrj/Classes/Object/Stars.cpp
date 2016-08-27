@@ -18,37 +18,53 @@ bool Stars::init()
 
 void Stars::generateStars()
 {
+	// 현재 진행 몇 스테이지 인지를 나타냄
+	int guage = 0;
+
+	if (UserDefault::getInstance()->getBoolForKey(PATH::STAGE1_BOOL_KEY.c_str()))
+		guage++;
+	if (UserDefault::getInstance()->getBoolForKey(PATH::STAGE2_BOOL_KEY.c_str()))
+		guage++;
+	if (UserDefault::getInstance()->getBoolForKey(PATH::STAGE3_BOOL_KEY.c_str()))
+		guage++;
+	if (UserDefault::getInstance()->getBoolForKey(PATH::STAGE4_BOOL_KEY.c_str()))
+		guage++;
+	if (UserDefault::getInstance()->getBoolForKey(PATH::STAGE5_BOOL_KEY.c_str()))
+		guage++;
+
 	stars = Menu::create();
 	this->addChild(stars);
 
-	MenuItem* star1 = MenuItemImage::create(PATH::SELECTSCENE_STAR, PATH::SELECTSCENE_STAR, 
+	std::string path = "SelectScene/" + StringUtils::toString(guage + 1) + "/";
+
+	MenuItem* star1 = MenuItemImage::create(path + "stage1.png", path + "stage1.png",
 		CC_CALLBACK_1(Stars::callStar, this));
 	
 	star1->setPosition(START_POS_2);
 	star1->setTag(POS0);
-	star1->setScale(1.0f);
+	star1->setScale(0.3f);
 	star1->runAction(RepeatForever::create(Sequence::create( MoveBy::create(1.0f, Vec2(0, 15)), DelayTime::create(0.2f), MoveBy::create(1.0f, Vec2(0, -15)),
 		nullptr)));
 
 	
-	MenuItem* star2 = MenuItemImage::create(PATH::SELECTSCENE_STAR, PATH::SELECTSCENE_STAR);
+	MenuItem* star2 = MenuItemImage::create(path + "stage2.png", path + "stage2.png");
 	star2->setPosition(START_POS_3);
 	star2->setTag(POS1);
-	star2->setScale(0.5f);
+	star2->setScale(0.15f);
 	star2->runAction(RepeatForever::create(Sequence::create(MoveBy::create(0.8f, Vec2(0, 5)), DelayTime::create(0.2f), MoveBy::create(0.8f, Vec2(0, -5)),
 		nullptr)));
 
-	MenuItem* star3 = MenuItemImage::create(PATH::SELECTSCENE_STAR, PATH::SELECTSCENE_STAR);
+	MenuItem* star3 = MenuItemImage::create(path + "stage3.png", path + "stage3.png");
 	star3->setPosition(START_POS_4);
 	star3->setTag(POS2);
-	star3->setScale(0.3f);
+	star3->setScale(0.1f);
 	star3->runAction(RepeatForever::create(Sequence::create(MoveBy::create(1.6f, Vec2(0, 2)), DelayTime::create(0.2f), MoveBy::create(1.6f, Vec2(0, -2)),
 		nullptr)));
 
-	MenuItem* star4 = MenuItemImage::create(PATH::SELECTSCENE_STAR, PATH::SELECTSCENE_STAR);
+	MenuItem* star4 = MenuItemImage::create(path + "stage4.png",  "stage4.png");
 	star4->setPosition(START_POS_5);
 	star4->setTag(POS3);
-	star4->setScale(0.1f);
+	star4->setScale(0.03f);
 	star4->runAction(RepeatForever::create(Sequence::create(MoveBy::create(1.6f, Vec2(0, 2)), DelayTime::create(0.2f), MoveBy::create(1.6f, Vec2(0, -2)),
 		nullptr)));
 

@@ -30,12 +30,12 @@ void EntireProgressBar :: generateBar()
 		guage++;
 
 	baseBar = Sprite::create("SelectScene/base.png");
-	baseBar->setPosition(50, 50);
+	baseBar->setPosition(50, 570);
 	baseBar->setAnchorPoint(Vec2(0, 0.5));
 	this->addChild(baseBar);
 
 	perBar = Sprite::create("SelectScene/per.png");
-	perBar->setPosition(50, 50);
+	perBar->setPosition(50,570);
 	perBar->setAnchorPoint(Vec2(0, 0.5));
 	perBar->setScaleX(0);
 	this->addChild(perBar);
@@ -48,21 +48,21 @@ void EntireProgressBar::generateRose()
 {
 	// 새싹
 	rose[0] = Sprite::create("SelectScene/smile.png");
-	rose[0]->setAnchorPoint(Vec2(0, 0.5));
-	rose[0]->setPosition(50, 0);
+	rose[0]->setAnchorPoint(Vec2(0.5, 0.5));;
+	rose[0]->setPosition(50, 600);
 	rose[0]->setScale(0.5f);
 	this->addChild(rose[0]);
 
 	// 발화?
 	rose[1] = Sprite::create("SelectScene/smile.png");
-	rose[1]->setAnchorPoint(Vec2(0, 0.5));
-	rose[1]->setPosition(200, 0);
+	rose[1]->setAnchorPoint(Vec2(0.5, 0.5));
+	rose[1]->setPosition(200, 600);
 	rose[1]->setScale(0.5f);
 	this->addChild(rose[1]);
 	// 장미
 	rose[2] = Sprite::create("SelectScene/smile.png");
-	rose[2]->setAnchorPoint(Vec2(0, 0.5));
-	rose[2]->setPosition(300, 0);
+	rose[2]->setAnchorPoint(Vec2(0.5, 0.5));
+	rose[2]->setPosition(300, 600);
 	rose[2]->setScale(0.5f);
 	this->addChild(rose[2]);
 }

@@ -23,6 +23,12 @@ USING_NS_CC;
 #define START_POS_4 Vec2 ( 150, 10 )
 #define START_POS_5 Vec2 ( 200, 40 )
 
+#define P_PATH1 "SelectScene/stage1.png"
+#define P_PATH2 "SelectScene/stage2.png"
+#define P_PATH3 "SelectScene/stage3.png"
+#define P_PATH4 "SelectScene/stage4.png"
+#define P_PATH5 "SelectScene/stage5.png"
+
 class Stars : public Node
 {
 public:

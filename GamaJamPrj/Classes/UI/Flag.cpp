@@ -26,7 +26,7 @@ void Flag::generateFlag()
 	MenuItem* flagItem = MenuItemImage::create(
 		PATH::FLAG_BASE + ".png",
 		PATH::FLAG_BASE + "_.png", func);
-
+	flagItem->setPosition(-80, -280);
 	flagItem->setTag(Constants::TAG_FLAG);
 	flag->addChild(flagItem);
 }
