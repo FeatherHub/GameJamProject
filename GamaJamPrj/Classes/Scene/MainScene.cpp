@@ -1,6 +1,7 @@
 #include "Scene/MainScene.h"
 #include "SelectScene.h"
 #include "CreditScene.h"
+#include "SimpleAudioEngine.h"
 
 #include "Data\/Constants.h"
 #include "Data\Constants2.h"
@@ -12,6 +13,7 @@ Scene* MainScene::createScene()
 
 	auto layer = MainScene::create();
 	scene->addChild(layer);
+	CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic( PATH2::BG_MAIN.c_str(), true);
 
 	return scene;
 }
@@ -25,6 +27,7 @@ bool MainScene::init()
 	DataSetting();
 	generateBg();
 	generateMenu();
+
 
 	return true;
 }
@@ -48,21 +51,21 @@ void MainScene::generateMenu()
 		PATH::MAINSCENE_START_BASE + "_.png",
 		CC_CALLBACK_1(MainScene::callMenu, this));
 	select->setTag(Constants::TAG_GOTO_SELECT);
-	select->setPosition(0, 100);
+	select->setPosition(0, 200);
 
 	MenuItem* help = MenuItemImage::create(
 		PATH::MAINSCENE_HELP_BASE + ".png", 
 		PATH::MAINSCENE_HELP_BASE + "_.png", 
 		CC_CALLBACK_1(MainScene::callMenu, this));
 	help->setTag(Constants::TAG_GOTO_HELP);
-	help->setPosition(0, 0);
+	help->setPosition(0, 100);
 
 	MenuItem* credit = MenuItemImage::create(
 		PATH::MAINSCENE_CREDIT_BASE + ".png", 
 		PATH::MAINSCENE_CREDIT_BASE + "_.png",
 		CC_CALLBACK_1(MainScene::callMenu, this));
 	credit->setTag(Constants::TAG_GOTO_CREDIT);
-	credit->setPosition(0, -100);
+	credit->setPosition(0, 0);
 
 	menu->addChild(select);
 	menu->addChild(help);

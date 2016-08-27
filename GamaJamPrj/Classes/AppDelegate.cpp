@@ -1,5 +1,6 @@
 #include "AppDelegate.h"
-#include "Scene/GameScene.h"
+#include "Data\Constants2.h"
+#include "Scene\MainScene.h"
 #include "Scene\/SelectScene.h"
 
 USING_NS_CC;
@@ -58,7 +59,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // create a scene. it's an autorelease object
 
 	UserDefault::getInstance()->setIntegerForKey("NowSelectStage", 4);
-    auto scene = SelectScene::createScene(); 
+	auto scene = MainScene::createScene();
     
 	// run
     director->runWithScene(scene);
@@ -79,5 +80,5 @@ void AppDelegate::applicationWillEnterForeground() {
     Director::getInstance()->startAnimation();
 
     // if you use SimpleAudioEngine, it must resume here
-    // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+	  // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 }

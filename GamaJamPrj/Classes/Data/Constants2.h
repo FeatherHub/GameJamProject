@@ -16,6 +16,13 @@ namespace PATH2
 	const std::string GOT_BONUS_TURN("Sound/Effect/got_bonus_turn.wav");
 	const std::string GOT_HEART("Sound/Effect/got_heart.wav");
 
+	const std::string MOVE_EFFECT("Sound/Effect/step.wav ");
+	const std::string MARK_EFFECT("Sound/Effect/check.wav  ");
+	const std::string DIG_EFFECT("Sound/Effect/dig.wav   ");
+
+	const std::string BG_MAIN("Sound/Effect/opening.mp3");
+	const std::string BG_GAME("Sound/Effect/ingame.mp3");
+
 	const std::string AROUND_NUMBER_BASE{ "Tile/" };
 
 	const std::string FLAG_MARK{ "Tile/x.png" };

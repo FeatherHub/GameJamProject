@@ -1,4 +1,6 @@
 #include "Character.h"
+#include "SimpleAudioEngine.h"
+#include "Data\Constants2.h"
 
 bool Character::init()
 {
@@ -21,6 +23,8 @@ bool Character::init()
 
 void Character::Move(const Vec2& deltaPos)
 {
+	CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(PATH2::MOVE_EFFECT.c_str());
+
 	runAction(Sequence::create(
 		CallFunc::create([&]() {m_statusArr[(int)CHARACTER_ACTION::MOVE] = true; }),
 		//animation and move position,
@@ -31,6 +35,8 @@ void Character::Move(const Vec2& deltaPos)
 
 void Character::Dig()
 {
+	
+
 	runAction(Sequence::create(
 		CallFunc::create([&]() {m_statusArr[(int)CHARACTER_ACTION::DIG] = true; }),
 		//animation
@@ -40,6 +46,8 @@ void Character::Dig()
 
 void Character::Flag()
 {
+	
+
 	runAction(Sequence::create(
 		CallFunc::create([&]() {m_statusArr[(int)CHARACTER_ACTION::FLAG] = true; }),
 		//animation

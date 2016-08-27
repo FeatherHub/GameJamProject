@@ -19,6 +19,7 @@ private:
 	void enterOtherScene(int sceneNum);
 
 	void DataSetting();
+	void playBgm(float delta);
 private:
 	CREATEWINSIZE;
 	Sprite* bg;
