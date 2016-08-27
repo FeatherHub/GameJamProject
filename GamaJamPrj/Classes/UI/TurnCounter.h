@@ -2,6 +2,7 @@
 
 #include "cocos2d.h"
 #include "Utils\Macro.h"
+#include "Data/Constants.h"
 
 USING_NS_CC;
 
@@ -11,7 +12,7 @@ public :
 	CREATE_FUNC_ARGS(TurnCounter);
 	bool init(int stageTurn);
 	void renewLabel();
-	void LoseTurn() { curTurn--; }
+	void LoseTurn(MAP_OBJECT_TYPE mot); 
 	void BonusTurn();
 	int GetTurn() { return curTurn; }
 private:

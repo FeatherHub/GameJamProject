@@ -11,7 +11,7 @@
 #include "Object/CameraMan.h"
 
 #include "Data/Constants.h"
-#include "Data\/Constants2.h"
+#include "Data/Constants2.h"
 #include "Data/Mapdata.h"
 
 bool GameManager::init()
@@ -28,15 +28,21 @@ bool GameManager::init()
 	m_pRefJoyStick = m_pDM->pJoyStick;
 	m_pRefJoyStick->setPosition(Constants::JOYSTICK_POS);
 	m_pRefBtnDig = m_pDM->pBtnDig;
+	m_pRefBtnDig->setPosition(Constants2::DIG_POS);
 	m_pRefBtnFlag = m_pDM->pBtnFlag;
+	m_pRefBtnFlag->setPosition(Constants2::FLAG_POS);
 	m_pRefTurnCounter = m_pDM->pTurnCounter;
+	m_pRefTurnCounter->setPosition(Constants2::TURN_COUNTER_POS);
 	m_pRefPlanetProgressJar = m_pDM->pPlanetProgressJar;
+	m_pRefPlanetProgressJar->setPosition(Constants2::PLANET_PROGRESS_JAR_POS);
 
 	//Data
 	m_pRefCharPosMap = m_pDM->pCharPosMap;
 	m_pRefDirDeltaPos = m_pDM->pDirDeltaPos;
 	m_pRefObjectTypeMap = m_pDM->pObjectTypeMap;
 	m_pRefNumberDataMap = m_pDM->pNumberDataMap;
+	m_pRefSpriteMap = m_pDM->pSpriteMap;
+	m_pRefMapMetaData = m_pDM->pMapMetaData;
 
 	//Object
 	m_pRefCameraMan = m_pDM->pCameraMan;
@@ -61,7 +67,7 @@ bool GameManager::init()
 	Sprite* blackTop = Sprite::create(PATH::BLACK);
 	blackTop->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
 	blackTop->setPosition(Vec2(0,
-		3 + Constants::VIEWPORT_LEFT_BOTTOM_Y + Constants::TILE_SIZE*Constants::VIEWPORT_HEIGHT_TILE_NUM));
+		1.5f + Constants::VIEWPORT_LEFT_BOTTOM_Y + Constants::TILE_SIZE*Constants::VIEWPORT_HEIGHT_TILE_NUM));
 	addChild(blackTop);
 
 	//3. Characer

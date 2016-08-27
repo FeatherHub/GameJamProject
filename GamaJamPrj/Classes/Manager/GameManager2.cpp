@@ -13,8 +13,6 @@
 #include "Data/Constants.h"
 #include "Data/Mapdata.h"
 
-#include "SimpleAudioEngine.h"
-
 GAME_CODE GameManager::CharMove()
 {
 	//Character is in World Space
@@ -108,19 +106,52 @@ GAME_CODE GameManager::CharFlag()
 }
 
 /* Dig */
+//음영 타일로 전환
+//Dig효과음 + 0.5초 대기
 
+
+/* 팠는데 하트였다 */
+//턴 수 + 2
+//하트 개수 + 1
 void GameManager::OnHeart()
 {
 	m_pRefTurnCounter->BonusTurn();
 	m_pRefPlanetProgressJar->FindHeart();
+
+	const int x = m_pRefCharPosMap->pos.x;
+	const int y = m_pRefCharPosMap->pos.y;
+
+	Sprite* shade = Sprite::create(m_pRefMapMetaData->tilePath + "_.png");
+	const auto targetPos = m_pRefSpriteMap->map[x][y]->getPosition();
+	shade->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
+	shade->setPosition(targetPos);
+	m_pRefCameraMan->addChild(shade, 3);
+
+	m_pRefObjectTypeMap->map[x][y] = MAP_OBJECT_TYPE::SHADED;
 }
 
+/* 팠는데 길이었다. */
 void GameManager::OnRoad()
 {
-
+	m_pRefTurnCounter->LoseTurn(MAP_OBJECT_TYPE::ROAD);
 }
 
+/* 팠는데 숫자였다 */
+//1. 턴 수 -1
+//2. 숫자 보이기
 void GameManager::OnNumber()
 {
+	const int x = m_pRefCharPosMap->pos.x;
+	const int y = m_pRefCharPosMap->pos.y;
+	const int n = m_pRefNumberDataMap->map[x][y];
 
+	Sprite* number = Sprite::create(m_pRefNumberDataMap->paths[n]);
+	const auto targetPos = m_pRefSpriteMap->map[x][y]->getPosition();
+	number->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
+	number->setPosition(targetPos);
+	m_pRefCameraMan->addChild(number, 3);
+
+	m_pRefTurnCounter->LoseTurn(MAP_OBJECT_TYPE::NUMBER);
+
+	m_pRefObjectTypeMap->map[x][y] = MAP_OBJECT_TYPE::SHADED;
 }
