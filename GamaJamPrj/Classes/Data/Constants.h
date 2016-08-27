@@ -29,6 +29,8 @@ namespace Constants
 	const int TAG_STAR3 = 12;
 	const int TAG_STAR4 = 13;
 	const int TAG_STAR5 = 14;
+
+	const int JOYSTICK_DISTANCE 40;
 }
 
 namespace PATH
