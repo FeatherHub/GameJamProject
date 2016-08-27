@@ -106,13 +106,13 @@ GAME_CODE GameManager::update()
 		switch (action)
 		{
 		case CHARACTER_ACTION::DIG:
-			return CharDig();
+			CharDig();
 			break;
 		case CHARACTER_ACTION::FLAG:
-			return CharFlag();
+			CharFlag();
 			break;
 		case CHARACTER_ACTION::MOVE:
-			return CharMove();
+			CharMove();
 			break;
 		}
 

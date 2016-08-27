@@ -18,35 +18,35 @@ bool TurnCounter::init(int stageTurn)
 
 void TurnCounter::generateData(int stageTurn)
 {
-	curTurn = UserDefault::getInstance()->getIntegerForKey(PATH2::TURN_COUNT_KEY.c_str());
-	curTurn += stageTurn;
+	m_curTurn = UserDefault::getInstance()->getIntegerForKey(PATH2::TURN_COUNT_KEY.c_str());
+	m_curTurn += stageTurn;
 }
 
 void TurnCounter::generateLabel()
 {
-	std::string str = StringUtils::toString(curTurn);
-	label =  Label::createWithTTF(str, "Font/arial.ttf", 30);
-	label->setPosition(Vec2(-100, 0));
-	this->addChild(label);
+	std::string str = StringUtils::toString(m_curTurn);
+	m_lblTurn =  Label::createWithTTF(str, "Font/arial.ttf", 30);
+	m_lblTurn->setPosition(Vec2(-100, 0));
+	this->addChild(m_lblTurn);
 }
 
 void TurnCounter::generateShovel()
 {
-	shovel = Sprite::create("UI/TurnCounter/shovel.png");
-	shovel->setScale(0.25f);
-	shovel->setPosition(Vec2(-160, 0));
-	this->addChild(shovel);
+	m_shovelSpr = Sprite::create("UI/TurnCounter/shovel.png");
+	m_shovelSpr->setScale(0.25f);
+	m_shovelSpr->setPosition(Vec2(-160, 0));
+	this->addChild(m_shovelSpr);
 }
 
 void TurnCounter::renewLabel()
 {
-	std::string str = StringUtils::toString(curTurn);
-	label->setString(str);
+	std::string str = StringUtils::toString(m_curTurn);
+	m_lblTurn->setString(str);
 }
 
 void TurnCounter::LoseTurn(MAP_OBJECT_TYPE mot)
 {
-	curTurn--;
+	m_curTurn--;
 	renewLabel();
 	switch (mot)
 	{
@@ -61,8 +61,5 @@ void TurnCounter::LoseTurn(MAP_OBJECT_TYPE mot)
 
 void TurnCounter::BonusTurn()
 {
-	
-	CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(PATH2::GOT_BONUS_TURN.c_str());
-
-	curTurn += 2;
+	CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(PATH2::GOT_BONUS_TURN.c_str());	
 }

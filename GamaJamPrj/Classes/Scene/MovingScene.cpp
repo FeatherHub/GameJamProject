@@ -32,5 +32,7 @@ void MovingScene::generateBg()
 void MovingScene::enterGameScene(float delta)
 {
 	Scene* pscene = GameScene::createScene();
+	
+	Director::getInstance()->replaceScene(pscene);
 
 }

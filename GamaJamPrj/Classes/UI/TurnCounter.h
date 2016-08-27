@@ -14,15 +14,15 @@ public :
 	void renewLabel();
 	void LoseTurn(MAP_OBJECT_TYPE mot); 
 	void BonusTurn();
-	int GetTurn() { return curTurn; }
+	int GetTurn() { return m_curTurn; }
 private:
 	void generateData(int stageTurn);
 	void generateLabel();
 	void generateShovel();
 private:
 	CREATEWINSIZE;
-	Label* label;
-	int curTurn;
-	Sprite* shovel;
+	int m_curTurn;
+	Label* m_lblTurn;
+	Sprite* m_shovelSpr;
 
 };

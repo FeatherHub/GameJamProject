@@ -166,6 +166,8 @@ void GameManager::OnRoad()
 	shade->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
 	shade->setPosition(targetPos);
 	m_pRefCameraMan->addChild(shade, 4);
+
+	m_pRefObjectTypeMap->map[x][y] = MAP_OBJECT_TYPE::SHADED;
 }
 
 /* 팠는데 숫자였다 */
