@@ -29,5 +29,6 @@ void Dig::generateDig()
 		PATH::DIG_BASE + "_.png", func);
 
 	digItem->setTag(Constants::TAG_DIG);
+	digItem->setPosition(-100, -300);
 	dig->addChild(digItem);
 }

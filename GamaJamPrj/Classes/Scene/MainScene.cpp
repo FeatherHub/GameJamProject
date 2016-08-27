@@ -13,7 +13,7 @@ Scene* MainScene::createScene()
 
 	auto layer = MainScene::create();
 	scene->addChild(layer);
-	CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic( PATH2::BG_MAIN.c_str(), true);
+	
 
 	return scene;
 }
@@ -27,7 +27,7 @@ bool MainScene::init()
 	DataSetting();
 	generateBg();
 	generateMenu();
-
+	CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(PATH2::BG_MAIN.c_str(), true);
 
 	return true;
 }

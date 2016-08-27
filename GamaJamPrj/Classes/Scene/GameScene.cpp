@@ -1,6 +1,7 @@
 #include "GameScene.h"
 #include "Manager/GameManager.h"
 #include "SimpleAudioEngine.h"
+#include "Data\Constants2.h"
 
 Scene* GameScene::createScene()
 {
@@ -20,8 +21,10 @@ bool GameScene::init()
     
 	m_GM = GameManager::create();
 	addChild(m_GM);
-
+	CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(PATH2::BG_GAME.c_str(), true);
 	scheduleUpdate();
+
+
 
     return true;
 }

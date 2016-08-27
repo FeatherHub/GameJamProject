@@ -51,7 +51,8 @@ void SelectScene::generateBg()
 	prince->setScale(0.2f);
 	this->addChild(prince);
 
-	// 장미 초기화
+	// 새싹, 종자, 장미중
+	// 스테이지 진행도에 따라서 달라짐
 	rose = Sprite::create(PATH::SELECTSCENE_ROSE);
 	rose->setPosition(150, 100);
 	rose->setScale(0.2f);

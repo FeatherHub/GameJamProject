@@ -20,8 +20,8 @@ namespace PATH2
 	const std::string MARK_EFFECT("Sound/Effect/check.wav  ");
 	const std::string DIG_EFFECT("Sound/Effect/dig.wav   ");
 
-	const std::string BG_MAIN("Sound/Effect/opening.mp3");
-	const std::string BG_GAME("Sound/Effect/ingame.mp3");
+	const std::string BG_MAIN("Sound/Bgm/opening.mp3");
+	const std::string BG_GAME("Sound/Bgm/ingame.mp3");
 
 	const std::string AROUND_NUMBER_BASE{ "Tile/" };
 
