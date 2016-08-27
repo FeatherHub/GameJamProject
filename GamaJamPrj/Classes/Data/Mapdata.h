@@ -9,15 +9,9 @@ USING_NS_CC;
 struct SpriteMap
 {
 public:
-	SpriteMap(int w, int h, std::string tilePath)
-	{
-
-	}
-public:
-	Sprite** map = nullptr ; 
-	int weight = -1;
+	Sprite*** map = nullptr ; 
+	int width = -1;
 	int height = -1;
-
 };
 
 struct ObjectTypeMap
@@ -71,10 +65,14 @@ struct CharacterPosMap
 struct MapMetaData
 {
 	std::string tilePath;
+<<<<<<< HEAD
 	int turn = -1;
+=======
+>>>>>>> baaf35e6e32aee6cfcb538c7ad6d496a6ef74387
 	int heartNum = -1;
 	int width = -1;
 	int height = -1;
+	int turn = -1;
 };
 
 struct CameraMapData

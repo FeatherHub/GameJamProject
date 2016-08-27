@@ -31,7 +31,10 @@ public:
 	virtual bool init() override;
 
 private:
-	void CallUI(Ref* sender);
+	void InitSpriteMap();
+	void InitObjectTypeMap();
+	void InitNumberDataMap();
+	void ControllerUICallback(Ref* sender);
 
 private:
 	//UI

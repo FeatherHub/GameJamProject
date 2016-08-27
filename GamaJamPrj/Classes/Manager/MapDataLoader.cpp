@@ -6,10 +6,12 @@
 
 MapMetaData* MapDataLoader::GetMapMetaData()
 {
+
 	int m_stageNum = UserDefault::getInstance()->getIntegerForKey("NowSelectStage");
 
 	MapMetaData* m_MetaData = new MapMetaData();
 
+<<<<<<< HEAD
 	std::string path;;
 
 	switch (m_stageNum)
@@ -20,6 +22,12 @@ MapMetaData* MapDataLoader::GetMapMetaData()
 	case 3:	path = PATH::METADATA_PATH_4; break;
 	case 4:	path = PATH::METADATA_PATH_5; break;
 	}
+=======
+	// 경로는 반환값이나 기타 방법으로 받아온다.
+	// 인자값으로 m_stageNum 을 넘긴다.
+	// TODO : 경로를 반환하는 것 들 등등 만들기?
+	std::string path = "test.csv";
+>>>>>>> baaf35e6e32aee6cfcb538c7ad6d496a6ef74387
 	std::ifstream file;
 
 	ValueVector users;
@@ -85,5 +93,3 @@ MapMetaData* MapDataLoader::GetMapMetaData()
 
 	return m_MetaData;
 }
-
-	
