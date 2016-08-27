@@ -10,6 +10,12 @@ bool CameraMan::init()
 	return true;
 }
 
+void CameraMan::SetMapMetaData(MapMetaData* mmd)
+{
+	m_pRefMapMetaData = mmd;
+	InitCameraMapData();
+}
+
 void CameraMan::InitCameraMapData()
 {
 	/*
