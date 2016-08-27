@@ -25,9 +25,9 @@ GAME_CODE GameManager::CharMove()
 	const auto mapRightEdgeIdx = m_pRefCharPosMap->width - 1;
 	const auto mapTopEdgeIdx = m_pRefCharPosMap->height - 1;
 
-	if (mapTopEdgeIdx - charMapPos.y >= 2 &&
-		charMapPos.y >= 2 &&
-		mapRightEdgeIdx - charMapPos.x >= 2 &&
+	if (mapTopEdgeIdx - charMapPos.y >= 2 ||
+		charMapPos.y >= 2 ||
+		mapRightEdgeIdx - charMapPos.x >= 2 ||
 		charMapPos.x >= 2)
 	{
 		bool res = m_pRefCameraMan->Move(moveDelta);
