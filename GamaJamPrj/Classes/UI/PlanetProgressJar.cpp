@@ -47,6 +47,4 @@ void PlanetProgressJar::FindHeart()
 	light->setOpacity(percent);
 
 	CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(PATH2::GOT_HEART.c_str());
-
-
 }
