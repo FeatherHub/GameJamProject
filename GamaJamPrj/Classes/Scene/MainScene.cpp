@@ -3,6 +3,7 @@
 #include "CreditScene.h"
 
 #include "Data\/Constants.h"
+#include "Manager\MapDataLoader.h"
 
 Scene* MainScene::createScene()
 {
@@ -20,7 +21,8 @@ bool MainScene::init()
 	{
 		return false;
 	}
-
+	DataManager loader;
+	loader.loadData();
 	generateBg();
 	generateMenu();
 

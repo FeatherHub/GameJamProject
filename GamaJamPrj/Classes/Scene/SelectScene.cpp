@@ -42,13 +42,14 @@ void SelectScene::generateBg()
 	
 	// 어린 왕자 초기화
 	prince = Sprite::create(PATH::SELECTSCENE_PRINCE);
-	prince->setPosition(100, 0);
-	prince->setScale(0.5f);
+	prince->setPosition(200, 100);
+	prince->setScale(0.2f);
 	this->addChild(prince);
 
 	// 장미 초기화
 	rose = Sprite::create(PATH::SELECTSCENE_ROSE);
-	rose->setPosition(50, 0);
+	rose->setPosition(150, 100);
+	rose->setScale(0.2f);
 	this->addChild(rose);
 }
 

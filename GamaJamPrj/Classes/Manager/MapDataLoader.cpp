@@ -17,7 +17,7 @@ void DataManager::loadData()
 	// 경로는 반환값이나 기타 방법으로 받아온다.
 	// 인자값으로 m_stageNum 을 넘긴다.
 	// TODO : 경로를 반환하는 것 들 등등 만들기?
-	std::string path =  ""; 
+	std::string path =  "test.csv"; 
 	std::ifstream file;
 
 	ValueVector users;
@@ -39,10 +39,9 @@ void DataManager::loadData()
 		MapMetaData* pMetaData= new MapMetaData();
 		ValueMap user = users.at(i).asValueMap();
 
-		pMetaData->tilePath = user.at("path").asString();
 		pMetaData->width = user.at("width").asInt();
 		pMetaData->height = user.at("height").asInt();
-		pMetaData->heartNum = user.at("heart").asInt();
+		pMetaData->heartNum = user.at("heart\r").asInt();
 		m_metaData.push_back(pMetaData);
 	}
 }

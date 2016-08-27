@@ -50,11 +50,10 @@ struct CharacterMapPos
 struct MapMetaData
 {
 	std::string tilePath;
-	int stageNum = -1;
+	int tileSize = -1;
 	int heartNum = -1;
 	int width = -1;
 	int height = -1;
-	int tileSize = -1;
 };
 
 struct CameraMapData
