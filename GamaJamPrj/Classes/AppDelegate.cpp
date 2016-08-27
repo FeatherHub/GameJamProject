@@ -4,6 +4,9 @@
 #include "Scene/GameScene.h"
 #include "Scene/SelectScene.h"
 
+#include "Data\Constants2.h"
+
+
 USING_NS_CC;
 
 static cocos2d::Size designResolutionSize = cocos2d::Size(360, 640);
@@ -57,8 +60,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     register_all_packages();
 
+
     auto scene = MainScene::createScene(); 
-   
+
 	// run
     director->runWithScene(scene);
 
@@ -78,5 +82,5 @@ void AppDelegate::applicationWillEnterForeground() {
     Director::getInstance()->startAnimation();
 
     // if you use SimpleAudioEngine, it must resume here
-    // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
+	  // SimpleAudioEngine::getInstance()->resumeBackgroundMusic();
 }

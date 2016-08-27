@@ -13,6 +13,7 @@
 #include "Data/Constants.h"
 #include "Data/Constants2.h"
 #include "Data/Mapdata.h"
+#include "SimpleAudioEngine.h"
 
 #include "Scene/SelectScene.h"
 #include "Scene/MainScene.h"
@@ -134,6 +135,8 @@ GAME_CODE GameManager::update()
 
 void GameManager::Lose()
 {
+	CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("Sound/Effect/over.wav ");
+
 	UserDefault::getInstance()->setBoolForKey(PATH2::IS_START.c_str(), false);
 	Scene* pscene = MainScene::createScene();
 	TransitionScene* tr = TransitionProgressInOut::create(1.0f, pscene);
@@ -142,6 +145,8 @@ void GameManager::Lose()
 
 void GameManager::Win()
 {
+	CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("Sound/Effect/clear.wav ");
+
 	UserDefault::getInstance()->setBoolForKey(PATH2::IS_CLEAR.c_str(), true);
 	
 	int type = UserDefault::getInstance()->getBoolForKey(PATH2::NOW_STAGE_KEY.c_str());

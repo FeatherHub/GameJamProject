@@ -8,6 +8,8 @@ Scene* MovingScene::createScene()
 	scene->addChild(layer);
 
 	return scene;
+
+
 }
 
 bool MovingScene::init()

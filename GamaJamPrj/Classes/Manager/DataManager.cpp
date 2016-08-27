@@ -4,6 +4,7 @@
 #include "Data/Constants.h"
 #include "Data/Constants2.h"
 #include "Data/Mapdata.h"
+#include "SimpleAudioEngine.h"
 
 #include "UI/Dig.h"
 #include "UI/Flag.h"
@@ -276,10 +277,12 @@ void DataManager::ControllerUICallback(Ref* sender)
 		pCharacter->AddActionToQueue(CHARACTER_ACTION::MOVE);
 		pCharacter->SetDirction(DIRECTION::RIGHT);
 		break;
-	case Constants::TAG_FLAG:			
+	case Constants::TAG_FLAG:		
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(PATH2::MARK_EFFECT.c_str());
 		pCharacter->AddActionToQueue(CHARACTER_ACTION::FLAG);
 		break;
-	case Constants::TAG_DIG:			
+	case Constants::TAG_DIG:		
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(PATH2::DIG_EFFECT.c_str());
 		pCharacter->AddActionToQueue(CHARACTER_ACTION::DIG);
 		break;
 	}
