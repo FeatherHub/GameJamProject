@@ -1,5 +1,8 @@
 #pragma once
 
+#include "cocos2d.h"
+USING_NS_CC;
+
 #include <string>
 
 namespace Constants
@@ -9,7 +12,7 @@ namespace Constants
 	const int VIEWPORT_HEIGHT_TILE_NUM = 5;
 	const int VIEWPORT_WIDTH = VIEWPORT_WIDTH_TILE_NUM * TILE_SIZE;
 	const int VIEWPORT_HEIGHT = VIEWPORT_HEIGHT_TILE_NUM * TILE_SIZE;
-	const int VIEWPORT_LEFT_BOTTOM_Y = 177;
+	const int VIEWPORT_LEFT_BOTTOM_Y = 150;
 	const float ANI_MOVE_TIME = 1.5f;
 
 	const int TAG_JOYSTICK_TOP = 0;
@@ -31,6 +34,8 @@ namespace Constants
 	const int TAG_STAR5 = 14;
 
 	const int JOYSTICK_DISTANCE = 40;
+
+	const Vec2 JOYSTICK_POS{-95, -225 };
 }
 
 namespace PATH
@@ -43,6 +48,10 @@ namespace PATH
 	const std::string DIG_BASE{ "UI/Dig/dig" };
 	const std::string FLAG_BASE{ "UI/Flag/flag" };
 	const std::string JOTSTICK_BASE{ "UI/JoyStick/joystick" };
+
+	const std::string CHARACTER{ "Character/character.png" };
+
+	const std::string BLACK{ "Tile/black.png" };
 
 	const std::string SELECTSCENE_BG("SelectScene/bg.png");
 	const std::string SELECTSCENE_STAR("SelectScene/star.png");

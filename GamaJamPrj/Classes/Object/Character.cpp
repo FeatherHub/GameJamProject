@@ -12,7 +12,8 @@ bool Character::init()
 		m_statusArr[i] = false;
 	}
 
-	m_sprite = Sprite::create();
+	m_sprite = Sprite::create(PATH::CHARACTER);
+	m_sprite->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
 	addChild(m_sprite);
 
 	return true;

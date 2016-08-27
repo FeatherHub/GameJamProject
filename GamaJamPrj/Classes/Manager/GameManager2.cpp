@@ -15,21 +15,30 @@
 
 GAME_CODE GameManager::CharMove()
 {
+	//Character is in World Space
 	const auto& charPos = m_pRefCharacter->getPosition();
 	const auto& charDir = m_pRefCharacter->GetDirection();
 	const auto& moveDelta = m_pRefDirDeltaPos[(int)charDir];
-	const auto& movedPos = charPos + moveDelta;
 
-	//TODO: 움직임 유효하지 않는 상황에서 애니메이션으로 반응을 해주자
-
-	//맵 바깥으로 빠졌나갔다
-	if (movedPos.x > m_pRefObjectTypeMap->width * Constants::TILE_SIZE ||
-		movedPos.y > m_pRefObjectTypeMap->height * Constants::TILE_SIZE ||
-		movedPos.x < 0 || movedPos.y < 0)
+	bool res =	m_pRefCameraMan->Move(moveDelta);
+	if (res == true)
 	{
+		m_pRefCharPosMap->UpdatePos(charDir);
 		return GAME_CODE::NONE;
 	}
 
+	//TODO: 움직임 유효하지 않는 상황에서 애니메이션으로 반응을 해주자
+
+	const auto& movedPos = charPos + moveDelta;
+	//맵 바깥으로 빠졌나갔다
+	if (movedPos.x >= Constants::VIEWPORT_WIDTH ||
+		movedPos.y >= Constants::VIEWPORT_HEIGHT + Constants::VIEWPORT_LEFT_BOTTOM_Y ||
+		movedPos.x < 0 || movedPos.y  < Constants::VIEWPORT_LEFT_BOTTOM_Y)
+	{
+		return GAME_CODE::NONE;
+	}
+	
+	/*
 	//벽과 충돌 했다
 	int charXPos = m_pRefCharPosMap->pos.x;
 	int charYPos = m_pRefCharPosMap->pos.y;
@@ -37,14 +46,13 @@ GAME_CODE GameManager::CharMove()
 	{
 		return GAME_CODE::NONE;
 	}
+	*/
 
 	/*
 	Note : 캐릭터의 위치와 캐릭터 맵에서의 캐릭터 위치를 갱신한다
 	*/
 	m_pRefCharacter->Move(moveDelta);
 	m_pRefCharPosMap->UpdatePos(charDir);
-
-	m_pRefCameraMan->Move(moveDelta);
 
 	return GAME_CODE::NONE;
 }

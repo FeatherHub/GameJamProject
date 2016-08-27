@@ -12,10 +12,14 @@ public:
 	CREATE_FUNC(CameraMan);
 	virtual bool init() override;
 	void SetMapMetaData(MapMetaData* mmd);
-	void Move(const Vec2& moveDelta);
+	bool Move(const Vec2& moveDelta);
+	bool IsMoving() { return m_isMoving; }
+	const Vec2& GetChangedCameraDeltaPos() { return m_ccdp; }
 private:
 	void InitCameraMapData();
 private:
 	MapMetaData* m_pRefMapMetaData;
-	CameraMapData m_cameraMapData;
+	CameraMapData m_cmd; //camera map data
+	Vec2 m_ccdp; //changed camera delta pos
+	bool m_isMoving = false;
 };

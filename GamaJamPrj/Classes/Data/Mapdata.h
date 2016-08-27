@@ -76,6 +76,6 @@ struct CameraMapData
 	/*
 	Note : members mean length, not the number of a tile
 	*/
-	int totalWidth = -1, totalHeight = -1;
-	int viewPortWidth = -1, viewPortHeight = -1;
+	int mapWidth = -1, mapHeight = -1;
+	int viewWidth = -1, viewHeight = -1;
 };
