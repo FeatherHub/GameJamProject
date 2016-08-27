@@ -13,6 +13,7 @@ bool Character::init()
 	}
 
 	m_sprite = Sprite::create(PATH::CHARACTER);
+	m_sprite->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
 	addChild(m_sprite);
 
 	return true;

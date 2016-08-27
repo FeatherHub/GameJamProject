@@ -2,8 +2,6 @@
 #include "Manager/GameManager.h"
 #include "SimpleAudioEngine.h"
 
-USING_NS_CC;
-
 Scene* GameScene::createScene()
 {
     auto scene = Scene::create();

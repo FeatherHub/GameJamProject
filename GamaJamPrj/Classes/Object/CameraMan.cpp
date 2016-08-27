@@ -7,6 +7,10 @@ bool CameraMan::init()
 		return false;
 	}
 
+	setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
+
+	m_isMoving = false;
+
 	return true;
 }
 
@@ -26,29 +30,52 @@ void CameraMan::InitCameraMapData()
 	int heightTileNum = m_pRefMapMetaData->height;
 	int widthTileNum = m_pRefMapMetaData->width;
 
-	m_cameraMapData.totalHeight = tileSize * heightTileNum;
-	m_cameraMapData.totalWidth = tileSize * widthTileNum;
+	m_cmd.mapHeight = tileSize * heightTileNum;
+	m_cmd.mapWidth = tileSize * widthTileNum;
 
-	m_cameraMapData.viewPortHeight = tileSize * Constants::VIEWPORT_HEIGHT_TILE_NUM;
-	m_cameraMapData.viewPortWidth = tileSize * Constants::VIEWPORT_WIDTH_TILE_NUM;
+	m_cmd.viewHeight = tileSize * Constants::VIEWPORT_HEIGHT_TILE_NUM;
+	m_cmd.viewWidth = tileSize * Constants::VIEWPORT_WIDTH_TILE_NUM;
+
+	m_ccdp = Vec2((m_cmd.mapWidth - m_cmd.viewWidth) / 2,
+		(m_cmd.mapHeight - m_cmd.viewHeight) / 2);
+
+	//Camera will be set in World Space
+	setPosition(Vec2(0 - ((m_cmd.mapWidth - m_cmd.viewWidth) / 2),
+		Constants::VIEWPORT_LEFT_BOTTOM_Y - ((m_cmd.mapHeight - m_cmd.viewHeight) / 2)));
 }
 
-void CameraMan::Move(const Vec2& moveDelta)
+bool CameraMan::Move(const Vec2& moveDelta)
 {
-	const auto& curPos = getPosition();
-	int curX = curPos.x;
-	int curY = curPos.y;
-
-	const auto& cmd = m_cameraMapData;
-	
-	if (curX - cmd.viewPortWidth / 2 <= 0 ||
-		curX + cmd.viewPortWidth / 2 >= cmd.totalWidth ||
-		curY - cmd.viewPortHeight / 2 <= 0 ||
-		curY + cmd.viewPortHeight / 2 >= cmd.totalHeight)
+	if (m_isMoving == true)
 	{
-		return;
+		return true;
 	}
 
-	runAction(MoveBy::create(Constants::ANI_MOVE_TIME, moveDelta));
+	const auto& movedPos = getPosition() - moveDelta;
+	int mapLeft = movedPos.x;
+	int mapBottom = movedPos.y;
+	int mapRight = mapLeft + m_cmd.mapWidth;
+	int mapTop = mapBottom + m_cmd.mapHeight;
+
+	int viewLeft = 0;
+	int viewRight = Constants::VIEWPORT_WIDTH;
+	int viewBottom = Constants::VIEWPORT_LEFT_BOTTOM_Y;
+	int viewTop = viewBottom + Constants::VIEWPORT_HEIGHT;
+
+	if (mapLeft >= viewLeft ||
+		mapRight <= viewRight ||
+		mapTop <= viewTop ||
+		mapBottom >= viewBottom)
+	{
+		return false;
+	}
+
+	runAction(Sequence::create(
+		CallFunc::create([&]() { m_isMoving = true; }),
+		MoveBy::create(Constants::ANI_MOVE_TIME, -moveDelta),
+		CallFunc::create([&]() { m_isMoving = false; }),
+		nullptr));
+
+	return true;
 }
 

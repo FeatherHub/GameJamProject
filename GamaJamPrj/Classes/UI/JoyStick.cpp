@@ -12,6 +12,7 @@ bool JoyStick::init(ccMenuCallback func)
 	{
 		return false;
 	}
+
 	this->func = func;
 	generateJoyStick();
 
@@ -23,8 +24,6 @@ void JoyStick::generateJoyStick()
 	menu = Menu::create();
 	this->addChild(menu);
 
-	// TODO : 이 부분의 경우에는 후에 string 값을 받아야함
-
 	for (int i = 0; i < Constants::TAG_JOYSTICK_NUM; i++)
 	{
 		MenuItem* stick = MenuItemImage::create(
@@ -34,7 +33,6 @@ void JoyStick::generateJoyStick()
 		stick->setTag(Constants::TAG_JOYSTICK_TOP + i);
 		stick->setRotation(i * 90);
 
-		
 		stick->setPosition(Vec2(0, 0));
 		if (i==0 || i==2)
 			stick->setPosition(Vec2(0, Constants::JOYSTICK_DISTANCE + -Constants::JOYSTICK_DISTANCE  * i));
@@ -43,5 +41,4 @@ void JoyStick::generateJoyStick()
 
 		menu->addChild(stick);
 	}
-	menu->setPosition(80, 80);
 }

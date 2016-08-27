@@ -93,6 +93,8 @@ void DataManager::InitSpriteMap()
 			pSpriteMap->map[x][y] = Sprite::create(pMapMetaData->tilePath);
 			pSpriteMap->map[x][y]->setPosition(Vec2(x*Constants::TILE_SIZE, 
 													y*Constants::TILE_SIZE));
+			pSpriteMap->map[x][y]->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
+
 			pCameraMan->addChild(pSpriteMap->map[x][y]);
 		}
 	}
@@ -212,9 +214,9 @@ bool DataManager::IsThereHeart(int x, int y)
 void DataManager::InitCharPosMap()
 {
 	pCharPosMap = new CharacterPosMap();
-	pCharPosMap->height = pMapMetaData->height;
 	pCharPosMap->width = pMapMetaData->width;
-	pCharPosMap->pos = Vec2(pCharPosMap->width / 2, pCharPosMap->height / 2);
+	pCharPosMap->height = pMapMetaData->height;
+	pCharPosMap->pos = Vec2(pCharPosMap->width/2, pCharPosMap->height/2);
 }
 
 void DataManager::InitDirDeltaPos()
@@ -222,7 +224,7 @@ void DataManager::InitDirDeltaPos()
 	pDirDeltaPos = new Vec2[(int)DIRECTION::DIR_NUM];
 	pDirDeltaPos[(int)DIRECTION::DOWN] = Vec2(0, -Constants::TILE_SIZE);
 	pDirDeltaPos[(int)DIRECTION::UP] = Vec2(0, Constants::TILE_SIZE);
-	pDirDeltaPos[(int)DIRECTION::LEFT] = Vec2(Constants::TILE_SIZE, 0);
+	pDirDeltaPos[(int)DIRECTION::LEFT] = Vec2(-Constants::TILE_SIZE, 0);
 	pDirDeltaPos[(int)DIRECTION::RIGHT] = Vec2(Constants::TILE_SIZE, 0);
 }
 
