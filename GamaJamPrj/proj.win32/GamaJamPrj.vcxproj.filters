@@ -22,6 +22,9 @@
     <Filter Include="Resource">
       <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{68a2cb7d-398b-4344-9b2c-17e0b213e9b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -154,6 +157,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Object\CameraMan.h">
       <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Utils\Macro.h">
+      <Filter>Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -188,6 +188,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\UI\JoyStick.h" />
     <ClInclude Include="..\Classes\UI\PlanetProgressJar.h" />
     <ClInclude Include="..\Classes\UI\TurnCounter.h" />
+    <ClInclude Include="..\Classes\Utils\Macro.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
