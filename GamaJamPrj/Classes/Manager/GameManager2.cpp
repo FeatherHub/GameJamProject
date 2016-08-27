@@ -157,6 +157,15 @@ void GameManager::OnHeart()
 void GameManager::OnRoad()
 {
 	m_pRefTurnCounter->LoseTurn(MAP_OBJECT_TYPE::ROAD);
+
+	const int x = m_pRefCharPosMap->pos.x;
+	const int y = m_pRefCharPosMap->pos.y;
+	const auto targetPos = m_pRefSpriteMap->map[x][y]->getPosition();
+
+	Sprite* shade = Sprite::create(m_pRefMapMetaData->tilePath + "_.png");
+	shade->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
+	shade->setPosition(targetPos);
+	m_pRefCameraMan->addChild(shade, 4);
 }
 
 /* 팠는데 숫자였다 */
