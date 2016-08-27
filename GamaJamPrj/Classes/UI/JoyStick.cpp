@@ -35,10 +35,10 @@ void JoyStick::generateJoyStick()
 		stick->setRotation(i * 90);
 		
 		stick->setPosition(Vec2(0, 0));
-		if (!i / 2)
+		if (i/2)
 			stick->setPosition(Vec2(0, Constants::JOYSTICK_DISTANCE + -Constants::JOYSTICK_DISTANCE  * i));
 		else
-			stick->setPosition(Vec2(Constants::JOYSTICK_DISTANCE + -Constants::JOYSTICK_DISTANCE*i , 0));
+			stick->setPosition(Vec2(Constants::JOYSTICK_DISTANCE*2 + -Constants::JOYSTICK_DISTANCE*i , 0));
 
 		menu->addChild(stick);
 	}
