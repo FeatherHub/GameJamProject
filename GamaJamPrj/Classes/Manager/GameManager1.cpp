@@ -1,11 +1,17 @@
 #include "GameManager.h"
+#include "DataManager.h"
+
+#include "UI/Dig.h"
+#include "UI/Flag.h"
+#include "UI/JoyStick.h"
+#include "UI/TurnCounter.h"
+#include "UI/PlanetProgressJar.h"
+
 #include "Object/Character.h"
 #include "Object/CameraMan.h"
+
 #include "Data/Constants.h"
 #include "Data/Mapdata.h"
-#include "UI\Dig.h"
-#include "UI\/Flag.h"
-#include "UI/JoyStick.h"
 
 bool GameManager::init()
 {
@@ -14,6 +20,22 @@ bool GameManager::init()
 		return false;
 	}
 	
+	m_pDM = DataManager::create();
+	addChild(m_pDM);
+
+	//UI
+
+	//Data
+	m_pRefCharPosMap = m_pDM->pCharPosMap;
+	m_pRefDirDeltaPos = m_pDM->pDirDeltaPos;
+	m_pRefObjectTypeMap = m_pDM->pObjectTypeMap;
+
+	//Object
+	m_pRefCharacter = m_pDM->pCharacter;
+	addChild(m_pRefCharacter);
+	m_pRefCameraMan = m_pDM->pCameraMan;
+	addChild(m_pRefCameraMan);
+
 	return true;
 }
 
@@ -51,7 +73,7 @@ void GameManager::CharMove()
 {
 	const auto& charPos = m_pRefCharacter->getPosition();
 	const auto& charDir = m_pRefCharacter->GetDirection();
-	const auto& moveDelta = m_pRefdirDeltaPos[(int)charDir];
+	const auto& moveDelta = m_pRefDirDeltaPos[(int)charDir];
 	const auto& movedPos = charPos + moveDelta;
 
 	//TODO: 움직임 유효하지 않는 상황에서 애니메이션으로 반응을 해주자
@@ -65,8 +87,8 @@ void GameManager::CharMove()
 	}
 
 	//벽과 충돌 했다
-	int charXPos = m_pRefCharMap->pos.x;
-	int charYPos = m_pRefCharMap->pos.y;
+	int charXPos = m_pRefCharPosMap->pos.x;
+	int charYPos = m_pRefCharPosMap->pos.y;
 	if (m_pRefObjectTypeMap->map[charXPos][charYPos] == MAP_OBJECT_TYPE::WALL)
 	{
 		return;
@@ -76,15 +98,15 @@ void GameManager::CharMove()
 	Note : 캐릭터의 위치와 캐릭터 맵에서의 캐릭터 위치를 갱신한다
 	*/
 	m_pRefCharacter->Move(moveDelta);
-	m_pRefCharMap->UpdatePos(charDir);
+	m_pRefCharPosMap->UpdatePos(charDir);
 
-	m_pCameraMan->Move(moveDelta);
+	m_pRefCameraMan->Move(moveDelta);
 }
 
 void GameManager::CharDig()
 {
-	int charXPos = m_pRefCharMap->pos.x;
-	int charYPos = m_pRefCharMap->pos.y;
+	int charXPos = m_pRefCharPosMap->pos.x;
+	int charYPos = m_pRefCharPosMap->pos.y;
 	auto objectType = m_pRefObjectTypeMap->map[charXPos][charYPos];
 
 	switch (objectType)
@@ -103,8 +125,8 @@ void GameManager::CharDig()
 
 void GameManager::CharFlag()
 {
-	int charXPos = m_pRefCharMap->pos.x;
-	int charYPos = m_pRefCharMap->pos.y;
+	int charXPos = m_pRefCharPosMap->pos.x;
+	int charYPos = m_pRefCharPosMap->pos.y;
 	auto objectType = m_pRefObjectTypeMap->map[charXPos][charYPos];
 
 	if (objectType == MAP_OBJECT_TYPE::FLAG_ON_HEART ||

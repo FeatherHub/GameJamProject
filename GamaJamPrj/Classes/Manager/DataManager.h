@@ -3,15 +3,27 @@
 #include "cocos2d.h"
 USING_NS_CC;
 
+//UI
 class JoyStick;
 class Dig;
 class Flag;
 class TurnCounter;
+class PlanetProgressJar;
 
+//Data
+struct CharacterPosMap;
+struct ObjectTypeMap;
+struct MapMetaData;
+
+//Object
 class Character;
+class CameraMan;
 
 class DataManager : public Node
 {
+public:
+	friend class GameManager;
+
 public:
 	CREATE_FUNC(DataManager);
 	virtual bool init() override;
@@ -21,11 +33,21 @@ private:
 
 private:
 	//UI
-	JoyStick* m_pJoyStick;
-	Dig* m_pBtnDig;
-	Flag* m_pBtnFlag;
-	TurnCounter* m_pTurnCounter;
+	JoyStick* pJoyStick = nullptr;
+	Dig* pBtnDig = nullptr;
+	Flag* pBtnFlag = nullptr;
+	TurnCounter* pTurnCounter = nullptr;
+	PlanetProgressJar* pPlanetProgressJar = nullptr;
+
+	//Data
+	SpriteMap* pSpriteMap = nullptr;
+	ObjectTypeMap* pObjectTypeMap = nullptr;
+	NumberDataMap* pNumberDataMap = nullptr;
+	CharacterPosMap* pCharPosMap = nullptr;
+	Vec2* pDirDeltaPos = nullptr;
+	MapMetaData* pMapMetaData = nullptr;
 
 	//Object
-	Character* m_pCharacter;
+	Character* pCharacter = nullptr;
+	CameraMan* pCameraMan = nullptr;
 };

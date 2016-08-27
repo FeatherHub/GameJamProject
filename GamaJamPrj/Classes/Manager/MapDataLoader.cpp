@@ -4,7 +4,13 @@
 
 #include <fstream>
 
-bool DataManager::init(int stageNum)
+MapMetaData* MapDataLoader::GetMapMetaData()
+{
+
+}
+
+
+bool MapDataLoader::init(int stageNum)
 {
 	m_stageNum = stageNum;
 	loadData();
@@ -12,7 +18,7 @@ bool DataManager::init(int stageNum)
 	return true;
 }
 
-void DataManager::loadData()
+void MapDataLoader::loadData()
 {
 	// 경로는 반환값이나 기타 방법으로 받아온다.
 	// 인자값으로 m_stageNum 을 넘긴다.
@@ -45,9 +51,8 @@ void DataManager::loadData()
 		m_metaData.push_back(pMetaData);
 	}
 }
-
 	
-ValueVector DataManager::split(const std::string &str, const std::string &delim)
+ValueVector MapDataLoader::split(const std::string &str, const std::string &delim)
 {
 	ValueVector res;
 	size_t current = 0, found;

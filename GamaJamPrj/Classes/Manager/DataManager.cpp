@@ -1,5 +1,8 @@
 #include "DataManager.h"
+#include "MapDataLoader.h"
+
 #include "Data/Constants.h"
+#include "Data/Mapdata.h"
 
 #include "UI/Dig.h"
 #include "UI/Flag.h"
@@ -8,6 +11,7 @@
 #include "UI/PlanetProgressJar.h"
 
 #include "Object/Character.h"
+#include "Object//CameraMan.h"
 
 bool DataManager::init()
 {
@@ -16,11 +20,27 @@ bool DataManager::init()
 		return false;
 	}
 
-	m_pBtnDig = Dig::create(CC_CALLBACK_1(DataManager::CallUI, this));
-	m_pBtnFlag = Flag::create(CC_CALLBACK_1(DataManager::CallUI, this));
-	m_pJoyStick = JoyStick::create(CC_CALLBACK_1(DataManager::CallUI, this));
+	//init ui
+	pBtnDig = Dig::create(CC_CALLBACK_1(DataManager::CallUI, this));
+	pBtnFlag = Flag::create(CC_CALLBACK_1(DataManager::CallUI, this));
+	pJoyStick = JoyStick::create(CC_CALLBACK_1(DataManager::CallUI, this));
+	pTurnCounter = TurnCounter::create();
+	pPlanetProgressJar = PlanetProgressJar::create();
 
-	m_pTurnCounter = TurnCounter::create();
+	//init data
+	MapMetaData* pMapMetaData;
+	ObjectTypeMap* pObjectTypeMap = nullptr;
+	int* pNumberMap = nullptr;
+	Sprite** pSpriteMap = nullptr;
+	CharacterPosMap* pCharPosMap = nullptr;
+	Vec2* pDirDeltaPos = nullptr;
+
+	//init object
+	pCharacter = Character::create();
+	pCharacter->SetTurn(111111);
+
+	pCameraMan = CameraMan::create();
+	pCameraMan->SetMapMetaData(pMapMetaData);
 
 	return true;
 }
@@ -36,26 +56,26 @@ void DataManager::CallUI(Ref* sender)
 	switch (type->getTag())
 	{
 	case Constants::TAG_JOYSTICK_TOP:		
-		m_pCharacter->AddActionToQueue(CHARACTER_ACTION::MOVE);
-		m_pCharacter->SetDirction(DIRECTION::UP);
+		pCharacter->AddActionToQueue(CHARACTER_ACTION::MOVE);
+		pCharacter->SetDirction(DIRECTION::UP);
 		break;
 	case Constants::TAG_JOYSTICK_BOTTOM:	
-		m_pCharacter->AddActionToQueue(CHARACTER_ACTION::MOVE);
-		m_pCharacter->SetDirction(DIRECTION::DOWN);
+		pCharacter->AddActionToQueue(CHARACTER_ACTION::MOVE);
+		pCharacter->SetDirction(DIRECTION::DOWN);
 		break;
 	case Constants::TAG_JOYSTICK_LEFT:		
-		m_pCharacter->AddActionToQueue(CHARACTER_ACTION::MOVE);
-		m_pCharacter->SetDirction(DIRECTION::LEFT);
+		pCharacter->AddActionToQueue(CHARACTER_ACTION::MOVE);
+		pCharacter->SetDirction(DIRECTION::LEFT);
 		break;
 	case Constants::TAG_JOYSTICK_RIGHT:		
-		m_pCharacter->AddActionToQueue(CHARACTER_ACTION::MOVE);
-		m_pCharacter->SetDirction(DIRECTION::RIGHT);
+		pCharacter->AddActionToQueue(CHARACTER_ACTION::MOVE);
+		pCharacter->SetDirction(DIRECTION::RIGHT);
 		break;
 	case Constants::TAG_FLAG:			
-		m_pCharacter->AddActionToQueue(CHARACTER_ACTION::FLAG);
+		pCharacter->AddActionToQueue(CHARACTER_ACTION::FLAG);
 		break;
 	case Constants::TAG_DIG:			
-		m_pCharacter->AddActionToQueue(CHARACTER_ACTION::DIG);
+		pCharacter->AddActionToQueue(CHARACTER_ACTION::DIG);
 		break;
 	}
 }

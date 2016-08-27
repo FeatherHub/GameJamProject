@@ -6,7 +6,21 @@ USING_NS_CC;
 #include "Constants.h"
 #include <string>
 
-struct ObjectDataMap
+struct SpriteMap
+{
+public:
+	SpriteMap(int w, int h, std::string tilePath)
+	{
+
+	}
+public:
+	Sprite** map = nullptr ; 
+	int weight = -1;
+	int height = -1;
+
+};
+
+struct ObjectTypeMap
 {
 	/*
 	Format : [x][y]
@@ -21,7 +35,14 @@ struct ObjectDataMap
 	int tileSize = -1;
 };
 
-struct CharacterMapPos
+struct NumberDataMap
+{
+	int** map = nullptr;
+	int width = -1;
+	int height = -1;
+};
+
+struct CharacterPosMap
 {
 	void UpdatePos(DIRECTION dir)
 	{
