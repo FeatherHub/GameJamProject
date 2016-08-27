@@ -21,11 +21,7 @@ bool SelectScene::init()
 	{
 		return false;
 	}
-	UserDefault::getInstance()->setBoolForKey(PATH::STAGE1_BOOL_KEY.c_str(), true);
-	UserDefault::getInstance()->setBoolForKey(PATH::STAGE2_BOOL_KEY.c_str(), true);
-	UserDefault::getInstance()->setBoolForKey(PATH::STAGE3_BOOL_KEY.c_str(), true);
-	UserDefault::getInstance()->setBoolForKey(PATH::STAGE4_BOOL_KEY.c_str(), false);
-	UserDefault::getInstance()->setBoolForKey(PATH::STAGE5_BOOL_KEY.c_str(), false);
+
 	generateBg();
 	generateStars();
 	generateProBar();
@@ -76,8 +72,7 @@ void SelectScene::callStars(Ref* sender)
 {
 	auto type = (Menu*)sender;
 
-	UserDefault::getInstance()->setIntegerForKey("NowSelectStage", type->getTag() - Constants::TAG_STAR1);
-	Director::getInstance()->replaceScene(MovingScene::createScene());
+	
 }
 
 void SelectScene::closeUp()

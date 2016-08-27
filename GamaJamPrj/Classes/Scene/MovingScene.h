@@ -12,6 +12,9 @@ public:
 	bool init();
 	CREATE_FUNC_ARGS(MovingScene);
 private:
-	void enterGameScene();
+	void generateBg();
+	void enterGameScene(float delta);
+private:
+	Sprite* bg;
 	CREATEWINSIZE;
 };

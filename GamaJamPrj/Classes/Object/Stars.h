@@ -17,9 +17,6 @@ USING_NS_CC;
 #define POS2 2
 #define POS3 3
 
-
-
-
 #define START_POS_1 Vec2 ( - 300, - 200 ) // 화면 밖임
 #define START_POS_2 Vec2 ( -100, -90 )	// 가장 크게 보이는 것은 이것
 #define START_POS_3 Vec2 ( 40, -10 )
@@ -36,6 +33,7 @@ private:
 	void generateStars();
 	void moveStar();
 	void callStar(Ref* sender);
+	void callRenew(Ref* sender);
 private:
 	CREATEWINSIZE
 	ccMenuCallback func;

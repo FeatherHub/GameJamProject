@@ -16,13 +16,25 @@ bool MovingScene::init()
 	{
 		return false;
 	}
-
-	enterGameScene();
-	
+	generateBg();
+	this->scheduleOnce(schedule_selector(MovingScene::enterGameScene), 1.0f);
 	return true;
 }
 
-void MovingScene::enterGameScene()
+void MovingScene::generateBg()
 {
-	Director::getInstance()->replaceScene(GameScene::createScene());
+	bg = Sprite::create("MovingScene/bg.png");
+	bg->setAnchorPoint(Vec2(0.5, 0.5f));
+	bg->setPosition(winSize.width / 2, winSize.height / 2);
+	this->addChild(bg);
+}
+
+void MovingScene::enterGameScene(float delta)
+{
+	
+	Scene* pscene = GameScene::createScene();
+	TransitionScene* tr = TransitionProgressInOut::create(1.0f, pscene);
+	
+	Director::getInstance()->replaceScene(tr);
+
 }

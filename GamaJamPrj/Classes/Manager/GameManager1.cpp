@@ -11,6 +11,7 @@
 #include "Object/CameraMan.h"
 
 #include "Data/Constants.h"
+#include "Data\/Constants2.h"
 #include "Data/Mapdata.h"
 
 bool GameManager::init()
@@ -92,5 +93,6 @@ void GameManager::Lose()
 
 void GameManager::Win()
 {
-
+	int type = UserDefault::getInstance()->getIntegerForKey(PATH2::NOW_STAGE_KEY.c_str());
+	
 }

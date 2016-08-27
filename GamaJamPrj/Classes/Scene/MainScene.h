@@ -17,6 +17,8 @@ private:
 
 	void callMenu(Ref* sender);
 	void enterOtherScene(int sceneNum);
+
+	void DataSetting();
 private:
 	CREATEWINSIZE;
 	Sprite* bg;

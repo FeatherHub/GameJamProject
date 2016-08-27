@@ -3,6 +3,7 @@
 #include "CreditScene.h"
 
 #include "Data\/Constants.h"
+#include "Data\Constants2.h"
 #include "Manager\MapDataLoader.h"
 
 Scene* MainScene::createScene()
@@ -21,7 +22,7 @@ bool MainScene::init()
 	{
 		return false;
 	}
-	MapMetaData* temp=  MapDataLoader::GetMapMetaData();
+	DataSetting();
 	generateBg();
 	generateMenu();
 
@@ -80,4 +81,28 @@ void MainScene::enterOtherScene(int sceneNum)
 		Director::getInstance()->replaceScene(SelectScene::createScene());
 	else if (sceneNum == Constants::TAG_GOTO_CREDIT)
 		Director::getInstance()->replaceScene(CreditScene::createScene());
+}
+
+/*
+ 최초 실행시 데이터 셋팅
+*/
+void MainScene::DataSetting()
+{
+	bool isStart = UserDefault::getInstance()->getBoolForKey(PATH2::IS_START.c_str());
+	if (!isStart)
+	{
+		UserDefault::getInstance()->setBoolForKey(PATH2::IS_START.c_str(), true);
+		UserDefault::getInstance()->setBoolForKey(PATH2::IS_CLEAR.c_str(), false);
+
+		UserDefault::getInstance()->setIntegerForKey(PATH2::TURN_COUNT_KEY.c_str(), 0);
+		UserDefault::getInstance()->setIntegerForKey(PATH2::NOW_STAGE_KEY.c_str(), 0);
+
+		UserDefault::getInstance()->setBoolForKey(PATH::STAGE1_BOOL_KEY.c_str(), false);
+		UserDefault::getInstance()->setBoolForKey(PATH::STAGE2_BOOL_KEY.c_str(), false);
+		UserDefault::getInstance()->setBoolForKey(PATH::STAGE3_BOOL_KEY.c_str(), false);
+		UserDefault::getInstance()->setBoolForKey(PATH::STAGE4_BOOL_KEY.c_str(), false);
+		UserDefault::getInstance()->setBoolForKey(PATH::STAGE5_BOOL_KEY.c_str(), false);
+
+	}
+		
 }
