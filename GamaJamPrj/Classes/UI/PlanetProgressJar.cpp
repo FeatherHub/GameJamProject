@@ -43,9 +43,10 @@ void PlanetProgressJar::generateLabel()
 void PlanetProgressJar::FindHeart()
 {
 	m_curHeart++;
-	percent = m_curHeart / m_aimHeart * 255;
+	percent = (m_curHeart / (float)m_aimHeart) * 255;
 	light->setOpacity(percent);
 
 	CocosDenshion::SimpleAudioEngine::getInstance()->playEffect(PATH2::GOT_HEART.c_str());
+
 
 }
