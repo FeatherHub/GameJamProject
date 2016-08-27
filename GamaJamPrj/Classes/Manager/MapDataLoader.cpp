@@ -8,6 +8,8 @@ bool DataManager::init(int stageNum)
 {
 	m_stageNum = stageNum;
 	loadData();
+
+	return true;
 }
 
 void DataManager::loadData()
