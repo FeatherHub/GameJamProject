@@ -25,6 +25,6 @@ void Flag::generateFlag()
 		PATH::FLAG_BASE + ".png",
 		PATH::FLAG_BASE + "_.png", func);
 
-	flagItem->setTag(Constants::TAG_FLAG_NUM);
+	flagItem->setTag(Constants::TAG_FLAG);
 	flag->addChild(flagItem);
 }

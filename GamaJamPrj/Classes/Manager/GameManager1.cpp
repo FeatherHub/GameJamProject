@@ -21,7 +21,7 @@ void GameManager::update(float delta)
 {
 	while (m_pRefCharacter->ActionQueueEmpty() == false)
 	{
-		CHARACTER_ACTION action = m_pRefCharacter->GetCharAction();
+		CHARACTER_ACTION action = m_pRefCharacter->GetCurrentAction();
 
 		//이미 다른 action을 수행하고 있으면 
 		//입력 버리고 함수수행 안 함
@@ -122,34 +122,5 @@ void GameManager::CharFlag()
 		//Character -> 깃발 꼽기 애니메이션 //일하고 있어
 		m_pRefObjectTypeMap->map[charXPos][charYPos] = (MAP_OBJECT_TYPE)
 			((int)objectType + (int)MAP_OBJECT_TYPE::FLAG_DELTA);
-	}
-}
-
-void GameManager::InitUI()
-{
-	joyStick = JoyStick::create(CC_CALLBACK_1(GameManager::CallUI, this));
-	this->addChild(joyStick);
-	dig = Dig::create(CC_CALLBACK_1(GameManager::CallUI, this));
-	this->addChild(dig);
-	flag = Flag::create(CC_CALLBACK_1(GameManager::CallUI, this));
-	this->addChild(flag);
-}
-
-/*
-	UI 콜백을 받아서 상황에 맞게 호출함
-	2016. 8. 27
-	작성자 : 도인혁
-*/
-void GameManager::CallUI(Ref* sender)
-{
-	auto type = (Menu*)sender;
-	switch (type->getTag())
-	{
-	case Constants::TAG_JOYSTICK_TOP:		m_pRefCharMap->UpdatePos(DIRECTION::UP);	break;
-	case Constants::TAG_JOYSTICK_BOTTOM:	m_pRefCharMap->UpdatePos(DIRECTION::DOWN);	break;
-	case Constants::TAG_JOYSTICK_LEFT:		m_pRefCharMap->UpdatePos(DIRECTION::LEFT);	break;
-	case Constants::TAG_JOYSTICK_RIGHT:		m_pRefCharMap->UpdatePos(DIRECTION::RIGHT);	break;
-	case Constants::TAG_FLAG_NUM:			m_pRefCharacter->Flag();					break;
-	case Constants::TAG_DIG_NUM:			m_pRefCharacter->Dig();						break;
 	}
 }
