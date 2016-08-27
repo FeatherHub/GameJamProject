@@ -63,6 +63,13 @@ void Stars::action()
 	stars->runAction(FadeOut::create(1.0f));
 }
 
+
+
+void Stars::ReverseAction()
+{
+	stars->runAction(FadeIn::create(1.0f));
+}
+
 void Stars::moveStar()
 {
 	bool isClear = UserDefault::getInstance()->getBoolForKey(PATH2::IS_CLEAR.c_str());

@@ -19,7 +19,13 @@ private:
 	void generateProBar();
 
 	void Sprout();
+	void MakeSprout();
+	Sprite* sprouty;
+
 	void Flower();
+	void MakeFlower();
+	Sprite* flower;
+
 
 	void checkEvent();
 	void closeUp();
@@ -29,7 +35,6 @@ private:
 	Sprite* hailo;
 	Sprite* rose;
 	Sprite* prince;
-	Sprite* star;
 	Stars*	stars;
 	EntireProgressBar* bar;
 };
