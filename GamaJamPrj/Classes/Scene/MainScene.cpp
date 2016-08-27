@@ -34,7 +34,13 @@ bool MainScene::init()
 
 void MainScene::generateBg()
 {
-	bg = Sprite::create(PATH::MAINSCENE_BG);
+	hail = Sprite::create("MainScene/MainBGHailo.png");
+	hail->setPosition(winSize.width / 2, 0);
+	hail->runAction(RepeatForever::create(
+		RotateBy::create(1.0f, 3.0f)));
+	this->addChild(hail);
+
+	bg = Sprite::create("MainScene/MainBG.png");
 	bg->setAnchorPoint(Vec2(0.5, 0.5));
 	bg->setPosition(winSize.width / 2, winSize.height / 2);
 	this->addChild(bg);

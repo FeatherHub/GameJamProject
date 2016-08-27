@@ -162,10 +162,10 @@ void GameManager::OnRoad()
 	const int y = m_pRefCharPosMap->pos.y;
 	const auto targetPos = m_pRefSpriteMap->map[x][y]->getPosition();
 
-	Sprite* shade = Sprite::create(m_pRefMapMetaData->tilePath + "_.png");
-	shade->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
-	shade->setPosition(targetPos);
-	m_pRefCameraMan->addChild(shade, 4);
+	Sprite* zero = Sprite::create("Tile/0.png");
+	zero->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
+	zero->setPosition(targetPos);
+	m_pRefCameraMan->addChild(zero, 4);
 
 	m_pRefObjectTypeMap->map[x][y] = MAP_OBJECT_TYPE::SHADED;
 }
