@@ -14,6 +14,8 @@ bool JoyStick::init(ccMenuCallback func)
 	}
 	this->func = func;
 	generateJoyStick();
+
+	return true;
 }
 
 void JoyStick::generateJoyStick()

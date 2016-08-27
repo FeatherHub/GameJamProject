@@ -30,7 +30,7 @@ bool DataManager::init()
 	pPlanetProgressJar = PlanetProgressJar::create();
 
 	//init meta data
-	MapMetaData* pMapMetaData = MapDataLoader::GetMapMetaData();
+	pMapMetaData = MapDataLoader::GetMapMetaData();
 	
 	//init object
 	pCharacter = Character::create();
@@ -211,6 +211,7 @@ void DataManager::InitCharPosMap()
 
 void DataManager::InitDirDeltaPos()
 {
+	pDirDeltaPos = new Vec2[(int)DIRECTION::DIR_NUM];
 	pDirDeltaPos[(int)DIRECTION::DOWN] = Vec2(0, -Constants::TILE_SIZE);
 	pDirDeltaPos[(int)DIRECTION::UP] = Vec2(0, Constants::TILE_SIZE);
 	pDirDeltaPos[(int)DIRECTION::LEFT] = Vec2(Constants::TILE_SIZE, 0);

@@ -9,6 +9,7 @@ bool TurnCounter::init()
 	}
 	generateLabel();
 
+	return true;
 }
 
 void TurnCounter::generateLabel()

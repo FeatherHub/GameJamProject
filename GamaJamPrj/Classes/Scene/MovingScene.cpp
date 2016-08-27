@@ -4,7 +4,6 @@
 Scene* MovingScene::createScene()
 {
 	auto scene = Scene::create();
-
 	auto layer = MovingScene::create();
 	scene->addChild(layer);
 
@@ -17,7 +16,9 @@ bool MovingScene::init()
 	{
 		return false;
 	}
+
 	enterGameScene();
+	
 	return true;
 }
 

@@ -3,6 +3,8 @@
 #include "cocos2d.h"
 USING_NS_CC;
 
+#include "Data/Constants.h"
+
 class DataManager;
 
 class JoyStick;
@@ -26,15 +28,16 @@ public:
 	*/
 	CREATE_FUNC(GameManager);
 	virtual bool init() override;
-	void update(float delta);
-
+	GAME_CODE update();
+	void Lose();
+	void Win();
 private:
-	void CharMove();
-	void CharDig();
+	GAME_CODE CharMove();
+	GAME_CODE CharDig();
 	void OnRoad();
 	void OnNumber();
 	void OnHeart();
-	void CharFlag();
+	GAME_CODE CharFlag();
 
 private:
 	DataManager* m_pDM = nullptr;

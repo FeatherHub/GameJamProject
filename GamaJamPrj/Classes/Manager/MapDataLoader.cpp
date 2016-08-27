@@ -6,11 +6,9 @@
 
 MapMetaData* MapDataLoader::GetMapMetaData()
 {
-
 	int m_stageNum = UserDefault::getInstance()->getIntegerForKey("NowSelectStage");
 
 	MapMetaData* m_MetaData = new MapMetaData();
-
 
 	std::string path;
 

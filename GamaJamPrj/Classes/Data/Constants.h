@@ -7,7 +7,9 @@ namespace Constants
 	const int TILE_SIZE = 72;
 	const int VIEWPORT_WIDTH_TILE_NUM = 5;
 	const int VIEWPORT_HEIGHT_TILE_NUM = 5;
-
+	const int VIEWPORT_WIDTH = VIEWPORT_WIDTH_TILE_NUM * TILE_SIZE;
+	const int VIEWPORT_HEIGHT = VIEWPORT_HEIGHT_TILE_NUM * TILE_SIZE;
+	const int VIEWPORT_LEFT_BOTTOM_Y = 177;
 	const float ANI_MOVE_TIME = 1.5f;
 
 	const int TAG_JOYSTICK_TOP = 0;
@@ -57,6 +59,13 @@ namespace PATH
 	const std::string METADATA_PATH_4("StageInfo/stageInfo4.csv");
 	const std::string METADATA_PATH_5("StageInfo/stageInfo5.csv");
 }
+
+enum class GAME_CODE : int
+{
+	NONE,
+	WIN,
+	LOSE,
+};
 
 enum class CHARACTER_ACTION : int
 {

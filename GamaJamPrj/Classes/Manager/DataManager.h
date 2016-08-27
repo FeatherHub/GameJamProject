@@ -48,12 +48,12 @@ private:
 	PlanetProgressJar* pPlanetProgressJar = nullptr;
 
 	//Data
+	MapMetaData* pMapMetaData = nullptr;
 	SpriteMap* pSpriteMap = nullptr;
 	ObjectTypeMap* pObjectTypeMap = nullptr;
 	NumberDataMap* pNumberDataMap = nullptr;
 	CharacterPosMap* pCharPosMap = nullptr;
 	Vec2* pDirDeltaPos = nullptr;
-	MapMetaData* pMapMetaData = nullptr;
 
 	//Object
 	Character* pCharacter = nullptr;

@@ -1,4 +1,5 @@
 #include "GameScene.h"
+#include "Manager/GameManager.h"
 #include "SimpleAudioEngine.h"
 
 USING_NS_CC;
@@ -19,38 +20,24 @@ bool GameScene::init()
         return false;
     }
     
-    auto visibleSize = Director::getInstance()->getVisibleSize();
-    Vec2 origin = Director::getInstance()->getVisibleOrigin();
+	m_GM = GameManager::create();
+	addChild(m_GM);
 
-    auto closeItem = MenuItemImage::create(
-                                           "CloseNormal.png",
-                                           "CloseSelected.png",
-                                           CC_CALLBACK_1(GameScene::menuCloseCallback, this));
-    
-    closeItem->setPosition(Vec2(origin.x + visibleSize.width - closeItem->getContentSize().width/2 ,
-                                origin.y + closeItem->getContentSize().height/2));
+	scheduleUpdate();
 
-    auto menu = Menu::create(closeItem, NULL);
-    menu->setPosition(Vec2::ZERO);
-    this->addChild(menu, 1);
-
-    auto label = Label::createWithTTF("Hello World", "fonts/Marker Felt.ttf", 24);
-
-	label->setPosition(Vec2(origin.x + visibleSize.width/2,
-                            origin.y + visibleSize.height - label->getContentSize().height));
-
-	this->addChild(label, 1);
-
-    auto sprite = Sprite::create("HelloWorld.png");
-
-    sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
-
-    this->addChild(sprite, 0);
-    
     return true;
 }
 
-void GameScene::menuCloseCallback(Ref* pSender)
+void GameScene::update(float delta)
 {
-    Director::getInstance()->end();
+	auto gmRes = m_GM->update();
+	switch (gmRes)
+	{
+	case GAME_CODE::WIN:
+		m_GM->Win();
+		break;
+	case GAME_CODE::LOSE:
+		m_GM->Lose();
+		break;
+	}
 }

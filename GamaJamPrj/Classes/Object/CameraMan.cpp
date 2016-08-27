@@ -7,6 +7,8 @@ bool CameraMan::init()
 		return false;
 	}
 
+	setPosition(Vec2(Constants::TILE_SIZE*0.5f, Constants::VIEWPORT_LEFT_BOTTOM_Y));
+	
 	return true;
 }
 
@@ -31,7 +33,6 @@ void CameraMan::InitCameraMapData()
 
 	m_cameraMapData.viewPortHeight = tileSize * Constants::VIEWPORT_HEIGHT_TILE_NUM;
 	m_cameraMapData.viewPortWidth = tileSize * Constants::VIEWPORT_WIDTH_TILE_NUM;
-	
 }
 
 void CameraMan::Move(const Vec2& moveDelta)

@@ -24,6 +24,7 @@ bool SelectScene::init()
 	generateBg();
 	generateStars();
 
+	return true;
 }
 
 void SelectScene::generateBg()
