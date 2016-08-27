@@ -124,6 +124,11 @@ void DataManager::InitObjectTypeMap()
 
 			heartNumToSeed--;
 		}
+		else
+		{
+			pObjectTypeMap->map[(int)randPoint.x][(int)randPoint.y] =
+				MAP_OBJECT_TYPE::ROAD;
+		}
 	}
 }
 

@@ -23,8 +23,8 @@ GAME_CODE GameManager::CharMove()
 	//TODO: 움직임 유효하지 않는 상황에서 애니메이션으로 반응을 해주자
 
 	//맵 바깥으로 빠졌나갔다
-	if (movedPos.x > m_pRefObjectTypeMap->width ||
-		movedPos.y > m_pRefObjectTypeMap->height ||
+	if (movedPos.x > m_pRefObjectTypeMap->width * Constants::TILE_SIZE ||
+		movedPos.y > m_pRefObjectTypeMap->height * Constants::TILE_SIZE ||
 		movedPos.x < 0 || movedPos.y < 0)
 	{
 		return GAME_CODE::NONE;
