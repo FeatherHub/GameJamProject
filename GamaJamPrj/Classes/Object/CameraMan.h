@@ -6,7 +6,7 @@ USING_NS_CC;
 #include "Data/Constants.h"
 #include "Data/Mapdata.h"
 
-class CameraMan : Node
+class CameraMan : public Node
 {
 public:
 	/*

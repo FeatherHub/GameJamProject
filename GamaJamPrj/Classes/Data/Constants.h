@@ -4,6 +4,7 @@
 
 namespace Constants
 {
+	const int TILE_SIZE = 72;
 	const int VIEWPORT_WIDTH_TILE_NUM = 5;
 	const int VIEWPORT_HEIGHT_TILE_NUM = 5;
 

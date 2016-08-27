@@ -4,6 +4,12 @@
 
 #include <fstream>
 
+MapMetaData* MapDataLoader::GetMapMetaData()
+{
+
+}
+
+
 bool MapDataLoader::init(int stageNum)
 {
 	m_stageNum = stageNum;
@@ -46,7 +52,6 @@ void MapDataLoader::loadData()
 		m_metaData.push_back(pMetaData);
 	}
 }
-
 	
 ValueVector MapDataLoader::split(const std::string &str, const std::string &delim)
 {
