@@ -5,6 +5,7 @@
 
 USING_NS_CC;
 
+class Stars;
 class SelectScene : public Scene
 {
 public:
@@ -13,7 +14,14 @@ public:
 	CREATE_FUNC_ARGS(SelectScene);
 private:
 	void generateBg();
+	void generateStars();
+
+	void closeUp();
 private:
 	CREATEWINSIZE;
 	Sprite* bg;
+	Sprite* rose;
+	Sprite* prince;
+	Sprite* star;
+	Stars*	stars;
 };

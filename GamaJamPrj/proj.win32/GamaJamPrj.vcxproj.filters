@@ -93,6 +93,9 @@
     <ClCompile Include="..\Classes\Object\CameraMan.cpp">
       <Filter>Object</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Object\Stars.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -160,6 +163,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Utils\Macro.h">
       <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Object\Stars.h">
+      <Filter>Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

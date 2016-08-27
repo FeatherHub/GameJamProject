@@ -153,6 +153,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClCompile Include="..\Classes\Manager\MapDataLoader.cpp" />
     <ClCompile Include="..\Classes\Object\CameraMan.cpp" />
     <ClCompile Include="..\Classes\Object\Character.cpp" />
+    <ClCompile Include="..\Classes\Object\Stars.cpp" />
     <ClCompile Include="..\Classes\Scene\CreditScene.cpp" />
     <ClCompile Include="..\Classes\Scene\EndingScene.cpp" />
     <ClCompile Include="..\Classes\Scene\GameScene.cpp" />
@@ -176,6 +177,7 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)" /D /E /I /F /Y
     <ClInclude Include="..\Classes\Manager\MapDataLoader.h" />
     <ClInclude Include="..\Classes\Object\CameraMan.h" />
     <ClInclude Include="..\Classes\Object\Character.h" />
+    <ClInclude Include="..\Classes\Object\Stars.h" />
     <ClInclude Include="..\Classes\Scene\CreditScene.h" />
     <ClInclude Include="..\Classes\Scene\EndingScene.h" />
     <ClInclude Include="..\Classes\Scene\GameScene.h" />
