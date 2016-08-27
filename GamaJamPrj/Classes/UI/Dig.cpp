@@ -12,6 +12,7 @@ bool Dig::init(ccMenuCallback func)
 	{
 		return false;
 	}
+
 	this->func = func;
 	generateDig();
 
