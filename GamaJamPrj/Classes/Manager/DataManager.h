@@ -34,8 +34,11 @@ private:
 	void InitSpriteMap();
 	void InitObjectTypeMap();
 	void InitNumberDataMap();
+	void InitCharPosMap();
+	void InitDirDeltaPos();
 	void ControllerUICallback(Ref* sender);
-
+private: /* Utility Func */
+	bool IsThereHeart(int x, int y);
 private:
 	//UI
 	JoyStick* pJoyStick = nullptr;

@@ -13,6 +13,8 @@
 #include "Object/Character.h"
 #include "Object//CameraMan.h"
 
+#include <time.h>
+
 bool DataManager::init()
 {
 	if (Node::init() == false)
@@ -27,7 +29,7 @@ bool DataManager::init()
 	pTurnCounter = TurnCounter::create();
 	pPlanetProgressJar = PlanetProgressJar::create();
 
-	//init data
+	//init meta data
 	MapMetaData* pMapMetaData = MapDataLoader::GetMapMetaData();
 	
 	//init object
@@ -37,14 +39,24 @@ bool DataManager::init()
 	pCameraMan = CameraMan::create();
 	pCameraMan->SetMapMetaData(pMapMetaData);
 
+	//init data
 	/*
 	Note : call after CameraMan initialized.
 	*/
 	InitSpriteMap();
 	InitObjectTypeMap();
+	
+	/*
+	Note : call after ObjectTypeMap initialized
+	*/
 	InitNumberDataMap();
+	InitCharPosMap();
+	InitDirDeltaPos();
 
 	//retain
+	/*
+	Note: addChild는 GameManager에서 한다
+	*/
 	pBtnFlag->retain();
 	pBtnDig->retain();
 	pBtnFlag->retain();
@@ -61,17 +73,16 @@ bool DataManager::init()
 void DataManager::InitSpriteMap()
 {
 	pSpriteMap = new SpriteMap();
+
 	pSpriteMap->width = pMapMetaData->width;
 	pSpriteMap->height = pMapMetaData->height;
 
-	//동적 할당
 	pSpriteMap->map = new Sprite**[pSpriteMap->width];
 	for (int i = 0; i < pSpriteMap->width; i++)
 	{
 		pSpriteMap->map[i] = new Sprite*[pSpriteMap->height];
 	}
-	
-	//타일 생성
+
 	for (int x = 0; x < pSpriteMap->width; x++)
 	{
 		for (int y = 0; y < pSpriteMap->height; y++)
@@ -86,15 +97,124 @@ void DataManager::InitSpriteMap()
 
 void DataManager::InitObjectTypeMap()
 {
-	CharacterPosMap* pCharPosMap = nullptr;
+	pObjectTypeMap = new ObjectTypeMap();
+	pObjectTypeMap->width = pMapMetaData->width;
+	pObjectTypeMap->height = pMapMetaData->height;
+	pObjectTypeMap->tileSize = Constants::TILE_SIZE;
 
+	pObjectTypeMap->map = new MAP_OBJECT_TYPE*[pObjectTypeMap->width];
+	for (int i = 0; i < pObjectTypeMap->width; i++)
+	{
+		pObjectTypeMap->map[i] = new MAP_OBJECT_TYPE[pObjectTypeMap->height];
+	}
+
+	srand((unsigned)time(NULL));
+
+	int heartNumToSeed = pMapMetaData->heartNum;
+	while (heartNumToSeed > 0)
+	{
+		Vec2 randPoint = Vec2(rand() % pObjectTypeMap->height,
+							rand() % pObjectTypeMap->width);
+
+		if (pObjectTypeMap->map[(int)randPoint.x][(int)randPoint.y] !=
+			MAP_OBJECT_TYPE::HEART)
+		{
+			pObjectTypeMap->map[(int)randPoint.x][(int)randPoint.y] =
+				MAP_OBJECT_TYPE::HEART;
+
+			heartNumToSeed--;
+		}
+	}
 }
 
 void DataManager::InitNumberDataMap()
 {
+	pNumberDataMap = new NumberDataMap();
+	pNumberDataMap->width = pMapMetaData->width;
+	pNumberDataMap->height = pMapMetaData->height;
+	pNumberDataMap->map = new int*[pNumberDataMap->width];
+	for (int i = 0; i < pNumberDataMap->width; i++)
+	{
+		pNumberDataMap->map[i] = new int[pNumberDataMap->height];
+	}
 
-	Vec2* pDirDeltaPos = nullptr;
+	for (int x = 0; x < pNumberDataMap->width; x++)
+	{
+		for (int y = 0; y < pNumberDataMap->height; y++)
+		{
+			pNumberDataMap->map[x][y] = 0;
+		}
+	}
 
+	for (int x = 0; x < pNumberDataMap->width; x++)
+	{
+		for (int y = 0; y < pNumberDataMap->height; y++)
+		{
+			//right
+			if (x < pNumberDataMap->width - 1)
+			{
+				//just-right
+				if (IsThereHeart(x + 1, y) == true)
+					pNumberDataMap->map[x][y]++;
+
+				//right-up
+				if (y < pNumberDataMap->height - 1 ||
+					IsThereHeart(x + 1, y + 1) == true)
+					pNumberDataMap->map[x][y]++;
+
+				//right-down
+				if (y > 0 || IsThereHeart(x + 1, y - 1) == true)
+					pNumberDataMap->map[x][y]++;
+			}
+
+			//left
+			if (x > 0)
+			{
+				//just-left
+				if (IsThereHeart(x - 1, y) == true)
+					pNumberDataMap->map[x][y]++;
+				//left-up
+				if (y < pNumberDataMap->height - 1 ||
+					IsThereHeart(x - 1, y + 1) == true)
+					pNumberDataMap->map[x][y]++;
+				//left-down
+				if (y > 0 || IsThereHeart(x - 1, y - 1) == true)
+					pNumberDataMap->map[x][y]++;
+			}
+
+			//up
+			if (y < pNumberDataMap->height - 1 ||
+				IsThereHeart(x, y + 1) == true)
+				pNumberDataMap->map[x][y]++;
+			//down
+			if (y > 0 || IsThereHeart(x, y - 1) == true)
+				pNumberDataMap->map[x][y]++;
+		}
+	}
+}
+
+bool DataManager::IsThereHeart(int x, int y)
+{
+	if (pObjectTypeMap->map[x][y] == MAP_OBJECT_TYPE::HEART)
+		return true;
+	else
+		return false;
+}
+
+void DataManager::InitCharPosMap()
+{
+	pCharPosMap = new CharacterPosMap();
+	pCharPosMap->height = pMapMetaData->height;
+	pCharPosMap->width = pMapMetaData->width;
+	pCharPosMap->pos = Vec2(pCharPosMap->width / 2, pCharPosMap->height / 2);
+}
+
+void DataManager::InitDirDeltaPos()
+{
+	pDirDeltaPos[(int)DIRECTION::DOWN] = Vec2(0, -Constants::TILE_SIZE);
+	pDirDeltaPos[(int)DIRECTION::UP] = Vec2(0, Constants::TILE_SIZE);
+	pDirDeltaPos[(int)DIRECTION::LEFT] = Vec2(Constants::TILE_SIZE, 0);
+	pDirDeltaPos[(int)DIRECTION::RIGHT] = Vec2(Constants::TILE_SIZE, 0);
 }
 
 /*

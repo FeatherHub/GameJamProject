@@ -17,7 +17,7 @@ bool MovingScene::init()
 	{
 		return false;
 	}
-
+	enterGameScene();
 	return true;
 }
 

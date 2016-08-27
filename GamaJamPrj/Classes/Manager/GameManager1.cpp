@@ -24,17 +24,31 @@ bool GameManager::init()
 	addChild(m_pDM);
 
 	//UI
+	m_pRefJoyStick = m_pDM->pJoyStick;
+	m_pRefBtnDig = m_pDM->pBtnDig;
+	m_pRefBtnFlag = m_pDM->pBtnFlag;
+	m_pRefTurnCounter = m_pDM->pTurnCounter;
+	m_pRefPlanetProgressJar = m_pDM->pPlanetProgressJar;
 
 	//Data
 	m_pRefCharPosMap = m_pDM->pCharPosMap;
 	m_pRefDirDeltaPos = m_pDM->pDirDeltaPos;
 	m_pRefObjectTypeMap = m_pDM->pObjectTypeMap;
+	m_pRefNumberDataMap = m_pDM->pNumberDataMap;
 
 	//Object
 	m_pRefCharacter = m_pDM->pCharacter;
-	addChild(m_pRefCharacter);
 	m_pRefCameraMan = m_pDM->pCameraMan;
+	
+	//addChild
+	
+	addChild(m_pRefBtnDig);
+	addChild(m_pRefBtnFlag);
 	addChild(m_pRefCameraMan);
+	addChild(m_pRefCharacter);
+	addChild(m_pRefJoyStick);
+	addChild(m_pRefPlanetProgressJar);
+	addChild(m_pRefTurnCounter);
 
 	return true;
 }

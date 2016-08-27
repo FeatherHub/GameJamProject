@@ -15,8 +15,8 @@ void CameraMan::InitCameraMapData()
 	/*
 	Note : Members mean length
 	*/
-	/*
-	int tileSize = m_pRefMapMetaData->tileSize;
+
+	int tileSize = Constants::TILE_SIZE;
 	int heightTileNum = m_pRefMapMetaData->height;
 	int widthTileNum = m_pRefMapMetaData->width;
 
@@ -25,7 +25,7 @@ void CameraMan::InitCameraMapData()
 
 	m_cameraMapData.viewPortHeight = tileSize * Constants::VIEWPORT_HEIGHT_TILE_NUM;
 	m_cameraMapData.viewPortWidth = tileSize * Constants::VIEWPORT_WIDTH_TILE_NUM;
-	*/
+	
 }
 
 void CameraMan::Move(const Vec2& moveDelta)

@@ -24,7 +24,7 @@ struct ObjectTypeMap
 	/*
 	width x height = tile number
 	*/
-	int width = -1; 
+	int width = -1;
 	int height = -1;
 	int tileSize = -1;
 };
