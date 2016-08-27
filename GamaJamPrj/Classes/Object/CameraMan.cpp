@@ -15,7 +15,7 @@ void CameraMan::InitCameraMapData()
 	/*
 	Note : Members mean length
 	*/
-	int tileSize = m_pRefMapMetaData->tileSize;
+	int tileSize = Constants::TILE_SIZE;
 	int heightTileNum = m_pRefMapMetaData->height;
 	int widthTileNum = m_pRefMapMetaData->width;
 
