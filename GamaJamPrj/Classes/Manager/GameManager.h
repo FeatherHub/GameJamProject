@@ -34,9 +34,6 @@ public:
 
 
 private:
-	void InitUI();
-	void CallUI(Ref* sender);
-
 	void CharMove();
 	void CharDig();
 	void OnRoad();
