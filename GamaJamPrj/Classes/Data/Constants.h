@@ -39,11 +39,17 @@ namespace PATH
 	const std::string SELECTSCENE_ROSE("SelectScene/rose.png");
 	const std::string SELECTSCENE_PRINCE("SelectScene/prince.png");
 
-	const std::string METADATA_PATH_1("Tile/stage1.png");
-	const std::string METADATA_PATH_2("Tile/stage2.png");
-	const std::string METADATA_PATH_3("Tile/stage3.png");
-	const std::string METADATA_PATH_4("Tile/stage4.png");
-	const std::string METADATA_PATH_5("Tile/stage5.png");
+	const std::string STAGE_TILE_PATH_1("Tile/stage1.png");
+	const std::string STAGE_TILE_PATH_2("Tile/stage2.png");
+	const std::string STAGE_TILE_PATH_3("Tile/stage3.png");
+	const std::string STAGE_TILE_PATH_4("Tile/stage4.png");
+	const std::string STAGE_TILE_PATH_5("Tile/stage5.png");
+
+	const std::string METADATA_PATH_1("StageInfo/stageInfo1.csv");
+	const std::string METADATA_PATH_2("StageInfo/stageInfo2.csv");
+	const std::string METADATA_PATH_3("StageInfo/stageInfo3.csv");
+	const std::string METADATA_PATH_4("StageInfo/stageInfo4.csv");
+	const std::string METADATA_PATH_5("StageInfo/stageInfo5.csv");
 }
 
 enum class CHARACTER_ACTION : int

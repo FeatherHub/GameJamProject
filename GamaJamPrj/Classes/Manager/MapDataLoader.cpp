@@ -11,10 +11,23 @@ MapMetaData* MapDataLoader::GetMapMetaData()
 
 	MapMetaData* m_MetaData = new MapMetaData();
 
+<<<<<<< HEAD
+	std::string path;;
+
+	switch (m_stageNum)
+	{
+	case 0: path = PATH::METADATA_PATH_1; break;
+	case 1:	path = PATH::METADATA_PATH_2; break;
+	case 2:	path = PATH::METADATA_PATH_3; break;
+	case 3:	path = PATH::METADATA_PATH_4; break;
+	case 4:	path = PATH::METADATA_PATH_5; break;
+	}
+=======
 	// 경로는 반환값이나 기타 방법으로 받아온다.
 	// 인자값으로 m_stageNum 을 넘긴다.
 	// TODO : 경로를 반환하는 것 들 등등 만들기?
 	std::string path = "test.csv";
+>>>>>>> baaf35e6e32aee6cfcb538c7ad6d496a6ef74387
 	std::ifstream file;
 
 	ValueVector users;
@@ -63,6 +76,7 @@ MapMetaData* MapDataLoader::GetMapMetaData()
 		
 		ValueMap user = users.at(i).asValueMap();
 
+		m_MetaData->turn = user.at("turn").asInt();
 		m_MetaData->width = user.at("width").asInt();
 		m_MetaData->height = user.at("height").asInt();
 		m_MetaData->heartNum = user.at("heart\r").asInt();
@@ -70,11 +84,11 @@ MapMetaData* MapDataLoader::GetMapMetaData()
 
 	switch (m_stageNum)
 	{
-	case 0:	m_MetaData->tilePath = PATH::METADATA_PATH_1;	break;
-	case 1: m_MetaData->tilePath = PATH::METADATA_PATH_2;	break;
-	case 2:	m_MetaData->tilePath = PATH::METADATA_PATH_3;	break;
-	case 3:	m_MetaData->tilePath = PATH::METADATA_PATH_4;	break;
-	case 4:	m_MetaData->tilePath = PATH::METADATA_PATH_5;	break;
+	case 0:	m_MetaData->tilePath = PATH::STAGE_TILE_PATH_1;	break;
+	case 1: m_MetaData->tilePath = PATH::STAGE_TILE_PATH_2;	break;
+	case 2:	m_MetaData->tilePath = PATH::STAGE_TILE_PATH_3;	break;
+	case 3:	m_MetaData->tilePath = PATH::STAGE_TILE_PATH_4;	break;
+	case 4:	m_MetaData->tilePath = PATH::STAGE_TILE_PATH_5;	break;
 	}
 
 	return m_MetaData;
