@@ -115,6 +115,18 @@ GAME_CODE GameManager::update()
 			return CharMove();
 			break;
 		}
+
+		int curGetHeart = m_pRefPlanetProgressJar->GetHeartNum();
+		if (curGetHeart == m_pRefMapMetaData->heartNum)
+		{
+			return GAME_CODE::WIN;
+		}
+
+		int curLeftTurn = m_pRefTurnCounter->GetTurn();
+		if (curLeftTurn == 0)
+		{
+			return GAME_CODE::LOSE;
+		}
 	}
 
 	return GAME_CODE::NONE;
