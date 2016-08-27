@@ -3,13 +3,17 @@
 #include "cocos2d.h"
 USING_NS_CC;
 
+//UIs
 class JoyStick;
 class Dig;
 class Flag;
 class TurnCounter;
 
+//Object
 class Character;
 
+//Data
+//struct 
 class DataManager : public Node
 {
 public:

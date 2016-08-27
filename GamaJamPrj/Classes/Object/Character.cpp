@@ -12,6 +12,9 @@ bool Character::init()
 		m_statusArr[i] = false;
 	}
 
+	m_sprite = Sprite::create();
+	addChild(m_sprite);
+
 	return true;
 }
 

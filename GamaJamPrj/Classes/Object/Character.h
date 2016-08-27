@@ -54,6 +54,8 @@ private:
 
 	int m_turn = -1;
 
+	Sprite* m_sprite;
+
 	//UIs
 	/*
 	JoyStick* m_pRefJoyStick = nullptr;

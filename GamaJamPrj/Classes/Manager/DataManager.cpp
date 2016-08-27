@@ -19,8 +19,10 @@ bool DataManager::init()
 	m_pBtnDig = Dig::create(CC_CALLBACK_1(DataManager::CallUI, this));
 	m_pBtnFlag = Flag::create(CC_CALLBACK_1(DataManager::CallUI, this));
 	m_pJoyStick = JoyStick::create(CC_CALLBACK_1(DataManager::CallUI, this));
-
 	m_pTurnCounter = TurnCounter::create();
+
+	m_pCharacter = Character::create();
+	m_pCharacter->SetTurn(111111);
 
 	return true;
 }
