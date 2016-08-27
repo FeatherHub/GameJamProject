@@ -39,7 +39,7 @@ bool MainScene::init()
 
 	CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(PATH2::BG_MAIN.c_str(), true);
 
-	if (guage <= 5)
+	if (guage >= 5)
 	{
 		hail = Sprite::create("MainScene/MainBGHailo.png");
 		hail->setScale(0.75f);
@@ -50,7 +50,7 @@ bool MainScene::init()
 
 		Sprite* flower = Sprite::create("SelectScene/bar_rose.png");
 		addChild(flower, 6);
-		flower->setScale(3.5f);
+		flower->setScale(2.65f);
 		flower->setPosition(winSize.width / 2, winSize.height / 2);
 
 		return true;
