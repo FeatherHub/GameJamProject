@@ -46,30 +46,25 @@ void CameraMan::InitCameraMapData()
 
 bool CameraMan::Move(const Vec2& moveDelta)
 {
-	if (m_isMoving == true)
-	{
-		return true;
-	}
-
 	const auto& movedPos = getPosition() - moveDelta;
 	int mapLeft = movedPos.x;
-	int mapBottom = movedPos.y;
 	int mapRight = mapLeft + m_cmd.mapWidth;
+	int mapBottom = movedPos.y;
 	int mapTop = mapBottom + m_cmd.mapHeight;
 
 	int viewLeft = 0;
-	int viewRight = Constants::VIEWPORT_WIDTH;
+	int viewRight = viewLeft + Constants::VIEWPORT_WIDTH;
 	int viewBottom = Constants::VIEWPORT_LEFT_BOTTOM_Y;
 	int viewTop = viewBottom + Constants::VIEWPORT_HEIGHT;
 
-	if (mapLeft >= viewLeft ||
-		mapRight <= viewRight ||
-		mapTop <= viewTop ||
-		mapBottom >= viewBottom)
+	if (mapLeft > viewLeft ||
+		mapRight < viewRight ||
+		mapTop < viewTop ||
+		mapBottom > viewBottom)
 	{
 		return false;
 	}
-
+	
 	runAction(Sequence::create(
 		CallFunc::create([&]() { m_isMoving = true; }),
 		MoveBy::create(Constants::ANI_MOVE_TIME, -moveDelta),

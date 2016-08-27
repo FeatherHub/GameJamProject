@@ -15,7 +15,7 @@ namespace Constants
 	const int VIEWPORT_HEIGHT = VIEWPORT_HEIGHT_TILE_NUM * TILE_SIZE;
 	const int VIEWPORT_LEFT_BOTTOM_Y = 150;
 
-	const float ANI_MOVE_TIME = 0.75f;
+	const float ANI_MOVE_TIME = 0.25f;
 
 	const int TAG_JOYSTICK_TOP = 0;
 	const int TAG_JOYSTICK_RIGHT = 1;

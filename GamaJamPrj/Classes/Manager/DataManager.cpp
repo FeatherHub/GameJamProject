@@ -113,6 +113,14 @@ void DataManager::InitObjectTypeMap()
 		pObjectTypeMap->map[i] = new MAP_OBJECT_TYPE[pObjectTypeMap->height];
 	}
 
+	for (int x = 0; x < pObjectTypeMap->width; x++)
+	{
+		for (int y = 0; y < pObjectTypeMap->height; y++)
+		{
+			pObjectTypeMap->map[x][y] = MAP_OBJECT_TYPE::ROAD;
+		}
+	}
+
 	srand((unsigned)time(NULL));
 
 	int heartNumToSeed = pMapMetaData->heartNum;
@@ -128,11 +136,6 @@ void DataManager::InitObjectTypeMap()
 				MAP_OBJECT_TYPE::HEART;
 
 			heartNumToSeed--;
-		}
-		else
-		{
-			pObjectTypeMap->map[(int)randPoint.x][(int)randPoint.y] =
-				MAP_OBJECT_TYPE::ROAD;
 		}
 	}
 }
@@ -169,45 +172,48 @@ void DataManager::InitNumberDataMap()
 	{
 		for (int y = 0; y < pNumberDataMap->height; y++)
 		{
+			if (pObjectTypeMap->map[x][y] == MAP_OBJECT_TYPE::HEART)
+			{
+				continue;
+			}
+
 			//right
 			if (x < pNumberDataMap->width - 1)
 			{
 				//just-right
-				if (IsThereHeart(x + 1, y) == true)
-					pNumberDataMap->map[x][y]++;
-
+				if (IsThereHeart(x + 1, y))
+					CountNumber(x, y);
 				//right-up
-				if (y < pNumberDataMap->height - 1 ||
-					IsThereHeart(x + 1, y + 1) == true)
-					pNumberDataMap->map[x][y]++;
-
+				if (y < pNumberDataMap->height - 1 &&
+					IsThereHeart(x + 1, y + 1))
+					CountNumber(x, y);
 				//right-down
-				if (y > 0 || IsThereHeart(x + 1, y - 1) == true)
-					pNumberDataMap->map[x][y]++;
+				if (y > 0 && IsThereHeart(x + 1, y - 1))
+					CountNumber(x, y);
 			}
 
 			//left
 			if (x > 0)
 			{
 				//just-left
-				if (IsThereHeart(x - 1, y) == true)
-					pNumberDataMap->map[x][y]++;
+				if (IsThereHeart(x - 1, y))
+					CountNumber(x, y);
 				//left-up
-				if (y < pNumberDataMap->height - 1 ||
-					IsThereHeart(x - 1, y + 1) == true)
-					pNumberDataMap->map[x][y]++;
+				if (y < pNumberDataMap->height - 1 &&
+					IsThereHeart(x - 1, y + 1))
+					CountNumber(x, y);
 				//left-down
-				if (y > 0 || IsThereHeart(x - 1, y - 1) == true)
-					pNumberDataMap->map[x][y]++;
+				if (y > 0 && IsThereHeart(x - 1, y - 1))
+					CountNumber(x, y);
+		
 			}
-
 			//up
-			if (y < pNumberDataMap->height - 1 ||
-				IsThereHeart(x, y + 1) == true)
-				pNumberDataMap->map[x][y]++;
+			if (y < pNumberDataMap->height - 1 &&
+				IsThereHeart(x, y + 1))
+				CountNumber(x, y);
 			//down
-			if (y > 0 || IsThereHeart(x, y - 1) == true)
-				pNumberDataMap->map[x][y]++;
+			if (y > 0 && IsThereHeart(x, y - 1))
+				CountNumber(x, y);
 		}
 	}
 }
@@ -218,6 +224,12 @@ bool DataManager::IsThereHeart(int x, int y)
 		return true;
 	else
 		return false;
+}
+
+void DataManager::CountNumber(int x, int y)
+{
+	pObjectTypeMap->map[x][y] = MAP_OBJECT_TYPE::NUMBER;
+	pNumberDataMap->map[x][y]++;
 }
 
 void DataManager::InitCharPosMap()

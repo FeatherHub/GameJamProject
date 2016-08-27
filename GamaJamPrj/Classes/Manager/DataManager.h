@@ -39,6 +39,7 @@ private:
 	void ControllerUICallback(Ref* sender);
 private: /* Utility Func */
 	bool IsThereHeart(int x, int y);
+	void CountNumber(int x, int y);
 private:
 	//UI
 	JoyStick* pJoyStick = nullptr;

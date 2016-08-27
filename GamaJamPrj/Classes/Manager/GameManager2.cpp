@@ -20,11 +20,21 @@ GAME_CODE GameManager::CharMove()
 	const auto& charDir = m_pRefCharacter->GetDirection();
 	const auto& moveDelta = m_pRefDirDeltaPos[(int)charDir];
 
-	bool res =	m_pRefCameraMan->Move(moveDelta);
-	if (res == true)
+	const auto& charMapPos = m_pRefCharPosMap->pos;
+	const auto mapRightEdgeIdx = m_pRefCharPosMap->width - 1;
+	const auto mapTopEdgeIdx = m_pRefCharPosMap->height - 1;
+
+	if (mapTopEdgeIdx - charMapPos.y >= 2 &&
+		charMapPos.y >= 2 &&
+		mapRightEdgeIdx - charMapPos.x >= 2 &&
+		charMapPos.x >= 2)
 	{
-		m_pRefCharPosMap->UpdatePos(charDir);
-		return GAME_CODE::NONE;
+		bool res = m_pRefCameraMan->Move(moveDelta);
+		if (res == true)
+		{
+			m_pRefCharPosMap->UpdatePos(charDir);
+			return GAME_CODE::NONE;
+		}
 	}
 
 	//TODO: 움직임 유효하지 않는 상황에서 애니메이션으로 반응을 해주자
@@ -145,7 +155,8 @@ void GameManager::OnNumber()
 	const int y = m_pRefCharPosMap->pos.y;
 	const int n = m_pRefNumberDataMap->map[x][y];
 
-	Sprite* number = Sprite::create(m_pRefNumberDataMap->paths[n]);
+	Sprite* number = Sprite::create(m_pRefNumberDataMap->paths[n-1]);
+	
 	const auto targetPos = m_pRefSpriteMap->map[x][y]->getPosition();
 	number->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
 	number->setPosition(targetPos);
