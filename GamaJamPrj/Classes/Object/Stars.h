@@ -17,8 +17,10 @@ class Stars : public Node
 public:
 	bool init(ccMenuCallback func);
 	CREATE_FUNC_ARGS(Stars);
+	void action();
 private:
 	void generateStars();
+
 private:
 	ccMenuCallback func;
 	Menu* stars;

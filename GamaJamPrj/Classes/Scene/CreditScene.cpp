@@ -21,4 +21,5 @@ bool CreditScene::init()
 	{
 		return false;
 	}
+	return true;
 }
