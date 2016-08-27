@@ -22,5 +22,6 @@ private:
 private:
 	CREATEWINSIZE;
 	Sprite* bg;
+	Sprite* hail;
 	Menu*	menu;
 };

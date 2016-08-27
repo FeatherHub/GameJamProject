@@ -23,10 +23,10 @@ private:
 
 	void checkEvent();
 	void closeUp();
-	void callStars(Ref* sender);
 private:
 	CREATEWINSIZE;
 	Sprite* bg;
+	Sprite* hailo;
 	Sprite* rose;
 	Sprite* prince;
 	Sprite* star;
