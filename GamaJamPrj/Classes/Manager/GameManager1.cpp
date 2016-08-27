@@ -14,6 +14,9 @@
 #include "Data/Constants2.h"
 #include "Data/Mapdata.h"
 
+#include "Scene/SelectScene.h"
+#include "Scene/MainScene.h"
+
 bool GameManager::init()
 {
 	if (Node::init() == false)
@@ -131,7 +134,7 @@ GAME_CODE GameManager::update()
 
 void GameManager::Lose()
 {
-
+	UserDefault::getInstance()->setBoolForKey(PATH2::IS_CLEAR.c_str(), false);
 }
 
 void GameManager::Win()
@@ -147,4 +150,8 @@ void GameManager::Win()
 	case 3:UserDefault::getInstance()->setBoolForKey(PATH::STAGE4_BOOL_KEY.c_str(), true); break;
 	case 4:UserDefault::getInstance()->setBoolForKey(PATH::STAGE5_BOOL_KEY.c_str(), true); break;
 	}
+	
+	Scene* pscene = SelectScene::createScene();
+	TransitionScene* tr = TransitionProgressInOut::create(1.0f, pscene);
+	Director::getInstance()->replaceScene(tr);
 }

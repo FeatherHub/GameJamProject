@@ -25,6 +25,7 @@ bool SelectScene::init()
 	generateBg();
 	generateStars();
 	generateProBar();
+	checkEvent();
 	
 	//closeUp();
 	return true;
@@ -86,4 +87,32 @@ void SelectScene::closeUp()
 		DelayTime::create(0.5f), nullptr));
 	bg->runAction(Sequence::create( DelayTime::create(2.5f), 
 		TintTo::create(0.1f, Color3B(0,0, 0)), nullptr));
+}
+
+void SelectScene::checkEvent()
+{
+	int guage = 0;
+	if (UserDefault::getInstance()->getBoolForKey(PATH::STAGE1_BOOL_KEY.c_str()))
+		guage++;
+	if (UserDefault::getInstance()->getBoolForKey(PATH::STAGE2_BOOL_KEY.c_str()))
+		guage++;
+	if (UserDefault::getInstance()->getBoolForKey(PATH::STAGE3_BOOL_KEY.c_str()))
+		guage++;
+	if (UserDefault::getInstance()->getBoolForKey(PATH::STAGE4_BOOL_KEY.c_str()))
+		guage++;
+	if (UserDefault::getInstance()->getBoolForKey(PATH::STAGE5_BOOL_KEY.c_str()))
+		guage++;
+
+	if (guage == 3)	Sprout();
+	if (guage == 5) Flower();
+}
+
+void SelectScene::Sprout()
+{
+
+}
+
+void SelectScene::Flower()
+{
+
 }
