@@ -1,9 +1,11 @@
 #include "SelectScene.h"
 #include "Data\/Constants.h"
 #include "MovingScene.h"
+#include "MainScene.h"
 #include "CreditScene.h"
 #include "Object/Stars.h"
 #include "UI/EntireProgressBar.h"
+#include "SimpleAudioEngine.h"
 
 Scene* SelectScene::createScene()
 {
@@ -22,11 +24,11 @@ bool SelectScene::init()
 		return false;
 	}
 
-	checkEvent();
 	generateBg();
 	generateStars();
 	generateProBar();
-	
+	checkEvent();
+
 	//closeUp();
 	return true;
 }
@@ -45,10 +47,10 @@ void SelectScene::generateBg()
 	this->addChild(bg);
 
 	// 별 초기화
-	star = Sprite::create(PATH::SELECTSCENE_STAR);
-	star->setScale(2.5f);
-	star->setPosition(winSize.width/2, -50);
-	this->addChild(star);
+//	star = Sprite::create(PATH::SELECTSCENE_STAR);
+//	star->setScale(2.5f);
+//	star->setPosition(winSize.width/2, -50);
+//	this->addChild(star);
 	
 
 	rose = Sprite::create(PATH::SELECTSCENE_ROSE);
@@ -72,12 +74,6 @@ void SelectScene::generateProBar()
 void SelectScene::closeUp()
 {
 	stars->action();
-	prince->runAction(Sequence::create (Spawn::create( ScaleTo::create(2.5f, 0.8f), MoveBy::create(2.5f, Vec2(0,-50)), nullptr),
-		DelayTime::create(0.5f),nullptr));
-	star->runAction(Sequence::create(Spawn::create(ScaleTo::create(2.5f, 4.0f), MoveBy::create(2.5f, Vec2(0, -50)), nullptr),
-		DelayTime::create(0.5f),  nullptr));
-	bg->runAction(Sequence::create( DelayTime::create(2.5f), 
-		TintTo::create(0.1f, Color3B(0,0, 0)), nullptr));
 }
 
 void SelectScene::checkEvent()
@@ -94,16 +90,115 @@ void SelectScene::checkEvent()
 	if (UserDefault::getInstance()->getBoolForKey(PATH::STAGE5_BOOL_KEY.c_str()))
 		guage++;
 
-	if (guage == 3)	Sprout();
-	if (guage == 5) Flower();
+	//if (guage == 3)	
+	//Sprout();
+	//if (guage == 5) 
+	Flower();
 }
 
 void SelectScene::Sprout()
 {
+	stars->action();
 
+	runAction(Sequence::create(
+		CallFunc::create([&]() { 
+		stars->Disable();
+	stars->setVisible(false);
+		}),
+		CallFunc::create([&]() {
+		bg->runAction(ScaleTo::create(5.3f, 1.24f));
+		hailo->runAction(ScaleTo::create(4.3f, 0.8f));
+	}),
+
+		DelayTime::create(9.67f),
+
+		CallFunc::create([&]() {
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("Sound/Effect/shot_bub.wav");
+	}),
+
+		DelayTime::create(0.1f),
+
+		CallFunc::create([&]() {
+		MakeSprout();
+	}),
+
+		DelayTime::create(3.67f),
+
+		CallFunc::create([&]() {
+		bg->runAction(ScaleTo::create(3.3f, 1.0f));
+		hailo->runAction(ScaleTo::create(3.3f, 1.0f));
+	}),
+		CallFunc::create([&]() { 
+		stars->ReverseAction();
+		stars->Enable();
+	}),
+		nullptr
+	));
+}
+
+void SelectScene::MakeSprout()
+{
+	sprouty = Sprite::create("SelectScene/bar_sprout.png");
+	bg->addChild(sprouty);
+	sprouty->setRotation(-40.f);
+	sprouty->setPosition(80, 155);
 }
 
 void SelectScene::Flower()
 {
+	stars->action();
 
+	runAction(Sequence::create(
+		CallFunc::create([&]() { stars->Disable(); }),
+		CallFunc::create([&]() {
+		bg->runAction(ScaleTo::create(5.6f, 1.24f));
+		hailo->runAction(ScaleTo::create(4.3f, 0.8f));
+	}),
+
+		CallFunc::create([&]() {
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("Sound/Effect/gogo_bub.wav");
+	}),
+
+		DelayTime::create(8.67f),
+
+		CallFunc::create([&]() {
+		MakeFlower();
+		hailo->stopAllActions();
+		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("Sound/Effect/shot_bub.wav");
+	}),
+
+		DelayTime::create(5.0f),
+
+		CallFunc::create([&]() {
+		bar->setVisible(false);
+		flower->setVisible(false);
+		bg->runAction(FadeOut::create(1.0f));
+		hailo->runAction(FadeOut::create(1.0f));
+		Sprite* happyEnd = Sprite::create("EndingScene/HappyEnd.png");
+		happyEnd->setPosition(winSize.width / 2, winSize.height / 2);
+		happyEnd->setOpacity(0);
+		addChild(happyEnd);
+		happyEnd->runAction(
+			Spawn::create(
+				FadeIn::create(1.2f),
+				ScaleTo::create(10.f, 0.34f),
+				nullptr
+			));
+	}),
+
+		DelayTime::create(22.67f),
+
+		CallFunc::create([&]() {
+		Director::getInstance()->replaceScene(MainScene::createScene());
+	}),
+		nullptr
+		));
+}
+
+void SelectScene::MakeFlower()
+{
+	flower = Sprite::create("SelectScene/bar_rose.png");
+	bg->addChild(flower, 6);
+	flower->setRotation(-40.f);
+	flower->setPosition(80, 155);
 }

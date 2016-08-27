@@ -35,6 +35,10 @@ public:
 	bool init();
 	CREATE_FUNC_ARGS(Stars);
 	void action();
+	void ReverseAction();
+	void Disable() { stars->setEnabled(false); }
+	void Enable() { stars->setEnabled(true); }
+
 private:
 	void generateStars();
 	void moveStar();

@@ -24,10 +24,42 @@ bool MainScene::init()
 	{
 		return false;
 	}
-	DataSetting();
-	generateBg();
-	generateMenu();
+
+	int guage = 0;
+	if (UserDefault::getInstance()->getBoolForKey(PATH::STAGE1_BOOL_KEY.c_str()))
+		guage++;
+	if (UserDefault::getInstance()->getBoolForKey(PATH::STAGE2_BOOL_KEY.c_str()))
+		guage++;
+	if (UserDefault::getInstance()->getBoolForKey(PATH::STAGE3_BOOL_KEY.c_str()))
+		guage++;
+	if (UserDefault::getInstance()->getBoolForKey(PATH::STAGE4_BOOL_KEY.c_str()))
+		guage++;
+	if (UserDefault::getInstance()->getBoolForKey(PATH::STAGE5_BOOL_KEY.c_str()))
+		guage++;
+
 	CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(PATH2::BG_MAIN.c_str(), true);
+
+	if (guage <= 5)
+	{
+		hail = Sprite::create("MainScene/MainBGHailo.png");
+		hail->setScale(0.75f);
+		hail->setPosition(winSize.width / 2, winSize.height / 2);
+		hail->runAction(RepeatForever::create(
+			RotateBy::create(1.0f, 3.0f)));
+		this->addChild(hail);
+
+		Sprite* flower = Sprite::create("SelectScene/bar_rose.png");
+		addChild(flower, 6);
+		flower->setScale(3.5f);
+		flower->setPosition(winSize.width / 2, winSize.height / 2);
+
+		return true;
+	}
+
+	generateBg();
+
+	DataSetting();
+	generateMenu();
 
 	return true;
 }
