@@ -11,6 +11,7 @@ class TurnCounter;
 class PlanetProgressJar;
 
 //Data
+struct SpriteMap;
 struct CharacterPosMap;
 struct ObjectTypeMap;
 struct MapMetaData;
@@ -29,7 +30,10 @@ public:
 	virtual bool init() override;
 
 private:
-	void CallUI(Ref* sender);
+	void InitSpriteMap();
+	void InitObjectTypeMap();
+	void InitNumberDataMap();
+	void ControllerUICallback(Ref* sender);
 
 private:
 	//UI

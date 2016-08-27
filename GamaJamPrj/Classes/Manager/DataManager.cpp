@@ -21,20 +21,15 @@ bool DataManager::init()
 	}
 
 	//init ui
-	pBtnDig = Dig::create(CC_CALLBACK_1(DataManager::CallUI, this));
-	pBtnFlag = Flag::create(CC_CALLBACK_1(DataManager::CallUI, this));
-	pJoyStick = JoyStick::create(CC_CALLBACK_1(DataManager::CallUI, this));
+	pBtnDig = Dig::create(CC_CALLBACK_1(DataManager::ControllerUICallback, this));
+	pBtnFlag = Flag::create(CC_CALLBACK_1(DataManager::ControllerUICallback, this));
+	pJoyStick = JoyStick::create(CC_CALLBACK_1(DataManager::ControllerUICallback, this));
 	pTurnCounter = TurnCounter::create();
 	pPlanetProgressJar = PlanetProgressJar::create();
 
 	//init data
-	MapMetaData* pMapMetaData;
-	ObjectTypeMap* pObjectTypeMap = nullptr;
-	int* pNumberMap = nullptr;
-	Sprite** pSpriteMap = nullptr;
-	CharacterPosMap* pCharPosMap = nullptr;
-	Vec2* pDirDeltaPos = nullptr;
-
+	MapMetaData* pMapMetaData = MapDataLoader::GetMapMetaData();
+	
 	//init object
 	pCharacter = Character::create();
 	pCharacter->SetTurn(111111);
@@ -42,15 +37,72 @@ bool DataManager::init()
 	pCameraMan = CameraMan::create();
 	pCameraMan->SetMapMetaData(pMapMetaData);
 
+	/*
+	Note : call after CameraMan initialized.
+	*/
+	InitSpriteMap();
+	InitObjectTypeMap();
+	InitNumberDataMap();
+
+	//retain
+	pBtnFlag->retain();
+	pBtnDig->retain();
+	pBtnFlag->retain();
+	pJoyStick->retain();
+	pTurnCounter->retain();
+	pPlanetProgressJar->retain();
+
+	pCharacter->retain();
+	pCameraMan->retain();
+	
 	return true;
 }
 
+void DataManager::InitSpriteMap()
+{
+	pSpriteMap = new SpriteMap();
+	pSpriteMap->width = pMapMetaData->width;
+	pSpriteMap->height = pMapMetaData->height;
+
+	//동적 할당
+	pSpriteMap->map = new Sprite**[pSpriteMap->width];
+	for (int i = 0; i < pSpriteMap->width; i++)
+	{
+		pSpriteMap->map[i] = new Sprite*[pSpriteMap->height];
+	}
+	
+	//타일 생성
+	for (int x = 0; x < pSpriteMap->width; x++)
+	{
+		for (int y = 0; y < pSpriteMap->height; y++)
+		{
+			pSpriteMap->map[x][y] = Sprite::create(pMapMetaData->tilePath);
+			pSpriteMap->map[x][y]->setPosition(Vec2(x*Constants::TILE_SIZE, 
+													y*Constants::TILE_SIZE));
+			pCameraMan->addChild(pSpriteMap->map[x][y]);
+		}
+	}
+}
+
+void DataManager::InitObjectTypeMap()
+{
+	CharacterPosMap* pCharPosMap = nullptr;
+
+}
+
+void DataManager::InitNumberDataMap()
+{
+
+	Vec2* pDirDeltaPos = nullptr;
+
+}
+
 /*
-UI 콜백을 받아서 상황에 맞게 호출함
-2016. 8. 27
-작성자 : 도인혁
+	UI 콜백을 받아서 상황에 맞게 호출함
+	2016. 8. 27
+	작성자 : 도인혁
 */
-void DataManager::CallUI(Ref* sender)
+void DataManager::ControllerUICallback(Ref* sender)
 {
 	auto type = (Menu*)sender;
 	switch (type->getTag())
