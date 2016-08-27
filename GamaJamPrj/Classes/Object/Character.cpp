@@ -42,7 +42,7 @@ void Character::Flag()
 		nullptr));
 }
 
-CHARACTER_ACTION Character::GetCharAction()
+CHARACTER_ACTION Character::GetCurrentAction()
 {
 	auto action = m_actionQueue.front();
 	m_actionQueue.pop();
