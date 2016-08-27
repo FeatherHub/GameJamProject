@@ -2,6 +2,7 @@
 #include "MapDataLoader.h"
 
 #include "Data/Constants.h"
+#include "Data/Constants2.h"
 #include "Data/Mapdata.h"
 
 #include "UI/Dig.h"
@@ -89,7 +90,7 @@ void DataManager::InitSpriteMap()
 	{
 		for (int y = 0; y < pSpriteMap->height; y++)
 		{
-			pSpriteMap->map[x][y] = Sprite::create(pMapMetaData->tilePath);
+			pSpriteMap->map[x][y] = Sprite::create(pMapMetaData->tilePath + ".png");
 			pSpriteMap->map[x][y]->setPosition(Vec2(x*Constants::TILE_SIZE, 
 													y*Constants::TILE_SIZE));
 			pSpriteMap->map[x][y]->setAnchorPoint(Vec2::ANCHOR_BOTTOM_LEFT);
@@ -117,8 +118,8 @@ void DataManager::InitObjectTypeMap()
 	int heartNumToSeed = pMapMetaData->heartNum;
 	while (heartNumToSeed > 0)
 	{
-		Vec2 randPoint = Vec2(rand() % pObjectTypeMap->height,
-							rand() % pObjectTypeMap->width);
+		Vec2 randPoint = Vec2(rand() % pObjectTypeMap->width,
+							rand() % pObjectTypeMap->height);
 
 		if (pObjectTypeMap->map[(int)randPoint.x][(int)randPoint.y] !=
 			MAP_OBJECT_TYPE::HEART)
@@ -139,6 +140,15 @@ void DataManager::InitObjectTypeMap()
 void DataManager::InitNumberDataMap()
 {
 	pNumberDataMap = new NumberDataMap();
+
+	//Init number file path 
+	for (int i = 0; i < 8; i++)
+	{
+		pNumberDataMap->paths[i].append(PATH2::AROUND_NUMBER_BASE);
+		pNumberDataMap->paths[i].append(std::to_string(i+1));
+		pNumberDataMap->paths[i].append(".png");
+	}
+
 	pNumberDataMap->width = pMapMetaData->width;
 	pNumberDataMap->height = pMapMetaData->height;
 	pNumberDataMap->map = new int*[pNumberDataMap->width];

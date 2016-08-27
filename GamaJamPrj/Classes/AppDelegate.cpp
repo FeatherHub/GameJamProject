@@ -57,8 +57,10 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     // create a scene. it's an autorelease object
 
-    auto scene = MainScene::createScene();
-    // run
+	UserDefault::getInstance()->setIntegerForKey("NowSelectStage", 4);
+    auto scene = GameScene::createScene();
+    
+	// run
     director->runWithScene(scene);
 
     return true;

@@ -8,7 +8,6 @@ USING_NS_CC;
 
 struct SpriteMap
 {
-public:
 	Sprite*** map = nullptr ; 
 	int width = -1;
 	int height = -1;
@@ -32,6 +31,7 @@ struct ObjectTypeMap
 struct NumberDataMap
 {
 	int** map = nullptr;
+	std::string paths[8];
 	int width = -1;
 	int height = -1;
 };

@@ -19,6 +19,8 @@ class CameraMan;
 struct CharacterPosMap;
 struct ObjectTypeMap;
 struct NumberDataMap;
+struct SpriteMap;
+struct MapMetaData;
 
 class GameManager : public Node
 {
@@ -51,8 +53,10 @@ private:
 	Character* m_pRefCharacter = nullptr;
 	CameraMan* m_pRefCameraMan = nullptr;
 
+	SpriteMap* m_pRefSpriteMap = nullptr;
 	ObjectTypeMap* m_pRefObjectTypeMap = nullptr;
 	CharacterPosMap* m_pRefCharPosMap = nullptr;
 	NumberDataMap* m_pRefNumberDataMap = nullptr;
 	Vec2* m_pRefDirDeltaPos = nullptr;
+	MapMetaData* m_pRefMapMetaData = nullptr;
 };
