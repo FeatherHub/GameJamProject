@@ -33,9 +33,6 @@ bool DataManager::init()
 	pMapMetaData = MapDataLoader::GetMapMetaData();
 	
 	//init object
-	pCharacter = Character::create();
-	pCharacter->SetTurn(111111);
-
 	pCameraMan = CameraMan::create();
 	pCameraMan->SetMapMetaData(pMapMetaData);
 
@@ -52,6 +49,12 @@ bool DataManager::init()
 	InitNumberDataMap();
 	InitCharPosMap();
 	InitDirDeltaPos();
+
+	/*
+	Note : setposition after InitCharPosMap()
+	*/
+	pCharacter = Character::create();
+	pCharacter->SetTurn(10);
 
 	//retain
 	/*

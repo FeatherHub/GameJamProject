@@ -12,7 +12,7 @@ bool Character::init()
 		m_statusArr[i] = false;
 	}
 
-	m_sprite = Sprite::create();
+	m_sprite = Sprite::create(PATH::CHARACTER);
 	addChild(m_sprite);
 
 	return true;

@@ -38,8 +38,10 @@ bool GameManager::init()
 
 	//Object
 	m_pRefCharacter = m_pDM->pCharacter;
+//	m_pRefCharacter->setPosition();
 	m_pRefCameraMan = m_pDM->pCameraMan;
-	
+//	m_pRefCameraMan->setPosition();
+
 	//addChild
 	
 	addChild(m_pRefBtnDig);

@@ -7,8 +7,6 @@ bool CameraMan::init()
 		return false;
 	}
 
-	setPosition(Vec2(Constants::TILE_SIZE*0.5f, Constants::VIEWPORT_LEFT_BOTTOM_Y));
-	
 	return true;
 }
 

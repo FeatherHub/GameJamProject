@@ -23,13 +23,14 @@ GAME_CODE GameManager::CharMove()
 	//TODO: 움직임 유효하지 않는 상황에서 애니메이션으로 반응을 해주자
 
 	//맵 바깥으로 빠졌나갔다
-	if (movedPos.x > m_pRefObjectTypeMap->width * Constants::TILE_SIZE ||
-		movedPos.y > m_pRefObjectTypeMap->height * Constants::TILE_SIZE ||
+	if (movedPos.x > (m_pRefObjectTypeMap->width-1) * Constants::TILE_SIZE ||
+		movedPos.y > (m_pRefObjectTypeMap->height-1) * Constants::TILE_SIZE ||
 		movedPos.x < 0 || movedPos.y < 0)
 	{
 		return GAME_CODE::NONE;
 	}
 
+	/*
 	//벽과 충돌 했다
 	int charXPos = m_pRefCharPosMap->pos.x;
 	int charYPos = m_pRefCharPosMap->pos.y;
@@ -37,6 +38,7 @@ GAME_CODE GameManager::CharMove()
 	{
 		return GAME_CODE::NONE;
 	}
+	*/
 
 	/*
 	Note : 캐릭터의 위치와 캐릭터 맵에서의 캐릭터 위치를 갱신한다

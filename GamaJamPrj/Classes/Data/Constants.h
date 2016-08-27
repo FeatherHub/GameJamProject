@@ -30,7 +30,7 @@ namespace Constants
 	const int TAG_STAR4 = 13;
 	const int TAG_STAR5 = 14;
 
-	const int JOYSTICK_DISTANCE 40;
+	const int JOYSTICK_DISTANCE = 40;
 }
 
 namespace PATH
@@ -43,6 +43,8 @@ namespace PATH
 	const std::string DIG_BASE{ "UI/Dig/dig" };
 	const std::string FLAG_BASE{ "UI/Flag/flag" };
 	const std::string JOTSTICK_BASE{ "UI/JoyStick/joystick" };
+
+	const std::string CHARACTER{ "Character/character.png" };
 
 	const std::string SELECTSCENE_BG("SelectScene/bg.png");
 	const std::string SELECTSCENE_STAR("SelectScene/star.png");
