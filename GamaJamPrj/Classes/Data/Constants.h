@@ -13,9 +13,9 @@ namespace Constants
 	const float ANI_MOVE_TIME = 1.5f;
 
 	const int TAG_JOYSTICK_TOP = 0;
-	const int TAG_JOYSTICK_BOTTOM = 1;
-	const int TAG_JOYSTICK_LEFT = 2;
-	const int TAG_JOYSTICK_RIGHT = 3;
+	const int TAG_JOYSTICK_RIGHT = 1;
+	const int TAG_JOYSTICK_BOTTOM = 2;
+	const int TAG_JOYSTICK_LEDT = 3;
 	const int TAG_JOYSTICK_NUM = 4;
 	const int TAG_FLAG = 5;
 	const int TAG_DIG = 6;
