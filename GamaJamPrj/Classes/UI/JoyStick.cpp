@@ -33,6 +33,7 @@ void JoyStick::generateJoyStick()
 
 		stick->setTag(Constants::TAG_JOYSTICK_TOP + i);
 		stick->setRotation(i * 90);
+
 		
 		stick->setPosition(Vec2(0, 0));
 		if (i==0 || i==2)
@@ -42,4 +43,5 @@ void JoyStick::generateJoyStick()
 
 		menu->addChild(stick);
 	}
+	menu->setPosition(80, 80);
 }
