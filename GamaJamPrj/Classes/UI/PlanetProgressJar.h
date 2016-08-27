@@ -10,10 +10,10 @@ class PlanetProgressJar : public Node
 public:
 	CREATE_FUNC_ARGS(PlanetProgressJar);
 	virtual bool init() override;
-
-	bool 
+	void FindHeart() { m_curHeart++; }
+	int GetHeartNum() { return m_curHeart; }
 private:
+	int m_curHeart;
 
-private:
 
 };
