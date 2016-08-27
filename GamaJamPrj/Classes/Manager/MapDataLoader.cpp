@@ -12,7 +12,7 @@ MapMetaData* MapDataLoader::GetMapMetaData()
 	MapMetaData* m_MetaData = new MapMetaData();
 
 
-	std::string path;;
+	std::string path;
 
 	switch (m_stageNum)
 	{

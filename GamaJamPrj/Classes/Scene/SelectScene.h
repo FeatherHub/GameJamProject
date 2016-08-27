@@ -17,7 +17,10 @@ private:
 	void generateStars();
 
 	void closeUp();
+
+	void callStars(Ref* sender);
 private:
+	
 	CREATEWINSIZE;
 	Sprite* bg;
 	Sprite* rose;
