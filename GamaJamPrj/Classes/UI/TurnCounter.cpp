@@ -25,15 +25,16 @@ void TurnCounter::generateData(int stageTurn)
 void TurnCounter::generateLabel()
 {
 	std::string str = StringUtils::toString(curTurn);
-	label =  Label::createWithTTF(str, "Font/arial.ttf", 50);
+	label =  Label::createWithTTF(str, "Font/arial.ttf", 30);
+	label->setPosition(Vec2(-100, 0));
 	this->addChild(label);
 }
 
 void TurnCounter::generateShovel()
 {
 	shovel = Sprite::create("UI/TurnCounter/shovel.png");
-	shovel->setScale(0.4f);
-	shovel->setPosition(Vec2(winSize.width/2, 400));
+	shovel->setScale(0.25f);
+	shovel->setPosition(Vec2(-160, 0));
 	this->addChild(shovel);
 }
 

@@ -32,6 +32,7 @@ bool DataManager::init()
 	pJoyStick = JoyStick::create(CC_CALLBACK_1(DataManager::ControllerUICallback, this));
 	pTurnCounter = TurnCounter::create(pMapMetaData->turn);
 	pPlanetProgressJar = PlanetProgressJar::create(pMapMetaData->heartNum);
+	pButton = ui::Button::create();
 	
 	//init object
 	pCameraMan = CameraMan::create();

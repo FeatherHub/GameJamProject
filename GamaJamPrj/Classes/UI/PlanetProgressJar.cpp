@@ -21,12 +21,11 @@ bool PlanetProgressJar::init(int pAimHeart)
 void PlanetProgressJar::generateJar()
 {
 	jar = Sprite::create(PATH::JAR_BASE + ".png");
-	jar->setPosition(50, 590);
+	jar->setPosition(Vec2(0, 290));
 	this->addChild(jar);
 
 	light = Sprite::create("UI/Jar/light.png");
-	light->setAnchorPoint(Vec2(0.5 ,0.5));
-	light->setPosition(Vec2(jar->getPosition().x, jar->getPosition().y));
+	light->setPosition(Vec2(0, 290));
 	light->setOpacity(0);
 	this->addChild(light);
 }
@@ -37,7 +36,7 @@ void PlanetProgressJar::generateLabel()
 	str += "/" + StringUtils::toString(m_aimHeart);
 
 	label = Label::createWithTTF(str, "Font/arial.ttf", 30);
-	label->setPosition(50, 525);
+	label->setPosition(0, 230);
 	this->addChild(label);
 }
 

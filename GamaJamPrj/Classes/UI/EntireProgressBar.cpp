@@ -46,5 +46,23 @@ void EntireProgressBar :: generateBar()
 
 void EntireProgressBar::generateRose()
 {
+	// 새싹
+	rose[0] = Sprite::create("SelectScene/smile.png");
+	rose[0]->setAnchorPoint(Vec2(0, 0.5));
+	rose[0]->setPosition(50, 0);
+	rose[0]->setScale(0.5f);
+	this->addChild(rose[0]);
 
+	// 발화?
+	rose[1] = Sprite::create("SelectScene/smile.png");
+	rose[1]->setAnchorPoint(Vec2(0, 0.5));
+	rose[1]->setPosition(150, 0);
+	rose[1]->setScale(0.5f);
+	this->addChild(rose[1]);
+	// 장미
+	rose[2] = Sprite::create("SelectScene/smile.png");
+	rose[2]->setAnchorPoint(Vec2(0, 0.5));
+	rose[2]->setPosition(300, 0);
+	rose[2]->setScale(0.5f);
+	this->addChild(rose[2]);
 }
