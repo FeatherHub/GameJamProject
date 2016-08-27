@@ -33,6 +33,10 @@ namespace PATH
 	const std::string FLAG_BASE{ "UI/Flag/flag" };
 	const std::string JOTSTICK_BASE{ "UI/JoyStick/joystick" };
 
+	const std::string SELECTSCENE_BG("SelectScene/bg.png");
+	const std::string SELECTSCENE_STAR("SelectScene/star.png");
+	const std::string SELECTSCENE_ROSE("SelectScene/rose.png");
+	const std::string SELECTSCENE_PRINCE("SelectScene/prince.png");
 }
 
 enum class CHARACTER_ACTION : int

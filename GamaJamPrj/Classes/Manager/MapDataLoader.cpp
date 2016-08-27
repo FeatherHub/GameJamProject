@@ -34,7 +34,7 @@ void DataManager::loadData()
 	}
 
 
-	for (int i = 0; i < (int)users.size(); i++)
+	for (int i = 0; i < (int)users.size() - 1; i++)
 	{
 		MapMetaData* pMetaData= new MapMetaData();
 		ValueMap user = users.at(i).asValueMap();
@@ -43,7 +43,6 @@ void DataManager::loadData()
 		pMetaData->width = user.at("width").asInt();
 		pMetaData->height = user.at("height").asInt();
 		pMetaData->heartNum = user.at("heart").asInt();
-		pMetaData->tileSize = user.at("size").asInt();
 		m_metaData.push_back(pMetaData);
 	}
 }

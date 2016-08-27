@@ -8,6 +8,8 @@ bool Stars::init(ccMenuCallback func)
 	}
 	this->func = func;
 	generateStars();
+
+	return true;
 }
 
 void Stars::generateStars()
@@ -15,5 +17,5 @@ void Stars::generateStars()
 	stars = Menu::create();
 	this->addChild(stars);
 
-	MenuItem* star
+	MenuItem* star;
 }
