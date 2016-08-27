@@ -20,10 +20,19 @@ namespace Constants
 	const int TAG_GOTO_SELECT = 7;
 	const int TAG_GOTO_HELP = 8;
 	const int TAG_GOTO_CREDIT = 9;
+}
 
-	const std::string DIG_BASE_PATH{ "UI/Dig/dig" };
-	const std::string FLAG_BASE_PATH{ "UI/Flag/flag" };
-	const std::string JOTSTICK_BASE_PATH{ "UI/JoyStick/joystick" };
+namespace PATH
+{
+	const std::string MAINSCENE_BG{ "MainScene/bg.png" };
+	const std::string MAINSCENE_START_BASE{ "MainScene/start" };
+	const std::string MAINSCENE_CREDIT_BASE{ "MainScene/credit" };
+	const std::string MAINSCENE_HELP_BASE{ "MainScene/help" };
+
+	const std::string DIG_BASE{ "UI/Dig/dig" };
+	const std::string FLAG_BASE{ "UI/Flag/flag" };
+	const std::string JOTSTICK_BASE{ "UI/JoyStick/joystick" };
+
 }
 
 enum class CHARACTER_ACTION : int

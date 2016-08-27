@@ -1,8 +1,8 @@
 #include "Scene/MainScene.h"
-#include "Data\/Constants.h"
-
 #include "SelectScene.h"
 #include "CreditScene.h"
+
+#include "Data\/Constants.h"
 
 Scene* MainScene::createScene()
 {
@@ -20,13 +20,16 @@ bool MainScene::init()
 	{
 		return false;
 	}
+
 	generateBg();
 	generateMenu();
+
+	return true;
 }
 
 void MainScene::generateBg()
 {
-	bg = Sprite::create("Texture/MainScene/bg.png");
+	bg = Sprite::create(PATH::MAINSCENE_BG);
 	bg->setAnchorPoint(Vec2(0.5, 0.5));
 	bg->setPosition(winSize.width / 2, winSize.height / 2);
 	this->addChild(bg);
@@ -38,19 +41,23 @@ void MainScene::generateMenu()
 	menu = Menu::create();
 	this->addChild(menu);
 
-	std::string path = "Texture/MainScene/";
-
-	MenuItem* select = MenuItemImage::create(path + "start.png",path + "start_.png",
+	MenuItem* select = MenuItemImage::create(
+		PATH::MAINSCENE_START_BASE + ".png",
+		PATH::MAINSCENE_START_BASE + "_.png",
 		CC_CALLBACK_1(MainScene::callMenu, this));
 	select->setTag(Constants::TAG_GOTO_SELECT);
 	select->setPosition(0, 100);
 
-	MenuItem* help = MenuItemImage::create(path + "help.png", path + "help_.png", 
+	MenuItem* help = MenuItemImage::create(
+		PATH::MAINSCENE_HELP_BASE + ".png", 
+		PATH::MAINSCENE_HELP_BASE + "_.png", 
 		CC_CALLBACK_1(MainScene::callMenu, this));
 	help->setTag(Constants::TAG_GOTO_HELP);
 	help->setPosition(0, 0);
 
-	MenuItem* credit = MenuItemImage::create(path + "credit.png", path + "credit_.png",
+	MenuItem* credit = MenuItemImage::create(
+		PATH::MAINSCENE_CREDIT_BASE + ".png", 
+		PATH::MAINSCENE_CREDIT_BASE + "_.png",
 		CC_CALLBACK_1(MainScene::callMenu, this));
 	credit->setTag(Constants::TAG_GOTO_CREDIT);
 	credit->setPosition(0, -100);

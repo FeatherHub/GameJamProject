@@ -22,8 +22,8 @@ void Dig::generateDig()
 	this->addChild(dig);
 
 	MenuItem* digItem = MenuItemImage::create(
-		Constants::DIG_BASE_PATH + ".png",
-		Constants::DIG_BASE_PATH + "_.png", func);
+		PATH::DIG_BASE + ".png",
+		PATH::DIG_BASE + "_.png", func);
 
 	digItem->setTag(Constants::TAG_DIG_NUM);
 	dig->addChild(digItem);

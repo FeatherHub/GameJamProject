@@ -26,8 +26,8 @@ void JoyStick::generateJoyStick()
 	for (int i = 0; i < Constants::TAG_JOYSTICK_NUM; i++)
 	{
 		MenuItem* stick = MenuItemImage::create(
-			Constants::JOTSTICK_BASE_PATH + ".png", 
-			Constants::JOTSTICK_BASE_PATH + "_.png", func);
+			PATH::JOTSTICK_BASE + ".png",
+			PATH::JOTSTICK_BASE + "_.png", func);
 
 		stick->setTag(Constants::TAG_JOYSTICK_TOP + i);
 		stick->setRotation(i * 90);
