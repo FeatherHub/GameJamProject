@@ -90,10 +90,10 @@ void SelectScene::checkEvent()
 	if (UserDefault::getInstance()->getBoolForKey(PATH::STAGE5_BOOL_KEY.c_str()))
 		guage++;
 
-	//if (guage == 3)	
-	//Sprout();
-	//if (guage == 5) 
-	Flower();
+	if (guage == 3)	
+		Sprout();
+	if (guage == 5) 
+		Flower();
 }
 
 void SelectScene::Sprout()
