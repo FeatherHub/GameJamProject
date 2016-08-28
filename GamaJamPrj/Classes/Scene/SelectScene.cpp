@@ -61,7 +61,7 @@ void SelectScene::generateProBar()
 
 void SelectScene::closeUp()
 {
-	stars->action();
+	stars->FadeOut();
 }
 
 void SelectScene::checkEvent()
@@ -99,7 +99,7 @@ void SelectScene::Sprout()
 	runAction(Sequence::create(
 		CallFunc::create([&]() 
 	{ 
-		stars->action();
+		stars->FadeOut();
 		stars->Disable();
 		stars->setVisible(false);
 	}),
@@ -134,7 +134,7 @@ void SelectScene::Sprout()
 		CallFunc::create([&]() 
 	{ 
 		bar->runAction(FadeIn::create(1.0f));
-		stars->ReverseAction();
+		stars->FadeIn();
 		stars->Enable(); 
 		stars->setVisible(true);
 	}),
@@ -152,7 +152,7 @@ void SelectScene::MakeSprout()
 
 void SelectScene::Flower()
 {
-	stars->action();
+	stars->FadeOut();
 
 	if(sprouty != nullptr)
 		sprouty->setVisible(false);
