@@ -95,22 +95,22 @@ void Stars::moveStar()
 	UserDefault::getInstance()->setBoolForKey(PATH2::IS_CLEAR.c_str(), false);
 	// guage 로 현재 선택한 행성에 관련된 값을 알 수 있음
 	stars->getChildByTag(POS0)->stopAllActions();
-	stars->getChildByTag(POS0)->runAction(Sequence::create(Spawn::create(MoveTo::create(0.5f, START_POS_1), ScaleTo::create(0.5f, 1.2f)),
+	stars->getChildByTag(POS0)->runAction(Sequence::create(DelayTime::create(1.0f), Spawn::create(MoveTo::create(0.5f, START_POS_1), ScaleTo::create(0.5f, 1.2f)),
 		RepeatForever::create(Sequence::create(MoveBy::create(1.6f, Vec2(0, 2)), DelayTime::create(0.2f), MoveBy::create(1.6f, Vec2(0, -2)),
 		nullptr)), nullptr));
 
 	stars->getChildByTag(POS1)->stopAllActions();
-	stars->getChildByTag(POS1)->runAction(Sequence::create(Spawn::create(MoveTo::create(0.5f, START_POS_2), ScaleTo::create(0.5f, 1.0f)),
+	stars->getChildByTag(POS1)->runAction(Sequence::create(DelayTime::create(1.0f), Spawn::create(MoveTo::create(0.5f, START_POS_2), ScaleTo::create(0.5f, 1.0f)),
 		RepeatForever::create(Sequence::create(MoveBy::create(1.0f, Vec2(0, 15)), DelayTime::create(0.2f), MoveBy::create(1.0f, Vec2(0, -15)),
 		nullptr)), nullptr));
 
 	stars->getChildByTag(POS2)->stopAllActions();
-	stars->getChildByTag(POS2)->runAction(Sequence::create(Spawn::create(MoveTo::create(0.5f, START_POS_3), ScaleTo::create(0.5f, 0.5f)),
+	stars->getChildByTag(POS2)->runAction(Sequence::create(DelayTime::create(1.0f), Spawn::create(MoveTo::create(0.5f, START_POS_3), ScaleTo::create(0.5f, 0.5f)),
 		RepeatForever::create(Sequence::create(MoveBy::create(0.8f, Vec2(0, 5)), DelayTime::create(0.2f), MoveBy::create(0.8f, Vec2(0, -5)),
 		nullptr)), nullptr));
 
 	stars->getChildByTag(POS3)->stopAllActions();
-	stars->getChildByTag(POS3)->runAction(Sequence::create(Spawn::create(MoveTo::create(0.5f, START_POS_4), ScaleTo::create(0.5f, 0.3f)),
+	stars->getChildByTag(POS3)->runAction(Sequence::create(DelayTime::create(1.0f), Spawn::create(MoveTo::create(0.5f, START_POS_4), ScaleTo::create(0.5f, 0.3f)),
 		RepeatForever::create(Sequence::create(MoveBy::create(1.6f, Vec2(0, 2)), DelayTime::create(0.2f), MoveBy::create(1.6f, Vec2(0, -2)),
 		nullptr)), nullptr));
 
