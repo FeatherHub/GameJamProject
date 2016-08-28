@@ -94,6 +94,7 @@ void Stars::moveStar()
 
 	UserDefault::getInstance()->setBoolForKey(PATH2::IS_CLEAR.c_str(), false);
 	// guage 로 현재 선택한 행성에 관련된 값을 알 수 있음
+	/*
 	stars->getChildByTag(POS0)->stopAllActions();
 	stars->getChildByTag(POS0)->runAction(Sequence::create(DelayTime::create(1.0f), Spawn::create(MoveTo::create(0.5f, START_POS_1), ScaleTo::create(0.5f, 1.2f)),
 		RepeatForever::create(Sequence::create(MoveBy::create(1.6f, Vec2(0, 2)), DelayTime::create(0.2f), MoveBy::create(1.6f, Vec2(0, -2)),
@@ -114,8 +115,8 @@ void Stars::moveStar()
 		RepeatForever::create(Sequence::create(MoveBy::create(1.6f, Vec2(0, 2)), DelayTime::create(0.2f), MoveBy::create(1.6f, Vec2(0, -2)),
 		nullptr)), nullptr));
 
-	stars->runAction(Sequence::create(DelayTime::create(0.5f), CallFuncN::create(CC_CALLBACK_1(Stars::callRenew, this)), nullptr));
-
+	//stars->runAction(Sequence::create(DelayTime::create(0.5f), CallFuncN::create(CC_CALLBACK_1(Stars::callRenew, this)), nullptr));
+	*/
 }
 
 void Stars::callStar(Ref* Sender)

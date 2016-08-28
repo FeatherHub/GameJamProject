@@ -19,10 +19,12 @@ private:
 	void generateData(int stageTurn);
 	void generateLabel();
 	void generateShovel();
+	void generatePlnetName();
 private:
 	CREATEWINSIZE;
 	int m_curTurn;
 	Label* m_lblTurn;
+	Label* m_lblPlnet;
 	Sprite* m_shovelSpr;
 
 };

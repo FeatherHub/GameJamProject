@@ -145,6 +145,9 @@ void GameManager::Lose()
 
 void GameManager::Win()
 {
+	// 턴카운트
+	UserDefault::getInstance()->setIntegerForKey(PATH2::TURN_COUNT_KEY.c_str(), m_pRefTurnCounter->GetTurn());
+
 	CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("Sound/Effect/clear.wav ");
 
 	UserDefault::getInstance()->setBoolForKey(PATH2::IS_CLEAR.c_str(), true);

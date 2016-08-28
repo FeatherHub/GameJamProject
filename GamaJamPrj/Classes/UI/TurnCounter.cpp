@@ -11,9 +11,28 @@ bool TurnCounter::init(int stageTurn)
 	}
 	generateData(stageTurn);
 	generateLabel();
+	generatePlnetName();
 	generateShovel();
 
 	return true;
+}
+
+void TurnCounter::generatePlnetName()
+{
+	std::string str = StringUtils::toString(m_curTurn);
+	int type =		UserDefault::getInstance()->getIntegerForKey(PATH2::NOW_STAGE_KEY.c_str());
+	switch (type)
+	{
+	case 0:	str = "plnet name : K313"; break;
+	case 1:	str = "plnet name : J823"; break;
+	case 2:	str = "plnet name : D906"; break;
+	case 3:	str = "plnet name : G826"; break;
+	case 4:	str = "plnet name : F318"; break;
+	}
+
+	m_lblPlnet = Label::createWithTTF(str, "Font/arial.ttf", 20);
+	m_lblPlnet->setPosition(Vec2(-80, -50));
+	this->addChild(m_lblPlnet);
 }
 
 void TurnCounter::generateData(int stageTurn)
