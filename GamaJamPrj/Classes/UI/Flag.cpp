@@ -6,13 +6,14 @@
 #include "Flag.h"
 #include "Data\/Constants.h"
 
-bool Flag::init(ccMenuCallback func)
+bool Flag::init(ccMenuCallback callback)
 {
 	if (!Node::init())
 	{
 		return false;
 	}
-	this->func = func;
+	m_callback = callback;
+
 	generateFlag();
 
 	return true;
@@ -20,13 +21,13 @@ bool Flag::init(ccMenuCallback func)
 
 void Flag::generateFlag()
 {
-	flag = Menu::create();
-	this->addChild(flag);
+	m_menuFlag = Menu::create();
+	addChild(m_menuFlag);
 
 	MenuItem* flagItem = MenuItemImage::create(
 		PATH::FLAG_BASE + ".png",
-		PATH::FLAG_BASE + "_.png", func);
+		PATH::FLAG_BASE + "_.png", m_callback);
 	flagItem->setPosition(-80, -280);
 	flagItem->setTag(Constants::TAG_FLAG);
-	flag->addChild(flagItem);
+	m_menuFlag->addChild(flagItem);
 }

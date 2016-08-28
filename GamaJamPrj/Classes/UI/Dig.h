@@ -19,6 +19,6 @@ private:
 	void generateDig();
 
 private:
-	ccMenuCallback func;
-	Menu* dig;
+	ccMenuCallback m_callback;
+	Menu* m_menuDig;
 };

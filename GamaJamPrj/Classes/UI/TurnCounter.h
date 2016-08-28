@@ -24,5 +24,4 @@ private:
 	int m_curTurn;
 	Label* m_lblTurn;
 	Sprite* m_shovelSpr;
-
 };

@@ -6,14 +6,15 @@
 작성자 도인혁
 */
 
-bool JoyStick::init(ccMenuCallback func)
+bool JoyStick::init(ccMenuCallback callback)
 {
 	if (!Node::init())
 	{
 		return false;
 	}
 
-	this->func = func;
+	m_callback = callback;
+
 	generateJoyStick();
 
 	return true;
@@ -21,14 +22,14 @@ bool JoyStick::init(ccMenuCallback func)
 
 void JoyStick::generateJoyStick()
 {
-	menu = Menu::create();
-	this->addChild(menu);
+	m_menuJoyStick = Menu::create();
+	addChild(m_menuJoyStick);
 
 	for (int i = 0; i < Constants::TAG_JOYSTICK_NUM; i++)
 	{
 		MenuItem* stick = MenuItemImage::create(
 			PATH::JOTSTICK_BASE + ".png",
-			PATH::JOTSTICK_BASE + "_.png", func);
+			PATH::JOTSTICK_BASE + "_.png", m_callback);
 
 		stick->setTag(Constants::TAG_JOYSTICK_TOP + i);
 		stick->setRotation(i * 90);
@@ -39,6 +40,6 @@ void JoyStick::generateJoyStick()
 		else
 			stick->setPosition(Vec2(Constants::JOYSTICK_DISTANCE*2 + -Constants::JOYSTICK_DISTANCE*i , 0));
 
-		menu->addChild(stick);
+		m_menuJoyStick->addChild(stick);
 	}
 }
