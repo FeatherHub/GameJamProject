@@ -78,10 +78,18 @@ void SelectScene::checkEvent()
 	if (UserDefault::getInstance()->getBoolForKey(PATH::STAGE5_BOOL_KEY.c_str()))
 		guage++;
 
-	if (guage == 3)	
+	if (guage == 3)
+	{
 		Sprout();
-	if (guage == 5) 
+	}
+	else if (guage >= 4 || guage <= 5)
+	{
+		MakeSprout();
+	}
+	else if (guage >= 5)
+	{
 		Flower();
+	}
 }
 
 void SelectScene::Sprout()
@@ -115,6 +123,7 @@ void SelectScene::Sprout()
 		bg->runAction(ScaleTo::create(3.3f, 1.0f));
 		hailo->runAction(ScaleTo::create(3.3f, 1.0f));
 	}),
+		DelayTime::create(2.4f),
 		CallFunc::create([&]() { 
 		stars->ReverseAction();
 		stars->Enable(); 
@@ -136,6 +145,9 @@ void SelectScene::Flower()
 {
 	stars->action();
 
+	if(sprouty != nullptr)
+		sprouty->setVisible(false);
+	
 	runAction(Sequence::create(
 		CallFunc::create([&]() { stars->Disable(); }),
 		CallFunc::create([&]() {
