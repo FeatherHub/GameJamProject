@@ -12,8 +12,15 @@ public:
 	static Scene* createScene();
 	CREATE_FUNC_ARGS(CreditScene);
 private:
-
+	void generateTouch();
+	void generateSpr();
 private:
 	CREATEWINSIZE;
-
+	Sprite* bg;
+	Sprite* touchToScreen;
+	EventListenerTouchOneByOne *listener;
+private:
+	virtual bool onTouchBegan(Touch *touch, Event *unused_event);
+	virtual void onTouchMoved(Touch *touch, Event *unused_event);
+	virtual void onTouchEnded(Touch *touch, Event *unused_event);
 };

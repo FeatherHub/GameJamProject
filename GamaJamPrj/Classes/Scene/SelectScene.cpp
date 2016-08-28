@@ -53,10 +53,7 @@ void SelectScene::generateBg()
 //	this->addChild(star);
 	
 
-	rose = Sprite::create(PATH::SELECTSCENE_ROSE);
-	rose->setPosition(150, 100);
-	rose->setScale(0.2f);
-	this->addChild(rose);
+
 
 }
 
