@@ -19,12 +19,11 @@ bool GameScene::init()
         return false;
     }
     
+	CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(PATH2::BG_GAME.c_str(), true);
+
 	m_GM = GameManager::create();
 	addChild(m_GM);
-	CocosDenshion::SimpleAudioEngine::getInstance()->playBackgroundMusic(PATH2::BG_GAME.c_str(), true);
 	scheduleUpdate();
-
-
 
     return true;
 }
