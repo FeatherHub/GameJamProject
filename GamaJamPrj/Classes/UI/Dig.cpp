@@ -13,7 +13,8 @@ bool Dig::init(ccMenuCallback func)
 		return false;
 	}
 
-	this->func = func;
+	m_callback = func;
+
 	generateDig();
 
 	return true;
@@ -21,14 +22,14 @@ bool Dig::init(ccMenuCallback func)
 
 void Dig::generateDig()
 {
-	dig = Menu::create();
-	this->addChild(dig);
+	m_menuDig = Menu::create();
+	addChild(m_menuDig);
 
 	MenuItem* digItem = MenuItemImage::create(
 		PATH::DIG_BASE + ".png",
-		PATH::DIG_BASE + "_.png", func);
+		PATH::DIG_BASE + "_.png", m_callback);
 
 	digItem->setTag(Constants::TAG_DIG);
 	digItem->setPosition(-100, -300);
-	dig->addChild(digItem);
+	m_menuDig->addChild(digItem);
 }

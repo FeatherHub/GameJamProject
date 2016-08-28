@@ -19,9 +19,9 @@ private:
 	CREATEWINSIZE;
 	int m_curHeart;
 	int m_aimHeart;
-	float percent;
-	Sprite* jar;
-	Sprite* light;
-	Label* label;
+	float m_percent;
+	Sprite* m_sprJar;
+	Sprite* m_sprLight;
+	Label* m_label;
 
 };

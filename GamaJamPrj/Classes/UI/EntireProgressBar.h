@@ -16,8 +16,8 @@ private:
 
 private:
 	CREATEWINSIZE;
-	Sprite* baseBar;
-	Sprite* perBar;
-	Sprite* rose[3];
+	Sprite* m_sprBaseBar;
+	Sprite* m_sprPerBar;
+	Sprite* m_sprRose[3];
 };
 

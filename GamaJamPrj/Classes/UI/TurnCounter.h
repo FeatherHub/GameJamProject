@@ -26,5 +26,4 @@ private:
 	Label* m_lblTurn;
 	Label* m_lblPlnet;
 	Sprite* m_shovelSpr;
-
 };

@@ -36,9 +36,6 @@
     <ClCompile Include="..\Classes\Scene\CreditScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\Scene\EndingScene.cpp">
-      <Filter>Scene</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\Scene\GameScene.cpp">
       <Filter>Scene</Filter>
     </ClCompile>
@@ -108,9 +105,6 @@
       <Filter>App</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Scene\CreditScene.h">
-      <Filter>Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\Scene\EndingScene.h">
       <Filter>Scene</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Scene\GameScene.h">

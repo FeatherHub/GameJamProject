@@ -12,12 +12,12 @@ USING_NS_CC;
 class JoyStick : public Node
 {
 public :
-	bool init(ccMenuCallback func);
+	bool init(ccMenuCallback callback);
 	CREATE_FUNC_ARGS(JoyStick);
 private:
 	void generateJoyStick();
 
 private:
-	ccMenuCallback func;
-	Menu* menu;
+	ccMenuCallback m_callback;
+	Menu* m_menuJoyStick;
 };

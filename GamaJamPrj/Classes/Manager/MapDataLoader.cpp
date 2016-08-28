@@ -7,13 +7,13 @@
 
 MapMetaData* MapDataLoader::GetMapMetaData()
 {
-	int m_stageNum = UserDefault::getInstance()->getIntegerForKey(PATH2::NOW_STAGE_KEY.c_str());
+	int stageNum = UserDefault::getInstance()->getIntegerForKey(PATH2::NOW_STAGE_KEY.c_str());
 
-	MapMetaData* m_MetaData = new MapMetaData();
+	MapMetaData* mapMetaData = new MapMetaData();
 
 	std::string path;
 
-	switch (m_stageNum)
+	switch (stageNum)
 	{
 	case 0: path = PATH::METADATA_PATH_1; break;
 	case 1:	path = PATH::METADATA_PATH_2; break;
@@ -70,20 +70,20 @@ MapMetaData* MapDataLoader::GetMapMetaData()
 		
 		ValueMap user = users.at(i).asValueMap();
 
-		m_MetaData->turn = user.at("turn").asInt();
-		m_MetaData->width = user.at("width").asInt();
-		m_MetaData->height = user.at("height").asInt();
-		m_MetaData->heartNum = user.at("heart\r").asInt();
+		mapMetaData->turn = user.at("turn").asInt();
+		mapMetaData->width = user.at("width").asInt();
+		mapMetaData->height = user.at("height").asInt();
+		mapMetaData->heartNum = user.at("heart\r").asInt();
 	}
 
-	switch (m_stageNum)
+	switch (stageNum)
 	{
-	case 0:	m_MetaData->tilePath = PATH::STAGE_TILE_PATH_1;	break;
-	case 1: m_MetaData->tilePath = PATH::STAGE_TILE_PATH_2;	break;
-	case 2:	m_MetaData->tilePath = PATH::STAGE_TILE_PATH_3;	break;
-	case 3:	m_MetaData->tilePath = PATH::STAGE_TILE_PATH_4;	break;
-	case 4:	m_MetaData->tilePath = PATH::STAGE_TILE_PATH_5;	break;
+	case 0:	mapMetaData->tilePath = PATH::STAGE_TILE_PATH_1;	break;
+	case 1: mapMetaData->tilePath = PATH::STAGE_TILE_PATH_2;	break;
+	case 2:	mapMetaData->tilePath = PATH::STAGE_TILE_PATH_3;	break;
+	case 3:	mapMetaData->tilePath = PATH::STAGE_TILE_PATH_4;	break;
+	case 4:	mapMetaData->tilePath = PATH::STAGE_TILE_PATH_5;	break;
 	}
 
-	return m_MetaData;
+	return mapMetaData;
 }

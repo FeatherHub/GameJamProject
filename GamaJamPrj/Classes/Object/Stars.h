@@ -34,19 +34,18 @@ class Stars : public Node
 public:
 	bool init();
 	CREATE_FUNC_ARGS(Stars);
-	void action();
-	void ReverseAction();
-	void Disable() { stars->setEnabled(false); }
-	void Enable() { stars->setEnabled(true); }
-
+	void FadeOut();
+	void FadeIn();
+	void Disable() { m_stars->setEnabled(false); }
+	void Enable() { m_stars->setEnabled(true); }
 private:
 	void generateStars();
-	void moveStar();
-	void callStar(Ref* sender);
-	void callRenew(Ref* sender);
+	void MoveStar();
+	void CallStar(Ref* sender);
+	void CallRenew(Ref* sender);
 private:
 	CREATEWINSIZE
-	ccMenuCallback func;
-	Menu* stars;
+	ccMenuCallback m_callBack;
+	Menu* m_stars;
 };
 
