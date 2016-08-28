@@ -91,6 +91,7 @@ void Stars::MoveStar()
 	if (!isClear)	return;
 
 	UserDefault::getInstance()->setBoolForKey(PATH2::IS_CLEAR.c_str(), false);
+
 	// guage 로 현재 선택한 행성에 관련된 값을 알 수 있음
 	m_stars->getChildByTag(POS0)->stopAllActions();
 	m_stars->getChildByTag(POS0)->runAction(Sequence::create(DelayTime::create(1.0f), Spawn::create(MoveTo::create(0.5f, START_POS_1), ScaleTo::create(0.5f, 1.2f)),
