@@ -86,12 +86,11 @@ void SelectScene::checkEvent()
 
 void SelectScene::Sprout()
 {
-	stars->action();
-
 	runAction(Sequence::create(
 		CallFunc::create([&]() { 
+		stars->action();
 		stars->Disable();
-	stars->setVisible(false);
+		stars->setVisible(false);
 		}),
 		CallFunc::create([&]() {
 		bg->runAction(ScaleTo::create(5.3f, 1.24f));
@@ -118,7 +117,8 @@ void SelectScene::Sprout()
 	}),
 		CallFunc::create([&]() { 
 		stars->ReverseAction();
-		stars->Enable();
+		stars->Enable(); 
+		stars->setVisible(true);
 	}),
 		nullptr
 	));
