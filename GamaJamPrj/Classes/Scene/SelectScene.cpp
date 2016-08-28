@@ -94,37 +94,46 @@ void SelectScene::checkEvent()
 
 void SelectScene::Sprout()
 {
+	bar->runAction(FadeOut::create(1.0f));
+
 	runAction(Sequence::create(
-		CallFunc::create([&]() { 
+		CallFunc::create([&]() 
+	{ 
 		stars->action();
 		stars->Disable();
 		stars->setVisible(false);
-		}),
-		CallFunc::create([&]() {
+	}),
+		CallFunc::create([&]() 
+	{
 		bg->runAction(ScaleTo::create(5.3f, 1.24f));
 		hailo->runAction(ScaleTo::create(4.3f, 0.8f));
 	}),
 
 		DelayTime::create(9.67f),
 
-		CallFunc::create([&]() {
+		CallFunc::create([&]() 
+	{
 		CocosDenshion::SimpleAudioEngine::getInstance()->playEffect("Sound/Effect/shot_bub.wav");
 	}),
 
 		DelayTime::create(0.1f),
 
-		CallFunc::create([&]() {
+		CallFunc::create([&]() 
+	{
 		MakeSprout();
 	}),
 
 		DelayTime::create(3.67f),
 
-		CallFunc::create([&]() {
+		CallFunc::create([&]() 
+	{
 		bg->runAction(ScaleTo::create(3.3f, 1.0f));
 		hailo->runAction(ScaleTo::create(3.3f, 1.0f));
 	}),
 		DelayTime::create(2.4f),
-		CallFunc::create([&]() { 
+		CallFunc::create([&]() 
+	{ 
+		bar->runAction(FadeIn::create(1.0f));
 		stars->ReverseAction();
 		stars->Enable(); 
 		stars->setVisible(true);
